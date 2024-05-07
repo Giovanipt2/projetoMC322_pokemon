@@ -4,5 +4,5 @@ import java.util.List;
 
 public class Treinador {
     private List<Pokemon> time;
-    private List<Item> itens;
+    private List<ItemConsumivel> itens;
 }
