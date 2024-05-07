@@ -95,7 +95,7 @@ public class Menu {
      * Cria os jogadores
      * @param input O scanner que será usado para ler os nomes dos jogadores
      */
-    private CriarJogadores(Scanner input){
+    public void CriarJogadores(Scanner input){
         for (int i = 0; i < 4; i++) {
             leituraDeJogador(input);
         }
