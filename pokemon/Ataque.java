@@ -1,12 +1,13 @@
 package pokemon;
 
 public abstract class Ataque {
-    private Tipo tipo;
-    private int poder;
-    private int pp;
-    private int prioridade;
-    private int precisao;
+    protected Tipo tipo;
+    protected int poder;
+    protected int pp;
+    protected int prioridade;
+    protected int precisao;
+    protected Efeito efeito;
 
     public abstract int dano(Pokemon usuario, Pokemon alvo, Clima clima);
-    public abstract Efeito efeito();
+    public abstract Efeito getEfeito();
 }

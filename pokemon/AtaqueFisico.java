@@ -1,7 +1,6 @@
 package pokemon;
 
 public class AtaqueFisico extends Ataque {
-
     //TODO
     @Override
     public int dano(Pokemon usuario, Pokemon alvo, Clima clima) {
@@ -10,7 +9,7 @@ public class AtaqueFisico extends Ataque {
 
     //TODO
     @Override
-    public Efeito efeito() {
-        return null;
+    public Efeito getEfeito() {
+
     }
 }
