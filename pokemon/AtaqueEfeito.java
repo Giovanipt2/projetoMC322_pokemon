@@ -1,12 +1,9 @@
 package pokemon;
 
-import pokemon.Ataque;
-import pokemon.Clima;
-import pokemon.Efeito;
-import pokemon.Pokemon;
-
 public class AtaqueEfeito extends Ataque {
-    //TODO
+    /**
+     * @return 0 (ataques de efeito não causam dano).
+     */
     @Override
     public int dano(Pokemon usuario, Pokemon alvo, Clima clima) {
         return 0;
