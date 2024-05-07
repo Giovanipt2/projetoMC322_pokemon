@@ -1,5 +1,7 @@
 package pokemon;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Map;
 import java.util.List;
 
@@ -15,7 +17,7 @@ public class Pokemon {
     /**
      * Os tipos do Pokémon
      */
-    private List<Tipo> types;
+    private List<Tipo> tipos;
     /**
      * O nível do pokemon (de 1 a 100)
      */
@@ -74,5 +76,16 @@ public class Pokemon {
     //TODO
     public Pokemon clonar(String especie) {
         return null;
+    }
+
+    public int getNivel() {
+        return nivel;
+    }
+
+    /**
+     * Retorna uma cópia da lista de tipos do Pokémon
+     */
+    public List<Tipo> getTipos() {
+        return new ArrayList<>(tipos);
     }
 }
