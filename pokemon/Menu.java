@@ -3,7 +3,7 @@ package pokemon;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-/*
+/**
  * Menu.java
  *
  * Representa o menu principal do jogo, onde o jogador pode acessar suas informações, seu time de pokémons, seus itens, etc.
@@ -17,7 +17,7 @@ public class Menu {
         this.jogadores = new ArrayList<Treinador>();
     }
 
-    /*
+    /**
      * Adiciona um jogador à lista de jogadores
      * @param jogador O jogador a ser adicionado
      */
@@ -25,7 +25,7 @@ public class Menu {
         this.jogadores.add(jogador);
     }
 
-    /*
+    /**
      * Mostra o menu principal
      */
     private void imprimirListaPokemons() {
@@ -38,7 +38,7 @@ public class Menu {
         System.out.println("-----------------------------------");
     }
 
-    /*
+    /**
      * Lê um jogador do console e o adiciona à lista de jogadores
      * @param input O scanner que será usado para ler o nome do jogador
      */
@@ -91,7 +91,7 @@ public class Menu {
         }
     }
 
-    /*
+    /**
      * Cria os jogadores
      * @param input O scanner que será usado para ler os nomes dos jogadores
      */
