@@ -99,6 +99,7 @@ public class Menu {
         for (int i = 0; i < 4; i++) {
             leituraDeJogador(input);
             System.out.println(" ");
+            System.out.println(" ");
         }
     }
 }
