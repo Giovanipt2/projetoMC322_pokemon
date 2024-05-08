@@ -4,12 +4,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 import java.util.List;
+import java.util.HashMap;
 
 public class Pokemon {
-    /**
-     * Os protótipos de cada espécie de Pokémon
-     */
-    private static Map<String, Pokemon> especies;
     /**
      * O nome do Pokémon
      */
@@ -43,9 +40,33 @@ public class Pokemon {
      */
     private List<Ataque> ataques;
     /**
+     * O item atual do Pokémon (null se não há)
+     */
+    private ItemPokemon item;
+    /**
      * O efeito atual do Pokémon (null se não há)
      */
     private Efeito efeito;
+
+    public Pokemon(String nome, List<Tipo> tipos, int nivel,  Map<Stat, Integer> statsBase, Map<Stat, Integer> evs, Map<Stat, Integer> ivs, List<Ataque> ataques) {
+        this.nome = nome;
+        this.tipos = new ArrayList<>(tipos);
+        this.nivel = nivel;
+        this.statsBase = new HashMap<>(statsBase);
+        this.evs = new HashMap<>(evs);
+        this.ivs = new HashMap<>(ivs);
+        this.ataques = new ArrayList<>(ataques);
+        this.hp = getStat(Stat.HP);
+        this.efeito = null;
+    }
+
+    /**
+     * Adiciona um item ao pokemon.
+     * @param item O item a ser adicionado
+     */
+    public void adicionarItem(ItemPokemon item) {
+        this.item = item;
+    }
 
     /**
      * Calcula o valor efetivo de um stat.
