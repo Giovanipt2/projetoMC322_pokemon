@@ -82,6 +82,10 @@ public class Pokemon {
         return nivel;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
     /**
      * Retorna uma cópia da lista de tipos do Pokémon
      */
