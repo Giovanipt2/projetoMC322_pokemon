@@ -98,6 +98,7 @@ public class Menu {
     public void CriarJogadores(Scanner input){
         for (int i = 0; i < 4; i++) {
             leituraDeJogador(input);
+            System.out.println(" ");
         }
     }
 }
