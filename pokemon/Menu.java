@@ -32,8 +32,9 @@ public class Menu {
         // Mostra os pokémons disponíveis
         System.out.println("-----------------------------------");
         System.out.println("Pokémons iniciais disponíveis: ");
-        for (int i = 0; i < Pokemon.listaPokemons().size(); i++) {
-            System.out.println("[" + (i + 1) + "] " + Pokemon.listaPokemons().get(i).getNome());
+        ArrayList<Pokemon> listaPokemon = new ArrayList<>(Pokemon.getEspecie().values());
+        for (int i = 0; i < listaPokemon.size(); i++) {
+            System.out.println("[" + (i + 1) + "] " + listaPokemon.get(i).getNome());
         }
         System.out.println("-----------------------------------");
     }
@@ -56,7 +57,7 @@ public class Menu {
         // Agora o jogador pode escolher três pokemon iniciais
         System.out.println("Escolha três pokémons iniciais: ");
         //ArrayList de pokemons iniciais
-        ArrayList<Pokemon> pokemonsIniciais = Pokemon.listaPokemonsIniciais();
+        ArrayList<Pokemon> pokemonsIniciais = new ArrayList<>(Pokemon.getEspecie().values());
 
         // Mostra os pokémons iniciais disponíveis
         imprimirListaPokemons();
