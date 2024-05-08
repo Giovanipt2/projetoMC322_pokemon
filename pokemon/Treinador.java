@@ -32,11 +32,11 @@ public class Treinador {
     }
 
     public ArrayList<Pokemon> getTime() {
-        return time;
+        return new ArrayList<>(time);
     }
 
     public ArrayList<ItemBatalha> getItens() {
-        return itens;
+        return new ArrayList<>(itens);
     }
 
 
@@ -45,8 +45,28 @@ public class Treinador {
      * @param pokemon Instância da classe Pokemon
      * @return True, se foi possível adicionar o pokémon; ou false, caso contrário
      */
-    public boolean addPokemon(Pokemon pokemon) {
+    public boolean adicionarPokemon(Pokemon pokemon) {
         return time.add(pokemon);
+    }
+
+
+    /**
+     * Método para adicionar o item de batatlha escolhido aos itens do treinador
+     * @param item Item de batalha que o treinador escolheu
+     * @return  True, se foi possível adicionar o item; ou false, caso contrário
+     */
+    public boolean adicionarItem(ItemBatalha item) {
+        return itens.add(item);
+    }
+
+
+    /**
+     * Método para remover o item de batlha que foi usado pelo treinador
+     * @param item Item de batalha que o treinador gastou
+     * @return True, se foi possível remover o item; ou false, caso contrário
+     */
+    public boolean removerItem(ItemBatalha item) {
+        return itens.remove(item);
     }
 
 
