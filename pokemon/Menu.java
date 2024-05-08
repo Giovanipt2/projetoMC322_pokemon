@@ -26,7 +26,7 @@ public class Menu {
     }
 
     /**
-     * Mostra o menu principal
+     * Mostra os pokemons disponiveis
      */
     private void imprimirListaPokemons() {
         // Mostra os pokémons disponíveis
@@ -37,6 +37,61 @@ public class Menu {
             System.out.println("[" + (i + 1) + "] " + listaPokemon.get(i).getNome());
         }
         System.out.println("-----------------------------------");
+    }
+
+    /**
+     * Mostra os itens disponiveis
+     */
+    private void imprimirListaItensPokemon() {
+        // Mostra os itens disponíveis
+        System.out.println("-----------------------------------");
+        System.out.println("Itens disponíveis: ");
+        ArrayList<ItemPokemon> listaItens = new ArrayList<>(ItemPokemon.getItens().values());
+        for (int i = 0; i < listaItens.size(); i++) {
+            System.out.println("[" + (i + 1) + "] " + listaItens.get(i).getNome());
+        }
+        System.out.println("-----------------------------------");
+    }
+
+    /**
+     * Permite que o jogador escolha um item para o pokemon atual
+     * @param input O scanner que será usado para ler a escolha do jogador
+     * @return O item escolhido
+     */
+    private ItemPokemon leituraDeItem(Scanner input) {
+        // Mostrar a lista de itens disponíveis
+        System.out.println("Escolha um item para usar: ");
+        imprimirListaItensPokemon();
+
+        ItemPokemon item = null;
+
+        // Lê a escolha do jogador
+        int escolha = input.nextInt();
+        ArrayList<ItemPokemon> listaItens = new ArrayList<>(ItemPokemon.getItens().values());
+        boolean itemEscolhido = false;
+        while (!itemEscolhido) {
+            // Mostre os dados do item escolhido
+            item = listaItens.get(escolha - 1);
+            System.out.println(item.toString());
+            // Perguntar se ele deseja adicionar esse item ao pokemon
+            System.out.println("Deseja adicionar esse item ao seu pokemon?");
+            System.out.println("[1] Sim");
+            System.out.println("[2] Não");
+            int resposta = input.nextInt();
+
+            if (resposta == 1) {
+                itemEscolhido = true;
+                System.out.println("Item adicionado ao pokemon!");
+            }
+            else {
+                System.out.println("Item não adicionado ao pokemon!");
+                System.out.println("Escolha um item para usar: ");
+                imprimirListaItensPokemon();
+                escolha = input.nextInt();
+            }
+        }
+        
+        return item;
     }
 
     /**
@@ -78,6 +133,8 @@ public class Menu {
             int resposta = input.nextInt();
 
             if (resposta == 1) {
+                ItemPokemon item = leituraDeItem(input);
+                pokemonEscolhido.adicionarItem(item);
                 jogador.adicionarPokemon(pokemonEscolhido);
                 System.out.println("Pokemon adicionado ao time!");
                 escolhidos++;
