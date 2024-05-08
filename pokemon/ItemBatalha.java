@@ -1,5 +1,5 @@
 package pokemon;
 
-public class ItemBatalha extends ItemConsumivel{
+public class ItemBatalha extends Item {
     
 }
