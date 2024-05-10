@@ -28,6 +28,27 @@ public abstract class Ataque {
      * acertar o alvo, desprezando evasão e outros efeitos.
      */
     protected int precisao;
+    /**
+     * Efeito que um ataque pode ter
+     */
+    protected Efeito efeito;
+    /**
+     * A probabilidade (em porcentagem) do efeito ser aplicado
+     */
+    protected int precisaoEfeito;
+
+
+    public Ataque(Tipo tipo, int poder, int pp, int ppMax, int prioridade, int precisao, Efeito efeito, int precisaoEfeito) {
+        this.tipo = tipo;
+        this.poder = poder;
+        this.pp = pp;
+        this.ppMax = ppMax;
+        this.prioridade = prioridade;
+        this.precisao = precisao;
+        this.efeito = efeito;
+        this.precisaoEfeito = precisaoEfeito;
+    }
+
 
     /**
      * Calcula o dano do ataque, caso ele acerte.
