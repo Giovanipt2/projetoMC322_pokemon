@@ -48,16 +48,49 @@ public class Pokemon {
      */
     private Efeito efeito;
 
+    /**
+     * Cria um novo Pokemón.
+     *
+     * @param nome o nome do Pokémon
+     * @param tipos os tipos do Pokémon
+     * @param nivel o nível inicial do Pokémon
+     * @param statsBase os stats base do Pokémon.
+     *                  Stats omitidos recebem o valor 0 por padrão.
+     * @param ataques os ataques que o Pokémon pode usar
+     */
     public Pokemon(String nome, List<Tipo> tipos, int nivel,  Map<Stat, Integer> statsBase, List<Ataque> ataques) {
         this.nome = nome;
         this.tipos = new ArrayList<>(tipos);
         this.nivel = nivel;
+
         this.statsBase = new HashMap<>(statsBase);
+        this.evs = new HashMap<>();
+        this.ivs = new HashMap<>();
+        for (Stat s : Stat.values()) {
+            if (!this.statsBase.containsKey(s)) {
+                statsBase.put(s, 0);    // Stats não informados são zerados
+            }
+            evs.put(s, 0);
+            ivs.put(s, Util.randInt(0, 32));
+        }
+
+        // TODO: Os ataques em si também precisam ser copiados
         this.ataques = new ArrayList<>(ataques);
         this.hp = getStat(Stat.HP);
         this.efeito = null;
     }
 
+    /**
+     * Cria uma cópia do Pokémon.
+     * A cópia tem nível e EVs zerados,
+     * e IVs aleatorizados.
+     *
+     * @param p o Pokémon a ser copiado
+     * @param nivel o nível do novo Pokémon
+     */
+    public Pokemon(Pokemon p, int nivel) {
+        this(p.nome, p.tipos, nivel, p.statsBase, p.ataques);
+    }
 
     /**
      * Adiciona um item ao pokemon.
