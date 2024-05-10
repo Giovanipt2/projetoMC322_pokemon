@@ -12,7 +12,7 @@ import java.util.HashMap;
 public class I_Combate extends ItemBatalha{
     private static final HashMap<String,Runnable> usos; //Hash map contendo todos os itens dessa classe
 
-    // Criando o hash de forma stática, pois os itens serão os mesmos sempre.
+    // Criando o hash de forma stática, pois os itens serão os mesmos sempre..
     static {
         usos = new HashMap<>();
         startUsos();
