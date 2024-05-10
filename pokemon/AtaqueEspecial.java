@@ -1,6 +1,11 @@
 package pokemon;
 
 public class AtaqueEspecial extends Ataque {
+
+    public AtaqueEspecial(Tipo tipo, int poder, int pp, int ppMax, int prioridade, int precisao, Efeito efeito, int precisaoEfeito) {
+        super(tipo, poder, pp, ppMax, prioridade, precisao, efeito, precisaoEfeito);
+    }
+
     /**
      * Calcula o dano base (sem multiplicadores)
      * do ataque.
