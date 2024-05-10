@@ -42,7 +42,7 @@ public class BancoDados {
             ataquesDialga.add(ataques.get("thunder"));
             ataquesDialga.add(ataques.get("flash cannon"));
 
-            pokemons.put("Dialga", new Pokemon("Dialga", tiposPokemon, 100, statsBaseDialga, new HashMap<>(), new HashMap<>(), ataquesDialga));
+            pokemons.put("Dialga", new Pokemon("Dialga", tiposPokemon, 100, statsBaseDialga, ataquesDialga));
 
             
             // Criando o Pokémon Palkia
@@ -64,7 +64,7 @@ public class BancoDados {
             ataquesPalkia.add(ataques.get("fire blast"));
             ataquesPalkia.add(ataques.get("earth power"));
 
-            pokemons.put("Palkia", new Pokemon("Palkia", tiposPalkia, 90, statsBasePalkia, new HashMap<>(), new HashMap<>(), ataquesPalkia));
+            pokemons.put("Palkia", new Pokemon("Palkia", tiposPokemon, 90, statsBasePalkia, ataquesPalkia));
         }
     }
 }

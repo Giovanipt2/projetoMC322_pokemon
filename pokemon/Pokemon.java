@@ -48,17 +48,16 @@ public class Pokemon {
      */
     private Efeito efeito;
 
-    public Pokemon(String nome, List<Tipo> tipos, int nivel,  Map<Stat, Integer> statsBase, Map<Stat, Integer> evs, Map<Stat, Integer> ivs, List<Ataque> ataques) {
+    public Pokemon(String nome, List<Tipo> tipos, int nivel,  Map<Stat, Integer> statsBase, List<Ataque> ataques) {
         this.nome = nome;
         this.tipos = new ArrayList<>(tipos);
         this.nivel = nivel;
         this.statsBase = new HashMap<>(statsBase);
-        this.evs = new HashMap<>(evs);
-        this.ivs = new HashMap<>(ivs);
         this.ataques = new ArrayList<>(ataques);
         this.hp = getStat(Stat.HP);
         this.efeito = null;
     }
+
 
     /**
      * Adiciona um item ao pokemon.
