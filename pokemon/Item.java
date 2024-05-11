@@ -21,4 +21,8 @@ abstract class Item {
     public void SetNome(String nome) {
         this.nome = nome;
     }
+
+    public String toString() {
+        return "Nome: " + nome+ "\n" + "Aqui aparecerão os dados do item...\n";
+    }
 }

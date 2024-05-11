@@ -32,7 +32,7 @@ public class Menu {
         // Mostra os pokémons disponíveis
         System.out.println("-----------------------------------");
         System.out.println("Pokémons iniciais disponíveis: ");
-        ArrayList<Pokemon> listaPokemon = new ArrayList<>(Pokemon.getEspecie().values());
+        ArrayList<Pokemon> listaPokemon = new ArrayList<>(BancoDados.getPokemons().values());
         for (int i = 0; i < listaPokemon.size(); i++) {
             System.out.println("[" + (i + 1) + "] " + listaPokemon.get(i).getNome());
         }
@@ -46,7 +46,7 @@ public class Menu {
         // Mostra os itens disponíveis
         System.out.println("-----------------------------------");
         System.out.println("Itens disponíveis: ");
-        ArrayList<ItemPokemon> listaItens = new ArrayList<>(ItemPokemon.getItens().values());
+        ArrayList<ItemPokemon> listaItens = new ArrayList<>(BancoDados.getItensPokemon().values());
         for (int i = 0; i < listaItens.size(); i++) {
             System.out.println("[" + (i + 1) + "] " + listaItens.get(i).getNome());
         }
@@ -67,7 +67,7 @@ public class Menu {
 
         // Lê a escolha do jogador
         int escolha = input.nextInt();
-        ArrayList<ItemPokemon> listaItens = new ArrayList<>(ItemPokemon.getItens().values());
+        ArrayList<ItemPokemon> listaItens = new ArrayList<>(BancoDados.getItensPokemon().values());
         boolean itemEscolhido = false;
         while (!itemEscolhido) {
             // Mostre os dados do item escolhido
@@ -112,7 +112,7 @@ public class Menu {
         // Agora o jogador pode escolher três pokemon iniciais
         System.out.println("Escolha três pokémons iniciais: ");
         //ArrayList de pokemons iniciais
-        ArrayList<Pokemon> pokemonsIniciais = new ArrayList<>(Pokemon.getEspecie().values());
+        ArrayList<Pokemon> pokemonsIniciais = new ArrayList<>(BancoDados.getPokemons().values());
 
         // Mostra os pokémons iniciais disponíveis
         imprimirListaPokemons();

@@ -145,4 +145,23 @@ public class Pokemon {
     public List<Tipo> getTipos() {
         return new ArrayList<>(tipos);
     }
+
+    /**
+     * Retorna as informações do Pokémon.
+     * @return uma string com as informações do Pokémon.
+     */
+    public String toString() {
+        String out = "Nome: " + nome + "\n" +
+              "Nível: " + nivel + "\n" +
+              "Ataques: \n";
+        //Mostrar os ataques
+        for (int i = 0; i < ataques.size(); i++) {
+            out += "[" + (i + 1) + "] " + ataques.get(i).toString() + "\n";
+        }
+        out += "Stats: \n";
+        for (Stat s : Stat.values()) {
+            out += s + ": " + getStat(s) + "\n";
+        }
+        return out;
+    }
 }
