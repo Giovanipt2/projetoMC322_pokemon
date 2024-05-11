@@ -37,6 +37,23 @@ public abstract class Ataque {
      */
     protected int precisaoEfeito;
 
+    /**
+     * Retorna as informações do ataque.
+     * @return uma string com as informações do ataque.
+     */
+    public String toString() {
+        return "Ataque{" +
+                "tipo=" + tipo +
+                ", poder=" + poder +
+                ", pp=" + pp +
+                ", ppMax=" + ppMax +
+                ", prioridade=" + prioridade +
+                ", precisao=" + precisao +
+                ", efeito=" + efeito +
+                ", precisaoEfeito=" + precisaoEfeito +
+                '}';
+    }
+
 
     public Ataque(Tipo tipo, int poder, int pp, int ppMax, int prioridade, int precisao, Efeito efeito, int precisaoEfeito) {
         this.tipo = tipo;
