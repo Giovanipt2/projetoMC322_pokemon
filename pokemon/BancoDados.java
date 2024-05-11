@@ -9,7 +9,22 @@ public class BancoDados {
     private static Map<String, Pokemon> pokemons;
     private static Map<String, Ataque> ataques;
 
-    public void inicializar() {
+    /**
+     * Retorna um novo Pokémon da espécie escolhida
+     *
+     * @param especie o nome da espécie do Pokémon,
+     *                com a primeira letra maiúscula.
+     * @return o novo Pokémon criado; {@code null} se a espécie
+     * não estiver no banco de dados.
+     */
+    public Pokemon copiaPokemon(String especie) {
+        if (pokemons.containsKey(especie)) {
+            return new Pokemon(pokemons.get(especie), 50);
+        }
+        return null;
+    }
+
+    public static void inicializar() {
         if (ataques == null) {
             ataques = new HashMap<>();
             // Adicionando os ataques especiais
