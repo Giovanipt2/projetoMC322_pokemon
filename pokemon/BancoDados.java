@@ -200,7 +200,7 @@ public class BancoDados {
             ataquesPokemon.add(ataques.get("close combat"));
             ataquesPokemon.add(ataques.get("play rough"));
 
-            pokemons.put("Kartana", new Pokemon("Kartana", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+            pokemons.put("Zacian", new Pokemon("Zacian", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
 
 
             //Criando o Mewtwo
