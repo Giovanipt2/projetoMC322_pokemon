@@ -38,12 +38,27 @@ public class Menu {
 
 
     /**
+     * Mostra os pokemons iniciais disponiveis
+     */
+    private void imprimirListaPokemonsIniciais() {
+        // Mostra os pokémons iniciais disponíveis
+        System.out.println("-----------------------------------");
+        System.out.println("Pokémons iniciais disponíveis: ");
+        ArrayList<Pokemon> listaPokemonIniciais = new ArrayList<>(BancoDados.getPokemonsIniciais().values());
+        for (int i = 0; i < listaPokemonIniciais.size(); i++) {
+            System.out.println("[" + (i + 1) + "] " + listaPokemonIniciais.get(i).getNome());
+        }
+        System.out.println("-----------------------------------");
+    }
+
+
+    /**
      * Mostra os pokemons disponiveis
      */
     private void imprimirListaPokemons() {
         // Mostra os pokémons disponíveis
         System.out.println("-----------------------------------");
-        System.out.println("Pokémons iniciais disponíveis: ");
+        System.out.println("Pokémons disponíveis: ");
         ArrayList<Pokemon> listaPokemon = new ArrayList<>(BancoDados.getPokemons().values());
         for (int i = 0; i < listaPokemon.size(); i++) {
             System.out.println("[" + (i + 1) + "] " + listaPokemon.get(i).getNome());
