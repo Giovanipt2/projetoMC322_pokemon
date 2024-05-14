@@ -62,7 +62,6 @@ public class Pokemon {
         this.nome = nome;
         this.tipos = new ArrayList<>(tipos);
         this.nivel = nivel;
-
         this.statsBase = new HashMap<>(statsBase);
         this.evs = new HashMap<>();
         this.ivs = new HashMap<>();
@@ -144,6 +143,17 @@ public class Pokemon {
      */
     public List<Tipo> getTipos() {
         return new ArrayList<>(tipos);
+    }
+    
+    /**
+     * Retorna os ataques do Pokémon.
+     */
+    public List<Ataque> getAtaques() {
+        return new ArrayList<>(ataques);
+    }
+
+    public boolean estaVivo() {
+        return hp > 0;
     }
 
     /**
