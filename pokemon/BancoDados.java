@@ -6,11 +6,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BancoDados {
+    private static Map<String, Pokemon> pokemonsIniciais;
     private static Map<String, Pokemon> pokemons;
     private static Map<String, Ataque> ataques;
     private static Map<String, ItemPokemon> itensPokemon;
 
     // Getters
+    public static Map<String, Pokemon> getPokemonsIniciais() {
+        return pokemonsIniciais;
+    }
+
     public static Map<String, Pokemon> getPokemons() {
         return pokemons;
     }
@@ -33,7 +38,7 @@ public class BancoDados {
      */
     public Pokemon copiaPokemon(String especie) {
         if (pokemons.containsKey(especie)) {
-            return new Pokemon(pokemons.get(especie), 50);
+            return new Pokemon(pokemons.get(especie), 100);
         }
         return null;
     }
@@ -47,12 +52,19 @@ public class BancoDados {
     }
 
     public static void inicializar() {
+        //Array com os tipos do pokémon que está sendo criado
+        List<Tipo> tiposPokemon = new ArrayList<>();
+        //HashMap com os status base do pokémon que está senco criado
+        Map<Stat, Integer> statsBasePokemon = new HashMap<>();
+        //Array com os ataques do pokémon que está sendo criado
+        ArrayList<Ataque> ataquesPokemon = new ArrayList<>();
+
         if (itensPokemon == null) {
             inicializarItens();
         }
+
         if (ataques == null) {
             ataques = new HashMap<>();
-            // Adicionando os ataques especiais
             ataques.put("Draco Meteor", new AtaqueEspecial("Draco Meteor", Tipo.DRAGAO, 130, 5, 0, 90, null, 0));
             ataques.put("Fire Blast", new AtaqueEspecial("Fire Blast", Tipo.FOGO, 110, 5, 0, 85, Efeito.QUEIMADO, 10));
             ataques.put("Thunder", new AtaqueEspecial("Thunder", Tipo.ELETRICO, 110, 5, 0, 70, Efeito.PARALISADO, 30));
@@ -114,19 +126,23 @@ public class BancoDados {
             ataques.put("Sunsteel Strike", new AtaqueFisico("Sunsteel Strike", Tipo.METALICO, 100, 5, 0, 100, null, 0));
             ataques.put("Body Press", new AtaqueFisico("Body Press", Tipo.LUTADOR, 80, 10, 0, 100, null, 0));
             ataques.put("Heat Wave", new AtaqueEspecial("Heat Wave", Tipo.FOGO, 95, 10, 0, 90, Efeito.QUEIMADO, 10));
-            
-;
-        }
+            ataques.put("Flare Blitz", new AtaqueFisico("Flare Blitz", Tipo.FOGO, 120, 15, 0, 100, Efeito.QUEIMADO, 10));
+            ataques.put("Darkest Lariat", new AtaqueFisico("Darkest Lariat", Tipo.SOMBRIO, 85, 10, 0, 100, null, 0));
+            ataques.put("Water Shuriken", new AtaqueEspecial("Water Shuriken", Tipo.AGUA, 85, 20, 1, 100, null, 0));
+            ataques.put("Waterfall", new AtaqueFisico("Waterfall", Tipo.AGUA, 80, 15, 0, 100, null, 0));
+            ataques.put("Superpower", new AtaqueFisico("Superpower", Tipo.LUTADOR, 120, 5, 0, 100, null, 0));
+            ataques.put("Aqua Tail", new AtaqueFisico("Aqua Tail", Tipo.AGUA, 90, 10, 0, 90, null, 0));
+            ataques.put("Splishy Splash", new AtaqueEspecial("Splishy Splash", Tipo.AGUA, 80, 15, 0, 100, Efeito.PARALISADO, 30));
+            ataques.put("Leaf Storm", new AtaqueEspecial("Leaf Storm", Tipo.PLANTA, 130, 5, 0, 90, null, 0));
+            ataques.put("Dragon Pulse", new AtaqueEspecial("Dragon Pulse", Tipo.DRAGAO, 85, 10, 0, 100, null, 0));
+            ataques.put("Spark", new AtaqueFisico("Spark", Tipo.ELETRICO, 65, 20, 0,100, Efeito.PARALISADO, 30));
+            ataques.put("Wood Hammer", new AtaqueFisico("Wood Hammer", Tipo.PLANTA, 120, 15, 0, 100, null, 0));
+            ataques.put("Hammer Arm", new AtaqueFisico("Hammer Arm", Tipo.LUTADOR, 100, 10, 0, 90, null, 0));
+        }   
 
         if (pokemons == null) {
             pokemons = new HashMap<>();
-            //Array com os tipos do pokémon que está sendo criado
-            List<Tipo> tiposPokemon = new ArrayList<>();
-            //HashMap com os status base do pokémon que está senco criado
-            Map<Stat, Integer> statsBasePokemon = new HashMap<>();
-            //Array com os ataques do pokémon que está sendo criado
-            ArrayList<Ataque> ataquesPokemon = new ArrayList<>();
-
+            
 
             // Criando o Dialga
             tiposPokemon.add(Tipo.METALICO);
@@ -320,7 +336,7 @@ public class BancoDados {
             statsBasePokemon.put(Stat.SPEED, 125);
 
             ataquesPokemon.add(ataques.get("Hypnosis"));
-            ataquesPokemon.add(ataques.get("Sludge bomb"));
+            ataquesPokemon.add(ataques.get("Sludge Bomb"));
             ataquesPokemon.add(ataques.get("Dark Pulse"));
             ataquesPokemon.add(ataques.get("Psychic"));
 
@@ -577,5 +593,146 @@ public class BancoDados {
 
             pokemons.put("Diancie", new Pokemon("Diancie", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
         }
+
+        if (pokemonsIniciais == null) {
+            pokemonsIniciais = new HashMap<>();
+
+
+            //Criando o Blaziken
+            tiposPokemon.clear();
+            statsBasePokemon.clear();
+            ataquesPokemon.clear();
+
+            tiposPokemon.add(Tipo.FOGO);
+            tiposPokemon.add(Tipo.LUTADOR);
+
+            statsBasePokemon.put(Stat.HP, 80);
+            statsBasePokemon.put(Stat.ATK, 120);
+            statsBasePokemon.put(Stat.DEF, 70);
+            statsBasePokemon.put(Stat.ATK_SP, 110);
+            statsBasePokemon.put(Stat.DEF_SP, 70);
+            statsBasePokemon.put(Stat.SPEED, 80);
+
+            ataquesPokemon.add(ataques.get("Flare Blitz"));
+            ataquesPokemon.add(ataques.get("Stone Edge"));
+            ataquesPokemon.add(ataques.get("Close Combat"));
+            ataquesPokemon.add(ataques.get("Knock Off"));
+
+            pokemons.put("Blaziken", new Pokemon("Blaziken", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+
+
+            //Criando o Incineroar
+            tiposPokemon.clear();
+            statsBasePokemon.clear();
+            ataquesPokemon.clear();
+
+            tiposPokemon.add(Tipo.FOGO);
+            tiposPokemon.add(Tipo.SOMBRIO);
+
+            statsBasePokemon.put(Stat.HP, 95);
+            statsBasePokemon.put(Stat.ATK, 115);
+            statsBasePokemon.put(Stat.DEF, 90);
+            statsBasePokemon.put(Stat.ATK_SP, 80);
+            statsBasePokemon.put(Stat.DEF_SP, 90);
+            statsBasePokemon.put(Stat.SPEED, 60);
+
+            ataquesPokemon.add(ataques.get("Earthquake"));
+            ataquesPokemon.add(ataques.get("Flare Blitz"));
+            ataquesPokemon.add(ataques.get("Darkest Lariat"));
+            ataquesPokemon.add(ataques.get("U-turn"));
+
+            pokemons.put("Incineroar", new Pokemon("Incineroar", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+
+
+            //Criando o Greninja
+            tiposPokemon.clear();
+            statsBasePokemon.clear();
+            ataquesPokemon.clear();
+
+            tiposPokemon.add(Tipo.AGUA);
+            tiposPokemon.add(Tipo.SOMBRIO);
+
+            statsBasePokemon.put(Stat.HP, 72);
+            statsBasePokemon.put(Stat.ATK, 95);
+            statsBasePokemon.put(Stat.DEF, 67);
+            statsBasePokemon.put(Stat.ATK_SP, 103);
+            statsBasePokemon.put(Stat.DEF_SP, 71);
+            statsBasePokemon.put(Stat.SPEED, 122);
+
+            ataquesPokemon.add(ataques.get("Surf"));
+            ataquesPokemon.add(ataques.get("Dark Pulse"));
+            ataquesPokemon.add(ataques.get("Water Shuriken"));
+            ataquesPokemon.add(ataques.get("Ice Beam"));
+
+            pokemons.put("Greninja", new Pokemon("Greninja", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+
+
+            //Criando o Swampert
+            tiposPokemon.clear();
+            statsBasePokemon.clear();
+            ataquesPokemon.clear();
+
+            tiposPokemon.add(Tipo.AGUA);
+            tiposPokemon.add(Tipo.TERRA);
+            
+            statsBasePokemon.put(Stat.HP, 100);
+            statsBasePokemon.put(Stat.ATK, 110);
+            statsBasePokemon.put(Stat.DEF, 90);
+            statsBasePokemon.put(Stat.ATK_SP, 85);
+            statsBasePokemon.put(Stat.DEF_SP, 90);
+            statsBasePokemon.put(Stat.SPEED, 60);
+
+            ataquesPokemon.add(ataques.get("Waterfall"));
+            ataquesPokemon.add(ataques.get("Ice Punch"));
+            ataquesPokemon.add(ataques.get("Earthquake"));
+            ataquesPokemon.add(ataques.get("Superpower"));
+
+            pokemons.put("Swampert", new Pokemon("Swampert", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+
+
+            //Criando o Sceptile
+            tiposPokemon.clear();
+            statsBasePokemon.clear();
+            ataquesPokemon.clear();
+
+            tiposPokemon.add(Tipo.PLANTA);
+            
+            statsBasePokemon.put(Stat.HP, 70);
+            statsBasePokemon.put(Stat.ATK, 85);
+            statsBasePokemon.put(Stat.DEF, 65);
+            statsBasePokemon.put(Stat.ATK_SP, 105);
+            statsBasePokemon.put(Stat.DEF_SP, 85);
+            statsBasePokemon.put(Stat.SPEED, 120);
+
+            ataquesPokemon.add(ataques.get("Leaf Storm"));
+            ataquesPokemon.add(ataques.get("Dragon Pulse"));
+            ataquesPokemon.add(ataques.get("Splishy Splash"));
+            ataquesPokemon.add(ataques.get("Stone Edge"));
+            
+            pokemons.put("Sceptile", new Pokemon("Sceptile", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+
+
+            //Criando o Chesnaught
+            tiposPokemon.clear();
+            statsBasePokemon.clear();
+            ataquesPokemon.clear();
+
+            tiposPokemon.add(Tipo.PLANTA);
+            tiposPokemon.add(Tipo.LUTADOR);
+            
+            statsBasePokemon.put(Stat.HP, 88);
+            statsBasePokemon.put(Stat.ATK, 107);
+            statsBasePokemon.put(Stat.DEF, 122);
+            statsBasePokemon.put(Stat.ATK_SP, 74);
+            statsBasePokemon.put(Stat.DEF_SP, 75);
+            statsBasePokemon.put(Stat.SPEED, 64);
+
+            ataquesPokemon.add(ataques.get("Wood Hammer"));
+            ataquesPokemon.add(ataques.get("Hammer Arm"));
+            ataquesPokemon.add(ataques.get("Aqua Tail"));
+            ataquesPokemon.add(ataques.get("Spark"));
+            
+            pokemons.put("Chesnaught", new Pokemon("Chesnaught", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+        }   
     }
 }
