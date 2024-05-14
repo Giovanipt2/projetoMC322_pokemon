@@ -13,10 +13,12 @@ import java.util.List;
 public class Menu {
     // O menu possui uma lista de jogadores
     private ArrayList<Treinador> jogadores;
+    private Scanner input;
 
     // Construtor padrão
-    public Menu() {
+    public Menu(Scanner input) {
         this.jogadores = new ArrayList<Treinador>();
+        this.input = input;
     }
 
     /**
@@ -26,6 +28,14 @@ public class Menu {
     private void adicionarJogador(Treinador jogador) {
         this.jogadores.add(jogador);
     }
+
+    /**
+     * Enum com as ações possiveis
+     */
+    public enum Acao {
+        ATACAR, TROCAR, ITEM;
+    }
+
 
     /**
      * Mostra os pokemons disponiveis
@@ -57,10 +67,9 @@ public class Menu {
 
     /**
      * Permite que o jogador escolha um item para o pokemon atual
-     * @param input O scanner que será usado para ler a escolha do jogador
      * @return O item escolhido
      */
-    private ItemPokemon leituraDeItem(Scanner input) {
+    private ItemPokemon leituraDeItem() {
         // Mostrar a lista de itens disponíveis
         System.out.println("Escolha um item para usar: ");
         imprimirListaItensPokemon();
@@ -127,9 +136,8 @@ public class Menu {
 
     /**
      * Lê um jogador do console e o adiciona à lista de jogadores
-     * @param input O scanner que será usado para ler o nome do jogador
      */
-    private void leituraDeJogador(Scanner input) {
+    private void leituraDeJogador() {
         // Lê o nome do jogador
         System.out.println("Digite o nome do jogador: ");
         String nome = input.nextLine();
@@ -182,7 +190,7 @@ public class Menu {
             }
 
             if (resposta == 1) {
-                ItemPokemon item = leituraDeItem(input);
+                ItemPokemon item = leituraDeItem();
                 pokemonEscolhido.adicionarItem(item);
                 jogador.adicionarPokemon(pokemonEscolhido);
                 System.out.println("Pokemon adicionado ao time!");
@@ -200,22 +208,58 @@ public class Menu {
 
     /**
      * Cria os jogadores
-     * @param input O scanner que será usado para ler os nomes dos jogadores
      */
-    public void CriarJogadores(Scanner input){
+    public void CriarJogadores(){
         for (int i = 0; i < 4; i++) {
-            leituraDeJogador(input);
+            leituraDeJogador();
         }
+    }
+
+    /**
+     * Permite que o jogador escolha uma ação
+     * @param treinador O treinador que escolherá a ação
+     * @return A ação escolhida
+     */
+    public Acao escolherAcao(Treinador treinador) {
+        // Mostrar as ações disponíveis
+        System.out.println("Escolha uma ação: ");
+        System.out.println("[1] Atacar");
+        System.out.println("[2] Trocar pokemon");
+        System.out.println("[3] Usar item");
+
+        Acao acao = null;
+        // Lê a escolha do jogador (verificando se ele passou um inteiro)
+        int escolha = 0;
+        while (escolha < 1 || escolha > 3) {
+            try {
+                escolha = input.nextInt();
+                input.nextLine();
+            } catch (InputMismatchException e) {
+                input.nextLine();
+            }
+            System.out.println("Opção inválida. Digite um número entre 1 e 3:");
+        }
+        switch (escolha) {
+            case 1:
+                acao = Acao.ATACAR;
+                break;
+            case 2:
+                acao = Acao.TROCAR;
+                break;
+            case 3:
+                acao = Acao.ITEM;
+                break;
+        }
+        return acao;
     }
 
     /**
      * Permite que o jogador escolha um ataque do pokemon ativo
      * @param treinador O treinador que escolherá o ataque
-     * @param input O scanner que será usado para ler a escolha do treinador
      * @return O ataque escolhido
      * Se o usuário digitar 0, a função retorna null
      */
-    public Ataque escolherAtaque(Treinador treinador, Scanner input) {
+    public Ataque escolherAtaque(Treinador treinador) {
         // Mostrar os ataques disponíveis
         System.out.println("Escolha um ataque para usar: ");
         System.out.println("[0] Voltar");
@@ -248,11 +292,10 @@ public class Menu {
     /**
      * Permite que o jogador escolha um pokemon para ser o ativo
      * @param treinador O treinador que escolherá o pokemon ativo
-     * @param input O scanner que será usado para ler a escolha do treinador
      * @return O pokemon escolhido
      * Se o usuário digitar 0, a função retorna null
      */
-    public Pokemon trocarPokemon(Treinador treinador, Scanner input) {
+    public Pokemon trocarPokemon(Treinador treinador) {
         // Mostrar os pokémons disponíveis
         System.out.println("Escolha um pokemon para ser o ativo: ");
         System.out.println("[0] Voltar");
@@ -304,11 +347,10 @@ public class Menu {
     /**
      * Permite que o jogador escolha um item para usar
      * @param treinador O treinador que escolherá o item
-     * @param input O scanner que será usado para ler a escolha do treinador
      * @return O item escolhido
      * Se o usuário digitar 0, a função retorna null
      */
-    public Item escolherItem(Treinador treinador, Scanner input) {
+    public Item escolherItem(Treinador treinador) {
         // Mostrar os itens disponíveis
         System.out.println("Escolha um item para usar: ");
         System.out.println("[0] Voltar");
