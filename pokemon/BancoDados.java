@@ -53,56 +53,61 @@ public class BancoDados {
         if (ataques == null) {
             ataques = new HashMap<>();
             // Adicionando os ataques especiais
-            ataques.put("draco meteor", new AtaqueEspecial(Tipo.DRAGAO, 130, 5, 8, 0, 90, null, 0));
-            ataques.put("fire blast", new AtaqueEspecial(Tipo.FOGO, 110, 5, 8, 0, 85, Efeito.QUEIMADO, 10));
-            ataques.put("thunder", new AtaqueEspecial(Tipo.ELETRICO, 110, 5, 8, 0, 70, Efeito.PARALISADO, 30));
-            ataques.put("flash cannon", new AtaqueEspecial(Tipo.METALICO, 80, 10, 16, 0, 100, null, 0));
-            ataques.put("spacial rend", new AtaqueEspecial(Tipo.DRAGAO, 100, 5, 8, 0, 95, null, 0));
-            ataques.put("hydro pump", new AtaqueEspecial(Tipo.AGUA, 110, 5, 8, 0, 80, null, 0));
-            ataques.put("earth power", new AtaqueEspecial(Tipo.TERRA, 90, 10, 16, 0, 100, null, 0));
-            ataques.put("leaf blade", new AtaqueFisico(Tipo.PLANTA, 90, 15, 24, 0, 100, null, 0));
-            ataques.put("sacred sword", new AtaqueFisico(Tipo.LUTADOR, 90, 15, 24, 0, 100, null, 0));
-            ataques.put("knock off", new AtaqueFisico(Tipo.SOMBRIO, 65, 20, 32, 0, 100, null, 0));
-            ataques.put("smart strike", new AtaqueFisico(Tipo.METALICO, 70, 10, 16, 0, 100, null, 0));
-            ataques.put("behemoth blade", new AtaqueFisico(Tipo.METALICO, 100, 5, 8, 0, 100, null, 0));
-            ataques.put("play rough", new AtaqueFisico(Tipo.FADA, 90, 10, 16, 0, 100, null, 0));
-            ataques.put("wild charge", new AtaqueFisico(Tipo.ELETRICO, 90, 15, 24, 0, 100, null, 0));
-            ataques.put("close combat", new AtaqueFisico(Tipo.LUTADOR, 120, 5, 8, 0, 100, null, 0));
-            ataques.put("psystrike", new AtaqueEspecial(Tipo.PSIQUICO, 100, 10, 16, 0, 100, null, 0));
-            ataques.put("shadow ball", new AtaqueEspecial(Tipo.FANTASMA, 80, 15, 24, 0, 100, null, 0));
-            ataques.put("ice beam", new AtaqueEspecial(Tipo.GELO, 90, 10, 16, 0, 100, Efeito.CONGELADO, 10));
-            ataques.put("aura sphere", new AtaqueEspecial(Tipo.LUTADOR, 80, 20, 32, 0, 100, null, 0));
-            ataques.put("origin pulse", new AtaqueEspecial(Tipo.AGUA, 110, 10, 16, 0, 85, null, 0));
-            ataques.put("water spout", new AtaqueEspecial(Tipo.AGUA, 150, 5, 8, 0, 100, null, 0));
-            ataques.put("precipice blades", new AtaqueFisico(Tipo.TERRA, 120, 10, 16, 0, 85, null, 0));
-            ataques.put("stone edge", new AtaqueFisico(Tipo.PEDRA, 100, 5, 8, 0, 80, null, 0));
-            ataques.put("earthquake", new AtaqueFisico(Tipo.TERRA, 100, 10, 16, 0, 100, null, 0));
-            ataques.put("toxic", new AtaqueEfeito(Tipo.VENENOSO, 0, 10, 16, 0, 90, Efeito.ENVENENADO, 90));
-            ataques.put("flamethrower", new AtaqueEspecial(Tipo.FOGO, 90, 15, 24, 0, 90, Efeito.QUEIMADO, 10));
-            ataques.put("blizzard", new AtaqueEspecial(Tipo.GELO, 110, 5, 8, 0, 70, Efeito.CONGELADO, 10));
-            ataques.put("psychic", new AtaqueEspecial(Tipo.PSIQUICO, 90, 10, 16, 0, 100, null, 0));
-            ataques.put("hypnosis", new AtaqueEfeito(Tipo.PSIQUICO, 0, 20, 32, 0, 60, Efeito.DORMINDO, 60));
-            ataques.put("dark pulse", new AtaqueEspecial(Tipo.SOMBRIO, 80, 15, 24, 0, 100, null, 0));
-            ataques.put("sludge bomb", new AtaqueEspecial(Tipo.VENENOSO, 90, 10, 16, 0, 100, Efeito.ENVENENADO, 30));
-            ataques.put("hyper beam", new AtaqueEspecial(Tipo.NORMAL, 150, 5, 8, 0, 90, null, 0));
-            ataques.put("aeroblast", new AtaqueEspecial(Tipo.VOADOR, 100, 5, 8, 0, 95, null, 0));
-            ataques.put("blue flare", new AtaqueEspecial(Tipo.FOGO, 130, 5, 8, 0, 85, Efeito.QUEIMADO, 20));
-            ataques.put("extreme speed", new AtaqueFisico(Tipo.NORMAL, 80, 5, 8, 2, 100, null, 0));
-            ataques.put("drill peck", new AtaqueFisico(Tipo.VOADOR, 80, 20, 32, 0, 100, null, 0));
-            ataques.put("outrage", new AtaqueFisico(Tipo.DRAGAO, 120, 10, 16, 0, 100, null, 0));
-            ataques.put("bolt strike", new AtaqueFisico(Tipo.ELETRICO, 130, 5, 8, 0, 85, Efeito.PARALISADO, 20));
-            ataques.put("moonblast", new AtaqueEspecial(Tipo.FADA, 95, 15, 24, 0, 100, null, 0));
-            ataques.put("focus blast", new AtaqueEspecial(Tipo.LUTADOR, 120, 5, 8, 0, 70, null, 0));
-            ataques.put("surf", new AtaqueEspecial(Tipo.AGUA, 90, 15, 24, 0, 100, null, 0));
-            ataques.put("oblivion wing", new AtaqueEspecial(Tipo.VOADOR, 80, 10, 16, 0, 100, null, 0));
-            ataques.put("u-turn", new AtaqueFisico(Tipo.INSETO, 70, 20, 32, 0, 100, null, 0));
-            ataques.put("sacred fire", new AtaqueFisico(Tipo.FOGO, 100, 5, 8, 0, 90, Efeito.QUEIMADO, 50));
-            ataques.put("brave bird", new AtaqueFisico(Tipo.VOADOR, 120, 15, 24, 0, 100, null, 0));
-            ataques.put("gunk shot", new AtaqueFisico(Tipo.VENENOSO, 120, 5, 8, 0, 80, Efeito.ENVENENADO, 30));
-            ataques.put("fire punch", new AtaqueFisico(Tipo.FOGO, 75, 15, 24, 0, 100, Efeito.QUEIMADO, 10));
-            ataques.put("hyperspace fury", new AtaqueFisico(Tipo.SOMBRIO, 100, 5, 8, 0, 100, null, 0));
-            ataques.put("psychic fangs", new AtaqueFisico(Tipo.PSIQUICO, 85, 10, 16, 0, 100, null, 0));
-            
+            ataques.put("Draco Meteor", new AtaqueEspecial("Draco Meteor", Tipo.DRAGAO, 130, 5, 0, 90, null, 0));
+            ataques.put("Fire Blast", new AtaqueEspecial("Fire Blast", Tipo.FOGO, 110, 5, 0, 85, Efeito.QUEIMADO, 10));
+            ataques.put("Thunder", new AtaqueEspecial("Thunder", Tipo.ELETRICO, 110, 5, 0, 70, Efeito.PARALISADO, 30));
+            ataques.put("Flash Cannon", new AtaqueEspecial("Flash Cannon", Tipo.METALICO, 80, 10, 0, 100, null, 0));
+            ataques.put("Spacial Rend", new AtaqueEspecial("Spacial Rend", Tipo.DRAGAO, 100, 5, 0, 95, null, 0));
+            ataques.put("Hydro Pump", new AtaqueEspecial("Hydro Pump", Tipo.AGUA, 110, 5, 0, 80, null, 0));
+            ataques.put("Earth Power", new AtaqueEspecial("Earth Power", Tipo.TERRA, 90, 10, 0, 100, null, 0));
+            ataques.put("Leaf Blade", new AtaqueFisico("Leaf Blade", Tipo.PLANTA, 90, 15, 0, 100, null, 0));
+            ataques.put("Sacred Sword", new AtaqueFisico("Sacred Sword", Tipo.LUTADOR, 90, 15, 0, 100, null, 0));
+            ataques.put("Knock Off", new AtaqueFisico("Knock Off", Tipo.SOMBRIO, 65, 20, 0, 100, null, 0));
+            ataques.put("Smart Strike", new AtaqueFisico("Smart Strike", Tipo.METALICO, 70, 10, 0, 100, null, 0));
+            ataques.put("Behemoth Blade", new AtaqueFisico("Behemoth Blade", Tipo.METALICO, 100, 5, 0, 100, null, 0));
+            ataques.put("Play Rough", new AtaqueFisico("Play Rough", Tipo.FADA, 90, 10, 0, 100, null, 0));
+            ataques.put("Wild Charge", new AtaqueFisico("Wild Charge", Tipo.ELETRICO, 90, 15, 0, 100, null, 0));
+            ataques.put("Close Combat", new AtaqueFisico("Close Combat", Tipo.LUTADOR, 120, 5, 0, 100, null, 0));
+            ataques.put("Psystrike", new AtaqueEspecial("Psystrike", Tipo.PSIQUICO, 100, 10, 0, 100, null, 0));
+            ataques.put("Shadow Ball", new AtaqueEspecial("Shadow Ball", Tipo.FANTASMA, 80, 15, 0, 100, null, 0));
+            ataques.put("Ice Beam", new AtaqueEspecial("Ice Beam", Tipo.GELO, 90, 10, 0, 100, Efeito.CONGELADO, 10));
+            ataques.put("Aura Sphere", new AtaqueEspecial("Aura Sphere", Tipo.LUTADOR, 80, 20, 0, 100, null, 0));
+            ataques.put("Origin Pulse", new AtaqueEspecial("Origin Pulse", Tipo.AGUA, 110, 10, 0, 85, null, 0));
+            ataques.put("Water Spout", new AtaqueEspecial("Water Spout", Tipo.AGUA, 150, 5, 0, 100, null, 0));
+            ataques.put("Precipice Blades", new AtaqueFisico("Precipice Blades", Tipo.TERRA, 120, 10, 0, 85, null, 0));
+            ataques.put("Stone Edge", new AtaqueFisico("Stone Edge", Tipo.PEDRA, 100, 5, 0, 80, null, 0));
+            ataques.put("Earthquake", new AtaqueFisico("Earthquake", Tipo.TERRA, 100, 10, 0, 100, null, 0));
+            ataques.put("Toxic", new AtaqueEfeito("Toxic", Tipo.VENENOSO, 0, 10, 0, 90, Efeito.ENVENENADO, 90));
+            ataques.put("Flamethrower", new AtaqueEspecial("Flamethrower", Tipo.FOGO, 90, 15, 0, 90, Efeito.QUEIMADO, 10));
+            ataques.put("Blizzard", new AtaqueEspecial("Blizzard", Tipo.GELO, 110, 5, 0, 70, Efeito.CONGELADO, 10));
+            ataques.put("Psychic", new AtaqueEspecial("Psychic", Tipo.PSIQUICO, 90, 10, 0, 100, null, 0));
+            ataques.put("Hypnosis", new AtaqueEfeito("Hypnosis", Tipo.PSIQUICO, 0, 20, 0, 60, Efeito.DORMINDO, 60));
+            ataques.put("Dark Pulse", new AtaqueEspecial("Dark Pulse", Tipo.SOMBRIO, 80, 15, 0, 100, null, 0));
+            ataques.put("Sludge Bomb", new AtaqueEspecial("Sludge Bomb", Tipo.VENENOSO, 90, 10, 0, 100, Efeito.ENVENENADO, 30));
+            ataques.put("Hyper Beam", new AtaqueEspecial("Hyper Beam", Tipo.NORMAL, 150, 5, 0, 90, null, 0));
+            ataques.put("Aeroblast", new AtaqueEspecial("Aeroblast", Tipo.VOADOR, 100, 5, 0, 95, null, 0));
+            ataques.put("Blue Flare", new AtaqueEspecial("Blue Flare", Tipo.FOGO, 130, 5, 0, 85, Efeito.QUEIMADO, 20));
+            ataques.put("Extreme Speed", new AtaqueFisico("Extreme Speed", Tipo.NORMAL, 80, 5, 2, 100, null, 0));
+            ataques.put("Drill Peck", new AtaqueFisico("Drill Peck", Tipo.VOADOR, 80, 20, 0, 100, null, 0));
+            ataques.put("Outrage", new AtaqueFisico("Outrage", Tipo.DRAGAO, 120, 10, 0, 100, null, 0));
+            ataques.put("Bolt Strike", new AtaqueFisico("Bolt Strike", Tipo.ELETRICO, 130, 5, 0, 85, Efeito.PARALISADO, 20));
+            ataques.put("Moonblast", new AtaqueEspecial("Moonblast", Tipo.FADA, 95, 15, 0, 100, null, 0));
+            ataques.put("Focus Blast", new AtaqueEspecial("Focus Blast", Tipo.LUTADOR, 120, 5, 0, 70, null, 0));
+            ataques.put("Surf", new AtaqueEspecial("Surf", Tipo.AGUA, 90, 15, 0, 100, null, 0));
+            ataques.put("Oblivion Wing", new AtaqueEspecial("Oblivion Wing", Tipo.VOADOR, 80, 10, 0, 100, null, 0));
+            ataques.put("U-turn", new AtaqueFisico("U-turn", Tipo.INSETO, 70, 20, 0, 100, null, 0));
+            ataques.put("Sacred Fire", new AtaqueFisico("Sacred Fire", Tipo.FOGO, 100, 5, 0, 90, Efeito.QUEIMADO, 50));
+            ataques.put("Brave Bird", new AtaqueFisico("Brave Bird", Tipo.VOADOR, 120, 15, 0, 100, null, 0));
+            ataques.put("Gunk Shot", new AtaqueFisico("Gunk Shot", Tipo.VENENOSO, 120, 5, 0, 80, Efeito.ENVENENADO, 30));
+            ataques.put("Fire Punch", new AtaqueFisico("Fire Punch", Tipo.FOGO, 75, 15, 0, 100, Efeito.QUEIMADO, 10));
+            ataques.put("Hyperspace Fury", new AtaqueFisico("Hyperspace Fury",Tipo.SOMBRIO, 100, 5, 0, 100, null, 0));
+            ataques.put("Psychic Fangs", new AtaqueFisico("Psychic Fangs", Tipo.PSIQUICO, 85, 10, 0, 100, null, 0));
+            ataques.put("High Horsepower", new AtaqueFisico("High Horsepower", Tipo.TERRA, 95, 10, 0, 95, null, 0));
+            ataques.put("Glacial Lance", new AtaqueFisico("Glacial Lance", Tipo.GELO, 130, 5, 0, 100, null, 0));
+            ataques.put("Psyshock", new AtaqueEspecial("Psyshock", Tipo.PSIQUICO, 80, 10, 0, 100, null, 0));
+            ataques.put("Astral Barrage", new AtaqueEspecial("Astral Barrage", Tipo.FANTASMA, 120, 5, 0, 100, null, 0));
+
+
         }
 
         if (pokemons == null) {
@@ -126,10 +131,10 @@ public class BancoDados {
             statsBasePokemon.put(Stat.DEF_SP, 100);
             statsBasePokemon.put(Stat.SPEED, 90);
 
-            ataquesPokemon.add(ataques.get("draco meteor"));
-            ataquesPokemon.add(ataques.get("fire blast"));
-            ataquesPokemon.add(ataques.get("thunder"));
-            ataquesPokemon.add(ataques.get("flash cannon"));
+            ataquesPokemon.add(ataques.get("Draco Meteor"));
+            ataquesPokemon.add(ataques.get("Fire Blast"));
+            ataquesPokemon.add(ataques.get("Thunder"));
+            ataquesPokemon.add(ataques.get("Flash Cannon"));
 
             pokemons.put("Dialga", new Pokemon("Dialga", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
 
@@ -149,10 +154,10 @@ public class BancoDados {
             statsBasePokemon.put(Stat.DEF_SP, 120);
             statsBasePokemon.put(Stat.SPEED, 100);
 
-            ataquesPokemon.add(ataques.get("spacial rend"));
-            ataquesPokemon.add(ataques.get("hydro pump"));
-            ataquesPokemon.add(ataques.get("fire blast"));
-            ataquesPokemon.add(ataques.get("earth power"));
+            ataquesPokemon.add(ataques.get("Spacial Rend"));
+            ataquesPokemon.add(ataques.get("Hydro Pump"));
+            ataquesPokemon.add(ataques.get("Fire Blast"));
+            ataquesPokemon.add(ataques.get("Earth Power"));
 
             pokemons.put("Palkia", new Pokemon("Palkia", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
 
@@ -172,10 +177,10 @@ public class BancoDados {
             statsBasePokemon.put(Stat.DEF_SP, 31);
             statsBasePokemon.put(Stat.SPEED, 109);
 
-            ataquesPokemon.add(ataques.get("leaf blade"));
-            ataquesPokemon.add(ataques.get("sacred sword"));
-            ataquesPokemon.add(ataques.get("smart strike"));
-            ataquesPokemon.add(ataques.get("knock off"));
+            ataquesPokemon.add(ataques.get("Leaf Blade"));
+            ataquesPokemon.add(ataques.get("Sacred Sword"));
+            ataquesPokemon.add(ataques.get("Smart Strike"));
+            ataquesPokemon.add(ataques.get("Knock Off"));
 
             pokemons.put("Kartana", new Pokemon("Kartana", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
 
@@ -195,10 +200,10 @@ public class BancoDados {
             statsBasePokemon.put(Stat.DEF_SP, 115);
             statsBasePokemon.put(Stat.SPEED, 148);
 
-            ataquesPokemon.add(ataques.get("behemoth blade"));
-            ataquesPokemon.add(ataques.get("wild charge"));
-            ataquesPokemon.add(ataques.get("close combat"));
-            ataquesPokemon.add(ataques.get("play rough"));
+            ataquesPokemon.add(ataques.get("Behemoth Blade"));
+            ataquesPokemon.add(ataques.get("Wild Charge"));
+            ataquesPokemon.add(ataques.get("Close Combat"));
+            ataquesPokemon.add(ataques.get("Play Rough"));
 
             pokemons.put("Zacian", new Pokemon("Zacian", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
 
@@ -217,10 +222,10 @@ public class BancoDados {
             statsBasePokemon.put(Stat.DEF_SP, 90);
             statsBasePokemon.put(Stat.SPEED, 130);
 
-            ataquesPokemon.add(ataques.get("psystrike"));
-            ataquesPokemon.add(ataques.get("shadow ball"));
-            ataquesPokemon.add(ataques.get("aura sphere"));
-            ataquesPokemon.add(ataques.get("ice beam"));
+            ataquesPokemon.add(ataques.get("Psystrike"));
+            ataquesPokemon.add(ataques.get("Shadow Ball"));
+            ataquesPokemon.add(ataques.get("Aura Sphere"));
+            ataquesPokemon.add(ataques.get("Ice Beam"));
 
             pokemons.put("Mewtwo", new Pokemon("Mewtwo", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
 
@@ -239,10 +244,10 @@ public class BancoDados {
             statsBasePokemon.put(Stat.DEF_SP, 140);
             statsBasePokemon.put(Stat.SPEED, 90);
 
-            ataquesPokemon.add(ataques.get("ice beam"));
-            ataquesPokemon.add(ataques.get("thunder"));
-            ataquesPokemon.add(ataques.get("origin pulse"));
-            ataquesPokemon.add(ataques.get("water spout"));
+            ataquesPokemon.add(ataques.get("Ice Beam"));
+            ataquesPokemon.add(ataques.get("Thunder"));
+            ataquesPokemon.add(ataques.get("Origin Pulse"));
+            ataquesPokemon.add(ataques.get("Water Spout"));
 
             pokemons.put("Kyogre", new Pokemon("Kyogre", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
 
@@ -261,10 +266,10 @@ public class BancoDados {
             statsBasePokemon.put(Stat.DEF_SP, 90);
             statsBasePokemon.put(Stat.SPEED, 90);
 
-            ataquesPokemon.add(ataques.get("precipice blades"));
-            ataquesPokemon.add(ataques.get("stone edge"));
-            ataquesPokemon.add(ataques.get("toxic"));
-            ataquesPokemon.add(ataques.get("earthquake"));
+            ataquesPokemon.add(ataques.get("Precipice Blades"));
+            ataquesPokemon.add(ataques.get("Stone Edge"));
+            ataquesPokemon.add(ataques.get("Toxic"));
+            ataquesPokemon.add(ataques.get("Earthquake"));
 
             pokemons.put("Groudon", new Pokemon("Groudon", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
         
@@ -284,10 +289,10 @@ public class BancoDados {
             statsBasePokemon.put(Stat.DEF_SP, 79);
             statsBasePokemon.put(Stat.SPEED, 107);
 
-            ataquesPokemon.add(ataques.get("flamethrower"));
-            ataquesPokemon.add(ataques.get("shadow ball"));
-            ataquesPokemon.add(ataques.get("blizzard"));
-            ataquesPokemon.add(ataques.get("psychic"));
+            ataquesPokemon.add(ataques.get("Flamethrower"));
+            ataquesPokemon.add(ataques.get("Shadow Ball"));
+            ataquesPokemon.add(ataques.get("Blizzard"));
+            ataquesPokemon.add(ataques.get("Psychic"));
 
             pokemons.put("Blacephalon", new Pokemon("Blacephalon", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
 
@@ -306,10 +311,10 @@ public class BancoDados {
             statsBasePokemon.put(Stat.DEF_SP, 90);
             statsBasePokemon.put(Stat.SPEED, 125);
 
-            ataquesPokemon.add(ataques.get("hypnosis"));
-            ataquesPokemon.add(ataques.get("sludge bomb"));
-            ataquesPokemon.add(ataques.get("dark pulse"));
-            ataquesPokemon.add(ataques.get("psychic"));
+            ataquesPokemon.add(ataques.get("Hypnosis"));
+            ataquesPokemon.add(ataques.get("Sludge bomb"));
+            ataquesPokemon.add(ataques.get("Dark Pulse"));
+            ataquesPokemon.add(ataques.get("Psychic"));
 
             pokemons.put("Darkrai", new Pokemon("Darkrai", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
 
@@ -329,10 +334,10 @@ public class BancoDados {
             statsBasePokemon.put(Stat.DEF_SP, 120);
             statsBasePokemon.put(Stat.SPEED, 90);
 
-            ataquesPokemon.add(ataques.get("blue flare"));
-            ataquesPokemon.add(ataques.get("draco meteor"));
-            ataquesPokemon.add(ataques.get("hyper beam"));
-            ataquesPokemon.add(ataques.get("aeroblast"));
+            ataquesPokemon.add(ataques.get("Blue Flare"));
+            ataquesPokemon.add(ataques.get("Draco Meteor"));
+            ataquesPokemon.add(ataques.get("Hyper Beam"));
+            ataquesPokemon.add(ataques.get("Aeroblast"));
 
             pokemons.put("Reshiram", new Pokemon("Reshiram", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
 
@@ -352,10 +357,10 @@ public class BancoDados {
             statsBasePokemon.put(Stat.DEF_SP, 100);
             statsBasePokemon.put(Stat.SPEED, 90);
 
-            ataquesPokemon.add(ataques.get("bolt strike"));
-            ataquesPokemon.add(ataques.get("outrage"));
-            ataquesPokemon.add(ataques.get("extreme speed"));
-            ataquesPokemon.add(ataques.get("drill peck"));
+            ataquesPokemon.add(ataques.get("Bolt Strike"));
+            ataquesPokemon.add(ataques.get("Outrage"));
+            ataquesPokemon.add(ataques.get("Extreme Speed"));
+            ataquesPokemon.add(ataques.get("Drill Peck"));
 
             pokemons.put("Zekrom", new Pokemon("Zekrom", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
 
@@ -374,10 +379,10 @@ public class BancoDados {
             statsBasePokemon.put(Stat.DEF_SP, 98);
             statsBasePokemon.put(Stat.SPEED, 99);
 
-            ataquesPokemon.add(ataques.get("moonblast"));
-            ataquesPokemon.add(ataques.get("focus blast"));
-            ataquesPokemon.add(ataques.get("surf"));
-            ataquesPokemon.add(ataques.get("thunder"));
+            ataquesPokemon.add(ataques.get("Moonblast"));
+            ataquesPokemon.add(ataques.get("Focus Blast"));
+            ataquesPokemon.add(ataques.get("Surf"));
+            ataquesPokemon.add(ataques.get("Thunder"));
 
             pokemons.put("Xerneas", new Pokemon("Xerneas", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
             
@@ -397,10 +402,10 @@ public class BancoDados {
             statsBasePokemon.put(Stat.DEF_SP, 98);
             statsBasePokemon.put(Stat.SPEED, 99);
 
-            ataquesPokemon.add(ataques.get("dark pulse"));
-            ataquesPokemon.add(ataques.get("oblivion wing"));
-            ataquesPokemon.add(ataques.get("u-turn"));
-            ataquesPokemon.add(ataques.get("earth power"));
+            ataquesPokemon.add(ataques.get("Dark Pulse"));
+            ataquesPokemon.add(ataques.get("Oblivion Wing"));
+            ataquesPokemon.add(ataques.get("U-turn"));
+            ataquesPokemon.add(ataques.get("Earth Power"));
 
             pokemons.put("Yveltal", new Pokemon("Yveltal", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
 
@@ -420,10 +425,10 @@ public class BancoDados {
             statsBasePokemon.put(Stat.DEF_SP, 154);
             statsBasePokemon.put(Stat.SPEED, 90);
 
-            ataquesPokemon.add(ataques.get("sacred fire"));
-            ataquesPokemon.add(ataques.get("brave bird"));
-            ataquesPokemon.add(ataques.get("toxic"));
-            ataquesPokemon.add(ataques.get("earthquake"));
+            ataquesPokemon.add(ataques.get("Sacred Fire"));
+            ataquesPokemon.add(ataques.get("Brave Bird"));
+            ataquesPokemon.add(ataques.get("Toxic"));
+            ataquesPokemon.add(ataques.get("Earthquake"));
 
             pokemons.put("Ho-OH", new Pokemon("Ho-Oh", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
 
@@ -443,12 +448,58 @@ public class BancoDados {
             statsBasePokemon.put(Stat.DEF_SP, 130);
             statsBasePokemon.put(Stat.SPEED, 80);
 
-            ataquesPokemon.add(ataques.get("gunk shot"));
-            ataquesPokemon.add(ataques.get("fire punch"));
-            ataquesPokemon.add(ataques.get("hyperspace fury"));
-            ataquesPokemon.add(ataques.get("psychic fangs"));
+            ataquesPokemon.add(ataques.get("Gunk Shot"));
+            ataquesPokemon.add(ataques.get("Fire Punch"));
+            ataquesPokemon.add(ataques.get("Hyperspace Fury"));
+            ataquesPokemon.add(ataques.get("Psychic Fangs"));
 
             pokemons.put("Hoopa", new Pokemon("Hoopa", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+
+
+            //Criando o Calyrex-Ice
+            tiposPokemon.clear();
+            statsBasePokemon.clear();
+            ataquesPokemon.clear();
+
+            tiposPokemon.add(Tipo.PSIQUICO);
+            tiposPokemon.add(Tipo.GELO);
+
+            statsBasePokemon.put(Stat.HP, 100);
+            statsBasePokemon.put(Stat.ATK, 165);
+            statsBasePokemon.put(Stat.DEF, 150);
+            statsBasePokemon.put(Stat.ATK_SP, 85);
+            statsBasePokemon.put(Stat.DEF_SP, 130);
+            statsBasePokemon.put(Stat.SPEED, 50);
+
+            ataquesPokemon.add(ataques.get("Glacial Lance"));
+            ataquesPokemon.add(ataques.get("Psychic Fangs"));
+            ataquesPokemon.add(ataques.get("High Horsepower"));
+            ataquesPokemon.add(ataques.get("Close Combat"));
+
+            pokemons.put("Calyrex-Ice", new Pokemon("Calyrex-Ice", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+
+
+            //Criando o Calyrex-Shadow
+            tiposPokemon.clear();
+            statsBasePokemon.clear();
+            ataquesPokemon.clear();
+
+            tiposPokemon.add(Tipo.PSIQUICO);
+            tiposPokemon.add(Tipo.FANTASMA);
+
+            statsBasePokemon.put(Stat.HP, 100);
+            statsBasePokemon.put(Stat.ATK, 165);
+            statsBasePokemon.put(Stat.DEF, 150);
+            statsBasePokemon.put(Stat.ATK_SP, 85);
+            statsBasePokemon.put(Stat.DEF_SP, 130);
+            statsBasePokemon.put(Stat.SPEED, 50);
+
+            ataquesPokemon.add(ataques.get("Psyshock"));
+            ataquesPokemon.add(ataques.get("Astral Barrage"));
+            ataquesPokemon.add(ataques.get("Moonblast"));
+            ataquesPokemon.add(ataques.get("Aura Sphere"));
+
+            pokemons.put("Calyrex-Shadow", new Pokemon("Calyrex-Shadow", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
         }
     }
 }

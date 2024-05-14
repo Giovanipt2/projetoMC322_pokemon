@@ -36,6 +36,10 @@ public abstract class Ataque {
      * A probabilidade (em porcentagem) do efeito ser aplicado
      */
     protected int precisaoEfeito;
+    /**
+     * String que representa o nome do ataque
+     */
+    protected String nome;
 
     /**
      * Retorna as informações do ataque.
@@ -43,7 +47,8 @@ public abstract class Ataque {
      */
     public String toString() {
         return "Ataque{" +
-                "tipo=" + tipo +
+                "nome=" + nome +
+                ", tipo=" + tipo +
                 ", poder=" + poder +
                 ", pp=" + pp +
                 ", ppMax=" + ppMax +
@@ -55,10 +60,11 @@ public abstract class Ataque {
     }
 
 
-    public Ataque(Tipo tipo, int poder, int pp, int ppMax, int prioridade, int precisao, Efeito efeito, int precisaoEfeito) {
+    public Ataque(String nome, Tipo tipo, int poder, int ppMax, int prioridade, int precisao, Efeito efeito, int precisaoEfeito) {
+        this.nome = nome;
         this.tipo = tipo;
         this.poder = poder;
-        this.pp = pp;
+        this.pp = ppMax;
         this.ppMax = ppMax;
         this.prioridade = prioridade;
         this.precisao = precisao;
@@ -66,6 +72,11 @@ public abstract class Ataque {
         this.precisaoEfeito = precisaoEfeito;
     }
 
+
+    //Getter
+    public String getNome() {
+        return this.nome;
+    }
 
     /**
      * Calcula o dano do ataque, caso ele acerte.
