@@ -106,8 +106,16 @@ public class BancoDados {
             ataques.put("Glacial Lance", new AtaqueFisico("Glacial Lance", Tipo.GELO, 130, 5, 0, 100, null, 0));
             ataques.put("Psyshock", new AtaqueEspecial("Psyshock", Tipo.PSIQUICO, 80, 10, 0, 100, null, 0));
             ataques.put("Astral Barrage", new AtaqueEspecial("Astral Barrage", Tipo.FANTASMA, 120, 5, 0, 100, null, 0));
-
-
+            ataques.put("Ice Punch", new AtaqueFisico("Ice Punch", Tipo.GELO, 75, 15, 0, 100, Efeito.CONGELADO, 10));
+            ataques.put("Thunder Punch", new AtaqueFisico("Thunder Punch", Tipo.ELETRICO, 75, 15, 0, 100, Efeito.PARALISADO, 10));
+            ataques.put("Body Slam", new AtaqueFisico("Body Slam", Tipo.NORMAL, 85, 15, 0, 100, Efeito.PARALISADO, 30));
+            ataques.put("Megahorn", new AtaqueFisico("Megahorn", Tipo.INSETO, 120, 10, 0, 85, null, 0));
+            ataques.put("Diamond Storm", new AtaqueFisico("Diamond Storm", Tipo.PEDRA, 100, 5, 0, 95, null, 0));
+            ataques.put("Sunsteel Strike", new AtaqueFisico("Sunsteel Strike", Tipo.METALICO, 100, 5, 0, 100, null, 0));
+            ataques.put("Body Press", new AtaqueFisico("Body Press", Tipo.LUTADOR, 80, 10, 0, 100, null, 0));
+            ataques.put("Heat Wave", new AtaqueEspecial("Heat Wave", Tipo.FOGO, 95, 10, 0, 90, Efeito.QUEIMADO, 10));
+            
+;
         }
 
         if (pokemons == null) {
@@ -500,6 +508,74 @@ public class BancoDados {
             ataquesPokemon.add(ataques.get("Aura Sphere"));
 
             pokemons.put("Calyrex-Shadow", new Pokemon("Calyrex-Shadow", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+
+
+            //Criando o Regigigas
+            tiposPokemon.clear();
+            statsBasePokemon.clear();
+            ataquesPokemon.clear();
+
+            tiposPokemon.add(Tipo.NORMAL);
+
+            statsBasePokemon.put(Stat.HP, 110);
+            statsBasePokemon.put(Stat.ATK, 160);
+            statsBasePokemon.put(Stat.DEF, 110);
+            statsBasePokemon.put(Stat.ATK_SP, 80);
+            statsBasePokemon.put(Stat.DEF_SP, 110);
+            statsBasePokemon.put(Stat.SPEED, 100);
+
+            ataquesPokemon.add(ataques.get("Ice Punch"));
+            ataquesPokemon.add(ataques.get("Thunder Punch"));
+            ataquesPokemon.add(ataques.get("Body Slam"));
+            ataquesPokemon.add(ataques.get("Knock Off"));
+
+            pokemons.put("Regigigas", new Pokemon("Regigigas", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+
+
+            //Criando a Pheromosa
+            tiposPokemon.clear();
+            statsBasePokemon.clear();
+            ataquesPokemon.clear();
+
+            tiposPokemon.add(Tipo.LUTADOR);
+            tiposPokemon.add(Tipo.INSETO);
+
+            statsBasePokemon.put(Stat.HP, 71);
+            statsBasePokemon.put(Stat.ATK, 137);
+            statsBasePokemon.put(Stat.DEF, 37);
+            statsBasePokemon.put(Stat.ATK_SP, 137);
+            statsBasePokemon.put(Stat.DEF_SP, 37);
+            statsBasePokemon.put(Stat.SPEED, 151);
+
+            ataquesPokemon.add(ataques.get("Megahorn"));
+            ataquesPokemon.add(ataques.get("Close Combat"));
+            ataquesPokemon.add(ataques.get("Diamond Storm"));
+            ataquesPokemon.add(ataques.get("Sunsteel Strike"));
+
+            pokemons.put("Pheromosa", new Pokemon("Pheromosa", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+
+
+            //Criando a Diancie
+            tiposPokemon.clear();
+            statsBasePokemon.clear();
+            ataquesPokemon.clear();
+
+            tiposPokemon.add(Tipo.PEDRA);
+            tiposPokemon.add(Tipo.FADA);
+
+            statsBasePokemon.put(Stat.HP, 50);
+            statsBasePokemon.put(Stat.ATK, 100);
+            statsBasePokemon.put(Stat.DEF, 150);
+            statsBasePokemon.put(Stat.ATK_SP, 100);
+            statsBasePokemon.put(Stat.DEF_SP, 150);
+            statsBasePokemon.put(Stat.SPEED, 50);
+
+            ataquesPokemon.add(ataques.get("Body Press"));
+            ataquesPokemon.add(ataques.get("Heat Wave"));
+            ataquesPokemon.add(ataques.get("Diamond Storm"));
+            ataquesPokemon.add(ataques.get("Moonblast"));
+
+            pokemons.put("Diancie", new Pokemon("Diancie", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
         }
     }
 }
