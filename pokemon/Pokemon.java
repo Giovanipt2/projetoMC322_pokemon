@@ -138,6 +138,14 @@ public class Pokemon {
         return nome;
     }
 
+    // Setter e Getter para o EV do pokemon
+    public void setEV(Stat stat, int new_EV) {
+        this.evs.put(stat, new_EV);
+    }
+    public int getEV(Stat stat) {
+        return evs.get(stat);
+    }
+
     /**
      * Retorna uma cópia da lista de tipos do Pokémon
      */

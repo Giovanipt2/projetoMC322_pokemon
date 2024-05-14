@@ -19,16 +19,7 @@ public class I_EV extends ItemBatalha{
         return boostEV;
     };
 
-    public void uso(Pokemon pokemon, Stat boostedStat) {
-        switch (boostedStat) {
-            case HP:
-            pokemon.set(pokemon.getStat(HP) + 10);
-            
-                
-                break;
-        
-            default:
-                break;
-        }
+    public void uso(Pokemon pokemon) {
+        pokemon.setEV(boostEV, pokemon.getEV(boostEV));
     }
 }
