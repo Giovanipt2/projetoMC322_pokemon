@@ -1,6 +1,7 @@
 package pokemon;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Treinador.java
@@ -12,6 +13,7 @@ public class Treinador {
     private int id;             //Número inteiro que representa o id de um treinador
     private ArrayList<Pokemon> time;    //Array que guarda os pokémons no time do treinador
     private ArrayList<ItemBatalha> itens;    //Array que guarda os itens de batlha do treinador
+    private Pokemon pokemonAtivo; //Pokemon que está em batalha
     public static int numTreinadores;  //Número inteiro que representa a quantidade de jogadores no torneio
 
     //Construtor
@@ -20,6 +22,7 @@ public class Treinador {
         this.id = numTreinadores++;
         this.time = new ArrayList<Pokemon>();
         this.itens = new ArrayList<ItemBatalha>();
+        this.pokemonAtivo = null;
     }
 
     //Getters
@@ -37,6 +40,12 @@ public class Treinador {
 
     public ArrayList<ItemBatalha> getItens() {
         return new ArrayList<>(itens);
+    }
+    public Pokemon getPokemonAtivo() {
+        return pokemonAtivo;
+    }
+    public List<Pokemon> getPokemons() {
+        return time;
     }
 
 

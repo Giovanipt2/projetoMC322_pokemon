@@ -2,6 +2,8 @@ package pokemon;
 
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.List;
 
 /**
  * Menu.java
@@ -64,20 +66,39 @@ public class Menu {
         imprimirListaItensPokemon();
 
         ItemPokemon item = null;
-
-        // Lê a escolha do jogador
-        int escolha = input.nextInt();
         ArrayList<ItemPokemon> listaItens = new ArrayList<>(BancoDados.getItensPokemon().values());
+
+
+        // Lê a escolha do jogador (verificando se ele passou um inteiro)
+        int escolha = 0;
+        while (escolha < 1 || escolha > listaItens.size()) {
+            try {
+                escolha = input.nextInt();
+                input.nextLine();
+            } catch (InputMismatchException e) {
+                input.nextLine();
+            }
+            System.out.println("Opção inválida. Digite um número entre 1 e " + listaItens.size() + ":");
+        }
         boolean itemEscolhido = false;
         while (!itemEscolhido) {
             // Mostre os dados do item escolhido
             item = listaItens.get(escolha - 1);
             System.out.println(item.toString());
-            // Perguntar se ele deseja adicionar esse item ao pokemon
+            // Perguntar se ele deseja adicionar esse item ao pokemon (verificando se ele passou um inteiro)
             System.out.println("Deseja adicionar esse item ao seu pokemon?");
             System.out.println("[1] Sim");
             System.out.println("[2] Não");
-            int resposta = input.nextInt();
+            int resposta = 0;
+            while (resposta < 1 || resposta > 2) {
+                try {
+                    resposta = input.nextInt();
+                    input.nextLine();
+                } catch (InputMismatchException e) {
+                    input.nextLine();
+                }
+                System.out.println("Opção inválida. Digite 1 para sim ou 2 para não:");
+            }
 
             if (resposta == 1) {
                 itemEscolhido = true;
@@ -87,7 +108,17 @@ public class Menu {
                 System.out.println("Item não adicionado ao pokemon!");
                 System.out.println("Escolha um item para usar: ");
                 imprimirListaItensPokemon();
-                escolha = input.nextInt();
+                // Lê novamente escolha do jogador (verificando se ele passou um inteiro)
+                escolha = 0;
+                while (escolha < 1 || escolha > listaItens.size()) {
+                    try {
+                        escolha = input.nextInt();
+                        input.nextLine();
+                    } catch (InputMismatchException e) {
+                        input.nextLine();
+                    }
+                    System.out.println("Opção inválida. Digite um número entre 1 e " + listaItens.size() + ":");
+                }
             }
         }
         
@@ -121,8 +152,17 @@ public class Menu {
 
         int escolhidos = 0;
         while (escolhidos != 3) {
-            // Lê a escolha do jogador
-            int escolha = input.nextInt();
+            // Lê a escolha do jogador (verificando se ele passou um inteiro)
+            int escolha = 0;
+            while (escolha < 1 || escolha > pokemonsIniciais.size()) {
+                try {
+                    escolha = input.nextInt();
+                    input.nextLine();
+                } catch (InputMismatchException e) {
+                    input.nextLine();
+                }
+                System.out.println("Opção inválida. Digite um número entre 1 e " + pokemonsIniciais.size() + ":");
+            }
             // Mostre os dados do pokemon escolhido
             Pokemon pokemonEscolhido = pokemonsIniciais.get(escolha - 1);
             System.out.println(pokemonEscolhido.toString());
@@ -130,7 +170,16 @@ public class Menu {
             System.out.println("Deseja adicionar esse Pokemon ao seu time?");
             System.out.println("[1] Sim");
             System.out.println("[2] Não");
-            int resposta = input.nextInt();
+            int resposta = 0;
+            while (resposta < 1 || resposta > 2) {
+                try {
+                    resposta = input.nextInt();
+                    input.nextLine();
+                } catch (InputMismatchException e) {
+                    input.nextLine();
+                }
+                System.out.println("Opção inválida. Digite 1 para sim ou 2 para não:");
+            }
 
             if (resposta == 1) {
                 ItemPokemon item = leituraDeItem(input);
@@ -158,4 +207,133 @@ public class Menu {
             leituraDeJogador(input);
         }
     }
+
+    /**
+     * Permite que o jogador escolha um ataque do pokemon ativo
+     * @param treinador O treinador que escolherá o ataque
+     * @param input O scanner que será usado para ler a escolha do treinador
+     * @return O ataque escolhido
+     * Se o usuário digitar 0, a função retorna null
+     */
+    public Ataque escolherAtaque(Treinador treinador, Scanner input) {
+        // Mostrar os ataques disponíveis
+        System.out.println("Escolha um ataque para usar: ");
+        System.out.println("[0] Voltar");
+        Pokemon pokemonAtivo = treinador.getPokemonAtivo();
+        List<Ataque> listaAtaques = pokemonAtivo.getAtaques();
+        for (int i = 0; i < listaAtaques.size(); i++) {
+            System.out.println("[" + (i + 1) + "] " + listaAtaques.get(i).getNome());
+        }
+
+        Ataque ataque = null;
+        // Lê a escolha do jogador (verificando se ele passou um inteiro)
+        int escolha = 0;
+        while (escolha < 0 || escolha > listaAtaques.size()) {
+            try {
+                escolha = input.nextInt();
+                input.nextLine();
+            } catch (InputMismatchException e) {
+                input.nextLine();
+            }
+            System.out.println("Opção inválida. Digite um número entre 1 e " + listaAtaques.size() + ":");
+        }
+        // Se o jogador escolher 0, retorna null
+        if (escolha == 0) {
+            return null;
+        }
+        ataque = listaAtaques.get(escolha - 1);
+        return ataque;
+    }
+
+    /**
+     * Permite que o jogador escolha um pokemon para ser o ativo
+     * @param treinador O treinador que escolherá o pokemon ativo
+     * @param input O scanner que será usado para ler a escolha do treinador
+     * @return O pokemon escolhido
+     * Se o usuário digitar 0, a função retorna null
+     */
+    public Pokemon trocarPokemon(Treinador treinador, Scanner input) {
+        // Mostrar os pokémons disponíveis
+        System.out.println("Escolha um pokemon para ser o ativo: ");
+        System.out.println("[0] Voltar");
+        List<Pokemon> listaPokemons = treinador.getPokemons();
+        for (int i = 0; i < listaPokemons.size(); i++) {
+            System.out.println("[" + (i + 1) + "] " + listaPokemons.get(i).getNome());
+        }
+        for (int i = 0; i < listaPokemons.size(); i++) {
+            System.out.println("[" + (i + 1) + "] " + listaPokemons.get(i).getNome());
+        }
+
+        Pokemon pokemon = null;
+        // Lê a escolha do jogador (verificando se ele passou um inteiro)
+        int escolha = 0;
+        while (escolha < 0 || escolha > listaPokemons.size()) {
+            try {
+                escolha = input.nextInt();
+                input.nextLine();
+            } catch (InputMismatchException e) {
+                input.nextLine();
+            }
+            System.out.println("Opção inválida. Digite um número entre 1 e " + listaPokemons.size() + ":");
+        }
+        // Se o jogador escolher 0, retorna null
+        if (escolha == 0) {
+            return null;
+        }
+        pokemon = listaPokemons.get(escolha - 1);
+
+        //Verifica se o pokemon escolhido está desmaiado
+        while (pokemon.estaVivo() == false) {
+            System.out.println("Esse pokemon está desmaiado! Escolha outro pokemon para ser o ativo: ");
+            // Lê a escolha do jogador (verificando se ele passou um inteiro)
+            escolha = 0;
+            while (escolha < 1 || escolha > listaPokemons.size()) {
+                try {
+                    escolha = input.nextInt();
+                    input.nextLine();
+                } catch (InputMismatchException e) {
+                    input.nextLine();
+                }
+                System.out.println("Opção inválida. Digite um número entre 1 e " + listaPokemons.size() + ":");
+            }
+            pokemon = listaPokemons.get(escolha - 1);
+        }
+        return pokemon;
+    }
+
+    /**
+     * Permite que o jogador escolha um item para usar
+     * @param treinador O treinador que escolherá o item
+     * @param input O scanner que será usado para ler a escolha do treinador
+     * @return O item escolhido
+     * Se o usuário digitar 0, a função retorna null
+     */
+    public Item escolherItem(Treinador treinador, Scanner input) {
+        // Mostrar os itens disponíveis
+        System.out.println("Escolha um item para usar: ");
+        System.out.println("[0] Voltar");
+        ArrayList<Item> listaItens = new ArrayList<>(treinador.getItens());
+        for (int i = 0; i < listaItens.size(); i++) {
+            System.out.println("[" + (i + 1) + "] " + listaItens.get(i).getNome());
+        }
+
+        Item item = null;
+        // Lê a escolha do jogador (verificando se ele passou um inteiro)
+        int escolha = 0;
+        while (escolha < 0 || escolha > listaItens.size()) {
+            try {
+                escolha = input.nextInt();
+                input.nextLine();
+            } catch (InputMismatchException e) {
+                input.nextLine();
+            }
+            System.out.println("Opção inválida. Digite um número entre 0 e " + listaItens.size() + ":");
+        }
+        // Se o jogador escolher 0, retorna null
+        if (escolha == 0) {
+            return null;
+        }
+        item = listaItens.get(escolha - 1);
+        return item;
+    } 
 }
