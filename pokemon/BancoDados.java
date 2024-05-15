@@ -594,6 +594,7 @@ public class BancoDados {
             pokemons.put("Diancie", new Pokemon("Diancie", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
         }
 
+        // Criando os pokemons iniciais
         if (pokemonsIniciais == null) {
             pokemonsIniciais = new HashMap<>();
 
@@ -618,7 +619,7 @@ public class BancoDados {
             ataquesPokemon.add(ataques.get("Close Combat"));
             ataquesPokemon.add(ataques.get("Knock Off"));
 
-            pokemons.put("Blaziken", new Pokemon("Blaziken", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+            pokemonsIniciais.put("Blaziken", new Pokemon("Blaziken", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
 
 
             //Criando o Incineroar
@@ -641,7 +642,7 @@ public class BancoDados {
             ataquesPokemon.add(ataques.get("Darkest Lariat"));
             ataquesPokemon.add(ataques.get("U-turn"));
 
-            pokemons.put("Incineroar", new Pokemon("Incineroar", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+            pokemonsIniciais.put("Incineroar", new Pokemon("Incineroar", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
 
 
             //Criando o Greninja
@@ -664,7 +665,7 @@ public class BancoDados {
             ataquesPokemon.add(ataques.get("Water Shuriken"));
             ataquesPokemon.add(ataques.get("Ice Beam"));
 
-            pokemons.put("Greninja", new Pokemon("Greninja", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+            pokemonsIniciais.put("Greninja", new Pokemon("Greninja", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
 
 
             //Criando o Swampert
@@ -687,7 +688,7 @@ public class BancoDados {
             ataquesPokemon.add(ataques.get("Earthquake"));
             ataquesPokemon.add(ataques.get("Superpower"));
 
-            pokemons.put("Swampert", new Pokemon("Swampert", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+            pokemonsIniciais.put("Swampert", new Pokemon("Swampert", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
 
 
             //Criando o Sceptile
@@ -709,7 +710,7 @@ public class BancoDados {
             ataquesPokemon.add(ataques.get("Splishy Splash"));
             ataquesPokemon.add(ataques.get("Stone Edge"));
             
-            pokemons.put("Sceptile", new Pokemon("Sceptile", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+            pokemonsIniciais.put("Sceptile", new Pokemon("Sceptile", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
 
 
             //Criando o Chesnaught
@@ -732,7 +733,7 @@ public class BancoDados {
             ataquesPokemon.add(ataques.get("Aqua Tail"));
             ataquesPokemon.add(ataques.get("Spark"));
             
-            pokemons.put("Chesnaught", new Pokemon("Chesnaught", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+            pokemonsIniciais.put("Chesnaught", new Pokemon("Chesnaught", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
         }   
     }
 }
