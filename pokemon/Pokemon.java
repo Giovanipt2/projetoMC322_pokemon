@@ -154,6 +154,14 @@ public class Pokemon {
         this.hp = novo_hp;
     }
 
+
+    //Setter e Getter para o Efeito atual do pokemon
+    public Efeito getEfeito() {
+        return efeito;
+    }
+    public void setEfeito(Efeito novo_efeito) {
+        this.efeito = novo_efeito;
+    }
     /**
      * Retorna uma cópia da lista de tipos do Pokémon
      */
