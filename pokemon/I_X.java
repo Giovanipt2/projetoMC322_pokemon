@@ -5,6 +5,6 @@ package pokemon;
  * da batalha. Esse bônus é zerado quando o pokemon morre e está sujeito a alterações
  * caso ele sofra algum de ataque de status ou inflinga alguma punição de status em si mesmo.
  */
-public class I_X {
-    
+public class I_X extends ItemBatalha{
+    //Implementação no futuro
 }
