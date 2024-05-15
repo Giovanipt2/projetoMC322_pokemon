@@ -20,7 +20,7 @@ public class I_Pocao extends ItemBatalha{
     }
 
     public void uso(Pokemon pokemon) {
-        if (pokemon.getHP_atual() > 0) {
+        if (pokemon.getHP_atual() > 0 && pokemon.getHP_atual() < pokemon.getStat(Stat.HP)) { // Nao pode nem estar morto nem full hp
             if (!isMax) {
                 if (pokemon.getHP_atual() + cura <= pokemon.getStat(Stat.HP)) { //Caso a poção não dê overheal
                     pokemon.setHP_atual(pokemon.getHP_atual() + cura); 
