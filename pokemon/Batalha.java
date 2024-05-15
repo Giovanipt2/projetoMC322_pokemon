@@ -5,14 +5,28 @@ public class Batalha {
     private Treinador jogador2;
     private Menu menu;
     private Clima clima;
+
+    /**
+     * O último dano calculado. Salvo caso precise ser
+     * alterado devido ao efeito de um item.
+     */
     private int ultimoDano;
+    /**
+     * O último efeito aplicado em um Pokémon. Salvo caso
+     * precise ser alterado devido ao efeito de um item.
+     */
+    private Efeito ultimoEfeito;
+
+    /**
+     * Os tipos de ação que um jogador pode fazer em um turno
+     */
     public enum Acao {
         ATACAR, TROCAR, ITEM;
     }
 
     public Batalha(Treinador jogador1, Treinador jogador2, Menu menu) {
         if (jogador1 == null || jogador2 == null) {
-            throw new IllegalArgumentException("Os jogadores não podem ser null");
+            throw new IllegalArgumentException("Os jogadores não podem ser null.");
         }
         this.jogador1 = jogador1;
         this.jogador2 = jogador2;
@@ -107,10 +121,18 @@ public class Batalha {
         }
     }
 
-    /**
-     * Enum com as ações possiveis
-     */
-    public enum Acao {
-        ATACAR, TROCAR, ITEM;
+    private void atacar(Ataque ataque, Pokemon usuario, Pokemon alvo) {
+        ultimoDano = ataque.dano(usuario, alvo, clima);
+        ultimoEfeito = ataque.efeito();
+
+        // Efeitos de held items virão aqui
+
+        alvo.somaHP_atual(ultimoDano);
+        alvo.setEfeito(ultimoEfeito);
+    }
+
+    private void trocarPokemon(Treinador treinador, Pokemon pokemon) {
+        treinador.setPokemonAtivo(pokemon);
     }
 }
+
