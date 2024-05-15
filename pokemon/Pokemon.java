@@ -140,8 +140,11 @@ public class Pokemon {
     public void setHP_atual(int novo_hp){
         this.hp = novo_hp;
     }
-    public void somaHP_atual(int aumento){
+    public void somaHP_atual(int aumento) {
         this.hp += aumento;
+        if (hp < 0) {
+            hp = 0;
+        }
     }
 
     //Setter e Getter para o efeito atual do Pokémon

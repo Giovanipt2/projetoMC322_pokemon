@@ -89,4 +89,8 @@ public abstract class Ataque {
     public abstract int dano(Pokemon usuario, Pokemon alvo, Clima clima);
 
     public abstract Efeito efeito();
+
+    public int getPrioridade() {
+        return prioridade;
+    }
 }

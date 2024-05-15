@@ -6,13 +6,13 @@ import java.util.List;
 /**
  * Treinador.java
  * Representa um treinador de pokémon que participará do torneio
- * Seus atributos são: nome, time (array de pokémons) e itens (array de itens de batalha)
+ * Seus atributos são: nome, time (array de Pokémons) e itens (array de itens de batalha)
  */
 public class Treinador {
     private String nome;        //String que representa o nome do treinador
     private int id;             //Número inteiro que representa o id de um treinador
-    private ArrayList<Pokemon> time;    //Array que guarda os pokémons no time do treinador
-    private ArrayList<ItemBatalha> itens;    //Array que guarda os itens de batlha do treinador
+    private ArrayList<Pokemon> time;    //Array que guarda os Pokémons no time do treinador
+    private ArrayList<ItemBatalha> itens;    //Array que guarda os itens de batalha do treinador
     private Pokemon pokemonAtivo; //Pokemon que está em batalha
     public static int numTreinadores;  //Número inteiro que representa a quantidade de jogadores no torneio
 
@@ -43,6 +43,13 @@ public class Treinador {
     }
     public Pokemon getPokemonAtivo() {
         return pokemonAtivo;
+    }
+    public void setPokemonAtivo(Pokemon pokemon) {
+        if (!time.contains(pokemon)) {
+            throw new IllegalArgumentException("O Pokémon " + pokemon
+                    + " não pertence ao jogador" + getNome() + ".");
+        }
+        pokemonAtivo = pokemon;
     }
     public List<Pokemon> getPokemons() {
         return time;
