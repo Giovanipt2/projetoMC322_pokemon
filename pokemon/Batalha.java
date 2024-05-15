@@ -5,14 +5,28 @@ public class Batalha {
     private Treinador jogador2;
     private Menu menu;
     private Clima clima;
+
+    /**
+     * O último dano calculado. Salvo caso precise ser
+     * alterado devido ao efeito de um item.
+     */
     private int ultimoDano;
+    /**
+     * O último efeito aplicado em um Pokémon. Salvo caso
+     * precise ser alterado devido ao efeito de um item.
+     */
+    private Efeito ultimoEfeito;
+
+    /**
+     * Os tipos de ação que um jogador pode fazer em um turno
+     */
     public enum Acao {
         ATACAR, TROCAR, ITEM;
     }
 
     public Batalha(Treinador jogador1, Treinador jogador2, Menu menu) {
         if (jogador1 == null || jogador2 == null) {
-            throw new IllegalArgumentException("Os jogadores não podem ser null");
+            throw new IllegalArgumentException("Os jogadores não podem ser null.");
         }
         this.jogador1 = jogador1;
         this.jogador2 = jogador2;
@@ -31,8 +45,11 @@ public class Batalha {
     }
 
     private void iniciarTurno() {
+        // Ataques escolhidos
         Ataque ataque1 = null, ataque2 = null;
-        Item item1 = null, item2 = null;
+        // Itens usados
+        ItemBatalha item1 = null, item2 = null;
+        // Pokémons substitutos
         Pokemon pokemon1 = null, pokemon2 = null;
 
 
@@ -55,7 +72,7 @@ public class Batalha {
                     break;
                 case ITEM:
                     item1 = menu.escolherItem(jogador1);
-                    if (pokemon1 == null) {
+                    if (item1 == null) {
                         continue;
                     }
                     break;
@@ -69,20 +86,20 @@ public class Batalha {
             acao2 = menu.escolherAcao(jogador2);
             switch (acao2) {
                 case ATACAR:
-                    ataque1 = menu.escolherAtaque(jogador2);
-                    if (ataque1 == null) {
+                    ataque2 = menu.escolherAtaque(jogador2);
+                    if (ataque2 == null) {
                         continue;
                     }
                     break;
                 case TROCAR:
-                    pokemon1 = menu.trocarPokemon(jogador2);
-                    if (pokemon1 == null) {
+                    pokemon2 = menu.trocarPokemon(jogador2);
+                    if (pokemon2 == null) {
                         continue;
                     }
                     break;
                 case ITEM:
-                    item1 = menu.escolherItem(jogador2);
-                    if (pokemon1 == null) {
+                    item2 = menu.escolherItem(jogador2);
+                    if (item2 == null) {
                         continue;
                     }
                     break;
@@ -90,27 +107,82 @@ public class Batalha {
             break;
         }
 
-        int prioridade;
-        if ((acao1 != Acao.ATACAR && acao2 != Acao.ATACAR) || acao1 == acao2) {
-            if (jogador1.getPokemonAtivo().getStat(Stat.SPEED) >= jogador2.getPokemonAtivo().getStat(Stat.SPEED)) {
-                prioridade = 1; // Jogador 1 vai primeiro
-            }
-            else {
-                prioridade = 2; // Jogador 2 vai primeiro
+        boolean segundoVaiAntes = segundoVaiAntes(ataque1, ataque2);
+
+        // Realiza a ação do jogador 2, caso ela tenha prioridade
+        if (segundoVaiAntes) {
+            switch (acao2) {
+                case ITEM:
+                    item2.uso(jogador2.getPokemonAtivo());
+                    break;
+                case ATACAR:
+                    atacar(ataque2, jogador2.getPokemonAtivo(), jogador1.getPokemonAtivo());
+                    break;
+                case TROCAR:
+                    trocarPokemon(jogador2, pokemon2);
             }
         }
-        else if (acao1 == Acao.ATACAR) {
-            prioridade = 2;  // Ataques ocorrem depois de itens e trocas
+
+        // Realiza a ação do jogador 1
+        switch (acao1) {
+            case ITEM:
+                item1.uso(jogador1.getPokemonAtivo());
+                break;
+            case ATACAR:
+                atacar(ataque1, jogador1.getPokemonAtivo(), jogador2.getPokemonAtivo());
+                break;
+            case TROCAR:
+                trocarPokemon(jogador1, pokemon1);
         }
-        else {
-            prioridade = 1; // Jogador 2 atacou
+
+        // Realiza a ação do jogador 2, caso ela ainda não tenha acontecido
+        if (!segundoVaiAntes) {
+            switch (acao2) {
+                case ITEM:
+                    item2.uso(jogador2.getPokemonAtivo());
+                    break;
+                case ATACAR:
+                    atacar(ataque2, jogador2.getPokemonAtivo(), jogador1.getPokemonAtivo());
+                    break;
+                case TROCAR:
+                    trocarPokemon(jogador2, pokemon2);
+            }
         }
     }
 
     /**
-     * Enum com as ações possiveis
+     * @return {@code true} se o jogador 2 tem prioridade
      */
-    public enum Acao {
-        ATACAR, TROCAR, ITEM;
+    private boolean segundoVaiAntes(Ataque ataque1, Ataque ataque2) {
+        if (ataque1 == null) {
+            return false;
+        }
+        if (ataque2 == null) {
+            return true;
+        }
+
+        int difPrioridade = ataque1.getPrioridade() - ataque2.getPrioridade();
+        if (difPrioridade != 0) {
+            return difPrioridade < 0;
+        }
+        return (jogador1.getPokemonAtivo().getStat(Stat.SPEED)
+                - jogador2.getPokemonAtivo().getStat(Stat.SPEED)) < 0;
+    }
+
+    private void atacar(Ataque ataque, Pokemon usuario, Pokemon alvo) {
+        ultimoDano = ataque.dano(usuario, alvo, clima);
+        ultimoEfeito = ataque.efeito();
+
+        // Efeitos de held items virão aqui
+
+        alvo.somaHP_atual(ultimoDano);
+        if (alvo.getEfeito() == null) {
+            alvo.setEfeito(ultimoEfeito);
+        }
+    }
+
+    private void trocarPokemon(Treinador treinador, Pokemon pokemon) {
+        treinador.setPokemonAtivo(pokemon);
     }
 }
+

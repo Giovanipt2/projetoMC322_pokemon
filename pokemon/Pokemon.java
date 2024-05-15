@@ -117,19 +117,6 @@ public class Pokemon {
         return valor;
     }
 
-    /**
-     * Cria um Pokémon de uma dada espécie.
-     * Os IVs são números aleatórios de 0 a 31.
-     *
-     * @param especie o nome da espécie
-     * @return um novo Pokémon da espécie fornecida;
-     * {@code null} se a espécie não for inválida.
-     */
-    //TODO
-    public Pokemon clonar(String especie) {
-        return null;
-    }
-
     public int getNivel() {
         return nivel;
     }
@@ -138,20 +125,34 @@ public class Pokemon {
         return nome;
     }
 
-    // Setter e Getter para o EV do pokemon
-    public void setEV(Stat stat, int new_EV) {
-        this.evs.put(stat, new_EV);
-    }
+    // Setter e Getter para o EV do Pokémon
     public int getEV(Stat stat) {
         return evs.get(stat);
     }
+    public void setEV(Stat stat, int new_EV) {
+        this.evs.put(stat, new_EV);
+    }
 
-    //Setter e Getter para o HP atual do pokemon
+    //Setter e Getter para o HP atual do Pokémon
     public int getHP_atual() {
         return hp;
     }
     public void setHP_atual(int novo_hp){
         this.hp = novo_hp;
+    }
+    public void somaHP_atual(int aumento) {
+        this.hp += aumento;
+        if (hp < 0) {
+            hp = 0;
+        }
+    }
+
+    //Setter e Getter para o efeito atual do Pokémon
+    public Efeito getEfeito() {
+        return efeito;
+    }
+    public void setEfeito(Efeito efeito) {
+        this.efeito = efeito;
     }
 
 
