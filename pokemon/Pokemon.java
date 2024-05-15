@@ -147,6 +147,14 @@ public class Pokemon {
         return evs.get(stat);
     }
 
+    //Setter e Getter para o HP atual do pokemon
+    public int getHP_atual() {
+        return hp;
+    }
+    public void setHP_atual(int novo_hp){
+        this.hp = novo_hp;
+    }
+
     /**
      * Retorna uma cópia da lista de tipos do Pokémon
      */
