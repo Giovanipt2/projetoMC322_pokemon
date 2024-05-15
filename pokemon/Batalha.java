@@ -6,6 +6,9 @@ public class Batalha {
     private Menu menu;
     private Clima clima;
     private int ultimoDano;
+    public enum Acao {
+        ATACAR, TROCAR, ITEM;
+    }
 
     public Batalha(Treinador jogador1, Treinador jogador2, Menu menu) {
         if (jogador1 == null || jogador2 == null) {
@@ -33,8 +36,8 @@ public class Batalha {
         Pokemon pokemon1 = null, pokemon2 = null;
 
 
-        //Escolhe a acao do jogador 1
-        Menu.Acao acao1;
+        //Escolhe a ação do jogador 1
+        Acao acao1;
         while (true) {
             acao1 = menu.escolherAcao(jogador1);
             switch (acao1) {
@@ -60,8 +63,8 @@ public class Batalha {
             break;
         }
 
-        // Escolhe a acao do jogador 2
-        Menu.Acao acao2;
+        // Escolhe a ação do jogador 2
+        Acao acao2;
         while (true) {
             acao2 = menu.escolherAcao(jogador2);
             switch (acao2) {
@@ -88,7 +91,7 @@ public class Batalha {
         }
 
         int prioridade;
-        if ((acao1 != Menu.Acao.ATACAR && acao2 != Menu.Acao.ATACAR) || acao1 == acao2) {
+        if ((acao1 != Acao.ATACAR && acao2 != Acao.ATACAR) || acao1 == acao2) {
             if (jogador1.getPokemonAtivo().getStat(Stat.SPEED) >= jogador2.getPokemonAtivo().getStat(Stat.SPEED)) {
                 prioridade = 1; // Jogador 1 vai primeiro
             }
@@ -96,11 +99,18 @@ public class Batalha {
                 prioridade = 2; // Jogador 2 vai primeiro
             }
         }
-        else if (acao1 == Menu.Acao.ATACAR) {
+        else if (acao1 == Acao.ATACAR) {
             prioridade = 2;  // Ataques ocorrem depois de itens e trocas
         }
         else {
             prioridade = 1; // Jogador 2 atacou
         }
+    }
+
+    /**
+     * Enum com as ações possiveis
+     */
+    public enum Acao {
+        ATACAR, TROCAR, ITEM;
     }
 }

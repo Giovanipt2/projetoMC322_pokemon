@@ -29,13 +29,6 @@ public class Menu {
         this.jogadores.add(jogador);
     }
 
-    /**
-     * Enum com as ações possiveis
-     */
-    public enum Acao {
-        ATACAR, TROCAR, ITEM;
-    }
-
 
     /**
      * Mostra os pokemons iniciais disponiveis
@@ -235,14 +228,14 @@ public class Menu {
      * @param treinador O treinador que escolherá a ação
      * @return A ação escolhida
      */
-    public Acao escolherAcao(Treinador treinador) {
+    public Batalha.Acao escolherAcao(Treinador treinador) {
         // Mostrar as ações disponíveis
         System.out.println("Escolha uma ação: ");
         System.out.println("[1] Atacar");
         System.out.println("[2] Trocar pokemon");
         System.out.println("[3] Usar item");
 
-        Acao acao = null;
+        Batalha.Acao acao = null;
         // Lê a escolha do jogador (verificando se ele passou um inteiro)
         int escolha = 0;
         while (escolha < 1 || escolha > 3) {
@@ -256,13 +249,13 @@ public class Menu {
         }
         switch (escolha) {
             case 1:
-                acao = Acao.ATACAR;
+                acao = Batalha.Acao.ATACAR;
                 break;
             case 2:
-                acao = Acao.TROCAR;
+                acao = Batalha.Acao.TROCAR;
                 break;
             case 3:
-                acao = Acao.ITEM;
+                acao = Batalha.Acao.ITEM;
                 break;
         }
         return acao;
