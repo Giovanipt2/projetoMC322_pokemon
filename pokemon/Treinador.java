@@ -87,6 +87,32 @@ public class Treinador {
 
 
     /**
+     * Método para verificar se o treinador ainda tem pokémons não desmaiados
+     * @return True, caso tenha perdido todos os pokémons; ou 0, caso contrário
+     */
+    public boolean treinadorDerrotado() {
+        for (Pokemon pokemon : time) { 
+            if (pokemon.estaVivo()) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+
+    /**
+     * Cura os Pokémons do treinador
+     */
+    public void curarPokemons() {
+        for (Pokemon pokemon : time) {
+            pokemon.restauraHP();
+            pokemon.restaurarAtaques();
+        }
+    }
+
+
+    /**
      * Método que define como as informações do treinador serão exibidas
      */
     @Override

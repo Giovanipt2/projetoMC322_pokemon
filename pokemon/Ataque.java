@@ -83,4 +83,18 @@ public abstract class Ataque {
     public int getPrioridade() {
         return prioridade;
     }
+
+    /**
+     * Reduz o pp do ataque após sua utilização
+     */
+    public void reduzPp() {
+        this.pp--;
+    }
+
+    /**
+     * Restaura o pp do ataque após a batalha
+     */
+    public void restauraPp() {
+        this.pp = ppMax;
+    }
 }
