@@ -47,6 +47,11 @@ public class Pokemon {
      * O efeito atual do Pokémon (null se não há)
      */
     private Efeito efeito;
+    /**
+     * Natureza do Pokémon
+     */
+    private Natureza natureza;
+
 
     /**
      * Cria um novo Pokemón.
@@ -106,7 +111,8 @@ public class Pokemon {
      * @return o valor do stat
      */
     public int getStat(Stat stat) {
-        int valor = 2 * statsBase.get(stat) + ivs.get(stat) + evs.get(stat)/4;
+        double valorDouble = (2 * statsBase.get(stat) + ivs.get(stat) + evs.get(stat)/4) * natureza.getMultiplicadorStat(stat);
+        int valor = (int) valorDouble;
         valor = (valor * nivel)/100;
         if (stat == Stat.HP) {
             valor += nivel + 10;
@@ -115,6 +121,14 @@ public class Pokemon {
             valor += 5;
         }
         return valor;
+    }
+
+    public Natureza getNatureza() {
+        return natureza;
+    }
+
+    public void setNatureza(Natureza natureza) {
+        this.natureza = natureza;
     }
 
     public int getNivel() {
