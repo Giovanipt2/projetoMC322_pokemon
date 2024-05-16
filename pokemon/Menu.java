@@ -188,8 +188,9 @@ public class Menu {
             }
             if (resposta == 1) {
                 escolhido = true;
-                ItemPokemon item = leituraDeItem();
-                pokemonEscolhido.adicionarItem(item);
+                // A escolha de itens de pokemon só será usada na segunda entrega
+                // ItemPokemon item = leituraDeItem();
+                // pokemonEscolhido.adicionarItem(item);
                 System.out.println("Pokemon adicionado ao time!");
             }
             else {
@@ -270,8 +271,9 @@ public class Menu {
             }
 
             if (resposta == 1) {
-                ItemPokemon item = leituraDeItem();
-                pokemonEscolhido.adicionarItem(item);
+                // A escolha de itens de pokemon só será usada na segunda entrega
+                // ItemPokemon item = leituraDeItem();
+                // pokemonEscolhido.adicionarItem(item);
                 jogador.adicionarPokemon(pokemonEscolhido);
                 System.out.println("Pokemon adicionado ao time!");
                 escolhidos++;
@@ -386,9 +388,6 @@ public class Menu {
         System.out.println("Escolha um pokemon para ser o ativo: ");
         System.out.println("[0] Voltar");
         List<Pokemon> listaPokemons = treinador.getPokemons();
-        for (int i = 0; i < listaPokemons.size(); i++) {
-            System.out.println("[" + (i + 1) + "] " + listaPokemons.get(i).getNome());
-        }
         for (int i = 0; i < listaPokemons.size(); i++) {
             System.out.println("[" + (i + 1) + "] " + listaPokemons.get(i).getNome());
         }
