@@ -1,4 +1,7 @@
-package pokemon;
+package pokemon.itens;
+
+import pokemon.Pokemon;
+import pokemon.Stat;
 
 /*
  * Classe de itens responsável por adicionar um número fixo de pontos de vida para

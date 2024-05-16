@@ -1,4 +1,4 @@
-package pokemon;
+package pokemon.itens;
 
 public class ItemPokemon extends Item {
     //Construtor

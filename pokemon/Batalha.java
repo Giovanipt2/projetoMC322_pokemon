@@ -1,5 +1,8 @@
 package pokemon;
 
+import pokemon.ataques.Ataque;
+import pokemon.itens.ItemBatalha;
+
 public class Batalha {
     private Treinador jogador1;
     private Treinador jogador2;

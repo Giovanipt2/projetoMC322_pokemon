@@ -1,5 +1,11 @@
 package pokemon;
 
+import pokemon.ataques.Ataque;
+import pokemon.ataques.AtaqueEfeito;
+import pokemon.ataques.AtaqueEspecial;
+import pokemon.ataques.AtaqueFisico;
+import pokemon.itens.ItemPokemon;
+
 import java.util.Map;
 import java.util.HashMap;
 import java.util.ArrayList;
