@@ -46,17 +46,7 @@ public abstract class Ataque {
      * @return uma string com as informações do ataque.
      */
     public String toString() {
-        return "Ataque{" +
-                "nome=" + nome +
-                ", tipo=" + tipo +
-                ", poder=" + poder +
-                ", pp=" + pp +
-                ", ppMax=" + ppMax +
-                ", prioridade=" + prioridade +
-                ", precisao=" + precisao +
-                ", efeito=" + efeito +
-                ", precisaoEfeito=" + precisaoEfeito +
-                '}';
+        return nome + " (" + tipo + ")";
     }
 
 
