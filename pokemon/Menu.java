@@ -198,7 +198,7 @@ public class Menu {
                 escolhido = true;
                 // A natureza do pokemon é escolhida aleatoriamente
                 Natureza natureza = Natureza.values()[Util.randInt(0, Natureza.values().length - 1)];
-                pokemonEscolhido.setNatureza(natureza);
+                //pokemonEscolhido.setNatureza(natureza);
                 System.out.println("A natureza do pokemon é " + natureza + ".");
                 // A escolha de itens de pokemon só será usada na segunda entrega
                 // ItemPokemon item = leituraDeItem();
@@ -235,7 +235,7 @@ public class Menu {
         ArrayList<Pokemon> pokemonsgerais = new ArrayList<>(BancoDados.getPokemons().values());
 
         // Escolha do pokemon inicial
-        int escolhidos = 0;
+        int escolhidos = 1;
         Pokemon pokemonInicial = leituraDePokemonInicial();
         jogador.adicionarPokemon(pokemonInicial);
         System.out.println("Pokemon inicial adicionado ao time!");
@@ -290,13 +290,18 @@ public class Menu {
                 System.out.println("Pokemon adicionado ao time!");
                 escolhidos++;
                 System.out.println("Faltam " + (4 - escolhidos) + " pokémons para completar o time.");
+                if (escolhidos == 4){
+                    System.out.println("Time completo! Parabéns!");
+                }
             }
             else {
                 System.out.println("Pokemon não adicionado ao time!");
             }
 
             // Mostra os pokémons gerais disponíveis novamente
-            imprimirListaPokemons();
+            if (escolhidos != 4) {
+                imprimirListaPokemons();
+            }
         }
     }
 
@@ -483,5 +488,32 @@ public class Menu {
         }
         item = listaItens.get(escolha - 1);
         return item;
-    } 
+    }
+
+    public Pokemon escolherPokemonDaBatalha(Treinador treinador) {
+        // Mostrar o time do jogador
+        System.out.println("Escolha um pokemon para começar a batalha: ");
+        List<Pokemon> listaPokemons = treinador.getPokemons();
+        for (int i = 0; i < listaPokemons.size(); i++) {
+            System.out.println("[" + (i + 1) + "] " + listaPokemons.get(i).getNome());
+        }
+
+        // Lê a escolha do jogador (verificando se ele passou um inteiro)
+        int escolha = 0;
+        while (escolha < 1 || escolha > listaPokemons.size()) {
+            try {
+                escolha = input.nextInt();
+                input.nextLine();
+            } catch (InputMismatchException e) {
+                System.out.println("Opção inválida.");
+                input.nextLine();
+            }
+            if (escolha < 1 || escolha > listaPokemons.size()){
+                System.out.println("Digite um número entre 1 e " + listaPokemons.size() + ":");
+            }
+        }
+        Pokemon pokemon = listaPokemons.get(escolha - 1);
+        System.out.println("Pokemon " + pokemon.getNome() + " escolhido para a batalha!");
+        return pokemon;
+    }
 }

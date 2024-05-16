@@ -35,13 +35,25 @@ public class Batalha {
     }
 
     /**
-     * @return {@code true} se o jogador 1 vencer;
-     * {@code false} se o jogador 2 vencer.
+     * Inicia a batalha entre os dois treinadores.
+     * @return o treinador vencedor da batalha.
      */
-    public boolean iniciar() {
-        
+    public Treinador iniciar() {
+        System.out.println("-----------------------------------");
+        System.out.println("A batalha entre " + jogador1.getNome() + " e " + jogador2.getNome() + " vai começar!");
+        System.out.println("-----------------------------------");
+        // Cada jogador escolhe um Pokémon inicial
+        System.out.println(jogador1.getNome() + ", escolha seu Pokémon inicial:");
+        jogador1.setPokemonAtivo(menu.escolherPokemonDaBatalha(jogador1));
+        System.out.println(jogador2.getNome() + ", escolha seu Pokémon inicial:");
+        jogador2.setPokemonAtivo(menu.escolherPokemonDaBatalha(jogador2));
 
-        return true;
+        // A batalha continua até um dos treinadores ser derrotado
+        while (!jogador1.treinadorDerrotado() && !jogador2.treinadorDerrotado()) {
+            iniciarTurno();
+        }
+
+        return jogador1.treinadorDerrotado() ? jogador2 : jogador1;
     }
 
     /**
@@ -61,6 +73,9 @@ public class Batalha {
 
         //Escolhe a ação do jogador 1
         Acao acao1;
+        System.out.println("-----------------------------------");
+        System.out.println("Agora é a vez de " + jogador1.getNome() + "!");
+        System.out.println("-----------------------------------");
         while (true) {
             acao1 = menu.escolherAcao(jogador1);
             switch (acao1) {
@@ -86,6 +101,9 @@ public class Batalha {
             break;
         }
 
+        System.out.println("-----------------------------------");
+        System.out.println("Agora é a vez de " + jogador2.getNome() + "!");
+        System.out.println("-----------------------------------");
         // Escolhe a ação do jogador 2
         Acao acao2;
         while (true) {
