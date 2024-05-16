@@ -44,6 +44,12 @@ public class Batalha {
         return true;
     }
 
+    /**
+     * Inicia um turno de batalha.
+     * O jogador 1 escolhe sua ação, e então o jogador 2 escolhe a sua.
+     * As ações são realizadas de acordo com a prioridade dos ataques e a
+     * velocidade dos Pokémon.
+     */
     private void iniciarTurno() {
         // Ataques escolhidos
         Ataque ataque1 = null, ataque2 = null;
@@ -151,6 +157,8 @@ public class Batalha {
     }
 
     /**
+     * Verifica se o jogador 2 deve agir antes do jogador 1.
+     * @param ataque1 o ataque escolhido pelo jogador 1
      * @return {@code true} se o jogador 2 tem prioridade
      */
     private boolean segundoVaiAntes(Ataque ataque1, Ataque ataque2) {
@@ -169,18 +177,29 @@ public class Batalha {
                 - jogador2.getPokemonAtivo().getStat(Stat.SPEED)) < 0;
     }
 
+    /**
+     * Realiza um ataque.
+     * @param ataque o ataque a ser realizado
+     * @param usuario o Pokémon que está usando o ataque
+     * @param alvo o Pokémon que está sendo atacado
+     */
     private void atacar(Ataque ataque, Pokemon usuario, Pokemon alvo) {
         ultimoDano = ataque.dano(usuario, alvo, clima);
         ultimoEfeito = ataque.efeito();
 
         // Efeitos de held items virão aqui
 
-        alvo.somaHP_atual(ultimoDano);
+        alvo.somaHP_atual(-ultimoDano);
         if (alvo.getEfeito() == null) {
             alvo.setEfeito(ultimoEfeito);
         }
     }
 
+    /**
+     * Troca o Pokémon ativo de um treinador.
+     * @param treinador o treinador que está trocando de Pokémon
+     * @param pokemon o novo Pokémon ativo
+     */
     private void trocarPokemon(Treinador treinador, Pokemon pokemon) {
         treinador.setPokemonAtivo(pokemon);
     }
