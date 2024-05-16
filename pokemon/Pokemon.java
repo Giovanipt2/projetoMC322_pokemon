@@ -147,6 +147,24 @@ public class Pokemon {
         }
     }
 
+    /**
+     * Restaura a vida do pokémon após a batalha
+     */
+    public void restauraHP() {
+        this.hp = getStat(Stat.HP);
+    }
+
+
+    /**
+     * Restaura o pp dos ataques utilizados pelo Pokémon
+     */
+    public void restaurarAtaques() {
+        for (Ataque ataque : ataques) {
+            ataque.restauraPp();
+        }
+    }
+
+
     //Setter e Getter para o efeito atual do Pokémon
     public Efeito getEfeito() {
         return efeito;
