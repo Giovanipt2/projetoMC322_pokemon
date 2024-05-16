@@ -29,6 +29,14 @@ public class Menu {
         this.jogadores.add(jogador);
     }
 
+    /**
+     * Retorna o jogador na posição i da lista de jogadores
+     * @param i A posição do jogador na lista
+     * @return O jogador na posição i
+     */
+    public Treinador getJogador(int i) {
+        return this.jogadores.get(i);
+    }
 
     /**
      * Mostra os pokemons iniciais disponiveis
@@ -188,6 +196,10 @@ public class Menu {
             }
             if (resposta == 1) {
                 escolhido = true;
+                // A natureza do pokemon é escolhida aleatoriamente
+                Natureza natureza = Natureza.values()[Util.randInt(0, Natureza.values().length - 1)];
+                pokemonEscolhido.setNatureza(natureza);
+                System.out.println("A natureza do pokemon é " + natureza + ".");
                 // A escolha de itens de pokemon só será usada na segunda entrega
                 // ItemPokemon item = leituraDeItem();
                 // pokemonEscolhido.adicionarItem(item);
