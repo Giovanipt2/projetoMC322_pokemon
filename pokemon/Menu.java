@@ -285,8 +285,7 @@ public class Menu {
             if (resposta == 1) {
                 // A escolha de itens de pokemon só será usada na segunda entrega
                 // ItemPokemon item = leituraDeItem();
-                // pokemonEscolhido.adicionarItem(item);
-                jogador.adicionarPokemon(pokemonEscolhido);
+                // pokemonEscolhido.adicionarItem(item);jogador.adicionarPokemon(pokemonEscolhido);
                 System.out.println("Pokemon adicionado ao time!");
                 escolhidos++;
                 System.out.println("Faltam " + (4 - escolhidos) + " pokémons para completar o time.");
@@ -488,7 +487,6 @@ public class Menu {
         }
         item = listaItens.get(escolha - 1);
         return item;
-<<<<<<< HEAD
     }
 
     public Pokemon escolherPokemonDaBatalha(Treinador treinador) {
@@ -518,7 +516,3 @@ public class Menu {
         return pokemon;
     }
 }
-=======
-    } 
-}
->>>>>>> 8dba8a3ef8b1f4363257c73a401bf6df3fe3c995
