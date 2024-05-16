@@ -106,6 +106,7 @@ public class Batalha {
 
         System.out.println("-----------------------------------");
         System.out.println("Agora é a vez de " + jogador2.getNome() + "!");
+        System.out.println("Seu Pokémon ativo é " + jogador2.getPokemonAtivo().getNome() + ".");
         System.out.println("-----------------------------------");
         // Escolhe a ação do jogador 2
         Acao acao2;
