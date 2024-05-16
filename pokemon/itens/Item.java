@@ -1,4 +1,4 @@
-package pokemon;
+package pokemon.itens;
 
 /**
   * Essa classe será a responsável para classificar os itens
@@ -6,7 +6,7 @@ package pokemon;
   * isto é, eles atribuirão um efeito para o pokemon vigente em
   * combate, consumindo o turno do treinador.
  */
-abstract class Item {
+public abstract class Item {
     private String nome;    //Refere-se ao nome do item
     
     // Construtor

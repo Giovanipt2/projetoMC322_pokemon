@@ -1,5 +1,7 @@
-package pokemon;
+package pokemon.itens;
 
+
+import pokemon.Pokemon;
 
 /* Essa classe de itens será responsável por classificar
  * todos os itens consumíveis que podem ser usados em batalha
@@ -8,7 +10,7 @@ package pokemon;
  * 
  * Eles serão separados em 4 subclasses: I_Combate
  */
-abstract class ItemBatalha extends Item {
+public abstract class ItemBatalha extends Item {
     // Construtor
     public ItemBatalha(String nome) {
         super(nome);

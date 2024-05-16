@@ -1,5 +1,8 @@
-package pokemon;
+package pokemon.itens;
 
+
+import pokemon.Efeito;
+import pokemon.Pokemon;
 
 /*
  * Classe responsável por classificar os itens que são usados para

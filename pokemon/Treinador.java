@@ -1,5 +1,7 @@
 package pokemon;
 
+import pokemon.itens.ItemBatalha;
+
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,5 +1,8 @@
-package pokemon;
+package pokemon.itens;
 
+
+import pokemon.Pokemon;
+import pokemon.Stat;
 
 /*
  * Classe que representa os itens que adicionam diretamente
@@ -7,7 +10,7 @@ package pokemon;
  * !NOTA IMPORTANTE: OS ITENS DE EV NAO RESETAM QUANDO O POKEMON MORRE!
 */
 public class I_EV extends ItemBatalha{
-    private Stat boostEV; // Responsável por indicar qual EV será boostado 
+    private Stat boostEV; // Responsável por indicar qual EV será boostado
     //Construtor
     public I_EV(String nome, Stat boostEV) {
         super(nome);
