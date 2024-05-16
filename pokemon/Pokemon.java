@@ -160,6 +160,8 @@ public class Pokemon {
         }
     }
 
+    //Setter e Getter para a natureza do Pokémon
+
     /**
      * Restaura a vida do pokémon após a batalha
      */
