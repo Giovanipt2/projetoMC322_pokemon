@@ -488,6 +488,7 @@ public class Menu {
         }
         item = listaItens.get(escolha - 1);
         return item;
+<<<<<<< HEAD
     }
 
     public Pokemon escolherPokemonDaBatalha(Treinador treinador) {
@@ -517,3 +518,7 @@ public class Menu {
         return pokemon;
     }
 }
+=======
+    } 
+}
+>>>>>>> 8dba8a3ef8b1f4363257c73a401bf6df3fe3c995
