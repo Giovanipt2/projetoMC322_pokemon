@@ -1,5 +1,9 @@
 package pokemon;
 
+import pokemon.ataques.Ataque;
+import pokemon.itens.ItemBatalha;
+import pokemon.itens.ItemPokemon;
+
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.InputMismatchException;

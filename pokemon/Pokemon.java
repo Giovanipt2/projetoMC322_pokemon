@@ -1,5 +1,7 @@
 package pokemon;
 
+import pokemon.ataques.Ataque;
+
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.List;

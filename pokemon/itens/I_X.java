@@ -1,4 +1,4 @@
-package pokemon;
+package pokemon.itens;
 /*
  * Classe que determina todos os itens do formato item de batalha da forma X.
  * Esses itens consomem um turno e aumentam um certo status do pokemon pela duração
