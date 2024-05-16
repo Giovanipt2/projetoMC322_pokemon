@@ -42,7 +42,7 @@ public class Pokemon {
     /**
      * O item atual do Pokémon (null se não há)
      */
-    private ItemPokemon item;
+    //private ItemPokemon item;
     /**
      * O efeito atual do Pokémon (null se não há)
      */
@@ -95,9 +95,9 @@ public class Pokemon {
      * Adiciona um item ao pokemon.
      * @param item O item a ser adicionado
      */
-    public void adicionarItem(ItemPokemon item) {
-        this.item = item;
-    }
+    //public void adicionarItem(ItemPokemon item) {
+        //this.item = item;
+    //}
 
     /**
      * Calcula o valor efetivo de um stat.
@@ -155,14 +155,6 @@ public class Pokemon {
         this.efeito = efeito;
     }
 
-
-    //Setter e Getter para o Efeito atual do pokemon
-    public Efeito getEfeito() {
-        return efeito;
-    }
-    public void setEfeito(Efeito novo_efeito) {
-        this.efeito = novo_efeito;
-    }
     /**
      * Retorna uma cópia da lista de tipos do Pokémon
      */
