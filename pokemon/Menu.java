@@ -441,16 +441,16 @@ public class Menu {
      * @return O item escolhido
      * Se o usuário digitar 0, a função retorna null
      */
-    public Item escolherItem(Treinador treinador) {
+    public ItemBatalha escolherItem(Treinador treinador) {
         // Mostrar os itens disponíveis
         System.out.println("Escolha um item para usar: ");
         System.out.println("[0] Voltar");
-        ArrayList<Item> listaItens = new ArrayList<>(treinador.getItens());
+        ArrayList<ItemBatalha> listaItens = new ArrayList<>(treinador.getItens());
         for (int i = 0; i < listaItens.size(); i++) {
             System.out.println("[" + (i + 1) + "] " + listaItens.get(i).getNome());
         }
 
-        Item item = null;
+        ItemBatalha item = null;
         // Lê a escolha do jogador (verificando se ele passou um inteiro)
         int escolha = 0;
         while (escolha < 0 || escolha > listaItens.size()) {
