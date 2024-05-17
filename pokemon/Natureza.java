@@ -51,5 +51,9 @@ public enum Natureza {
         return 1.0;
     }
 
+    public static Natureza random() {
+        Natureza[] naturezas = values();
+        return naturezas[Util.randInt(0, naturezas.length)];
+    }
 }
 
