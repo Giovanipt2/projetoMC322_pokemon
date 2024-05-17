@@ -487,6 +487,7 @@ public class Menu {
 
         if (!item.usavel(treinador.getPokemonAtivo())) {
             System.out.printf("Não é possível usar %s agora.\n", item.getNome());
+            return null;
         }
         return item;
     }
