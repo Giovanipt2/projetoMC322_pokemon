@@ -81,8 +81,9 @@ public class Pokemon {
 
         // TODO: Os ataques em si também precisam ser copiados
         this.ataques = new ArrayList<>(ataques);
-        this.hp = getStat(Stat.HP);
         this.efeito = null;
+        this.natureza = Natureza.random();
+        this.hp = getStat(Stat.HP);
     }
 
     /**
@@ -121,7 +122,7 @@ public class Pokemon {
         else {
             valor += 5;
         }
-        return valor;
+        return (int) natureza.getMultiplicadorStat(stat) * valor;
     }
 
     public Natureza getNatureza() {
