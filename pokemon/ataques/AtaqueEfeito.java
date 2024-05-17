@@ -25,4 +25,9 @@ public class AtaqueEfeito extends Ataque {
     public Efeito efeito() {
         return null;
     }
+
+    @Override
+    public AtaqueEfeito copiar() {
+        return new AtaqueEfeito(nome, tipo, poder, ppMax, prioridade, precisao, efeito, precisaoEfeito);
+    }
 }

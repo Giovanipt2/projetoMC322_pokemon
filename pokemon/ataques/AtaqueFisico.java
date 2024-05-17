@@ -64,4 +64,9 @@ public class AtaqueFisico extends Ataque {
     private boolean critico() {
         return Util.randBool(1, 24);
     }
+
+    @Override
+    public AtaqueFisico copiar() {
+        return new AtaqueFisico(nome, tipo, poder, ppMax, prioridade, precisao, efeito, precisaoEfeito);
+    }
 }

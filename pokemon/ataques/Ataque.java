@@ -86,6 +86,8 @@ public abstract class Ataque {
 
     public abstract Efeito efeito();
 
+    public abstract Ataque copiar();
+
     public int getPrioridade() {
         return prioridade;
     }

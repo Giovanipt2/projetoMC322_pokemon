@@ -79,8 +79,10 @@ public class Pokemon {
             ivs.put(s, Util.randInt(0, 32));
         }
 
-        // TODO: Os ataques em si também precisam ser copiados
-        this.ataques = new ArrayList<>(ataques);
+        this.ataques = new ArrayList<>();
+        for (Ataque ataque: ataques) {
+            this.ataques.add(ataque.copiar());
+        }
         this.efeito = null;
         this.natureza = Natureza.random();
         this.hp = getStat(Stat.HP);
