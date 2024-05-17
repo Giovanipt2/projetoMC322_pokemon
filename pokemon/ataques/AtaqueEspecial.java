@@ -57,4 +57,9 @@ public class AtaqueEspecial extends Ataque {
     private boolean critico() {
         return Util.randBool(1, 24);
     }
+
+    @Override
+    public AtaqueEspecial copiar() {
+        return new AtaqueEspecial(nome, tipo, poder, ppMax, prioridade, precisao, efeito, precisaoEfeito);
+    }
 }
