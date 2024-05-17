@@ -5,5 +5,5 @@ public class ItemPokemon extends Item {
     public ItemPokemon(String nome) {
         super(nome);
     }
-    
+
 }

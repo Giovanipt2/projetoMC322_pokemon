@@ -48,6 +48,7 @@ public abstract class Ataque {
 
     /**
      * Retorna as informações do ataque.
+     *
      * @return uma string com as informações do ataque.
      */
     public String toString() {
@@ -89,11 +90,23 @@ public abstract class Ataque {
         return prioridade;
     }
 
+    public int getPp() {
+        return pp;
+    }
+
+    public void setPp(int pp) {
+        this.pp = pp;
+    }
+
+    public int getPpMax() {
+        return ppMax;
+    }
+
     /**
      * Reduz o pp do ataque após sua utilização
      */
-    public void reduzPp() {
-        this.pp--;
+    public void somaPp(int soma) {
+        this.pp += soma;
     }
 
     /**
