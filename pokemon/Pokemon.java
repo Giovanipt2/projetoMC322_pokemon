@@ -110,21 +110,22 @@ public class Pokemon {
 
     /**
      * Calcula o valor efetivo de um stat.
+     * No caso do HP, corresponde ao HP máximo.
      *
      * @param stat qual dos 6 stats
-     * @return o valor do stat
+     * @return o valor do stat.
      */
     public int getStat(Stat stat) {
-        double valorDouble = (2 * statsBase.get(stat) + ivs.get(stat) + evs.get(stat)/4) * natureza.getMultiplicadorStat(stat);
-        int valor = (int) valorDouble;
-        valor = (valor * nivel)/100;
+        int valor = (2 * statsBase.get(stat) + ivs.get(stat) + evs.get(stat)/4) * nivel;
+        valor /= 100;
         if (stat == Stat.HP) {
             valor += nivel + 10;
         }
         else {
             valor += 5;
+            valor = (int) (valor * natureza.getMultiplicadorStat(stat));
         }
-        return (int) natureza.getMultiplicadorStat(stat) * valor;
+        return valor;
     }
 
     public Natureza getNatureza() {
