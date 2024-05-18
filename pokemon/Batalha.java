@@ -156,9 +156,16 @@ public class Batalha {
             case ITEM:
                 item1.uso(jogador1.getPokemonAtivo());
                 break;
-            case ATACAR:
-                atacar(ataque1, jogador1.getPokemonAtivo(), jogador2.getPokemonAtivo());
+            case ATACAR: {
+                Pokemon pokemonAtivo = jogador1.getPokemonAtivo();
+                if (pokemonAtivo.estaVivo()) {
+                    atacar(ataque1, pokemonAtivo, jogador2.getPokemonAtivo());
+                } else {
+                    System.out.printf("%s desmaiou!\n",pokemonAtivo);
+                    trocarPokemon(jogador1, menu.trocarPokemon(jogador1));
+                }
                 break;
+            }
             case TROCAR:
                 trocarPokemon(jogador1, pokemon1);
         }
@@ -169,9 +176,17 @@ public class Batalha {
                 case ITEM:
                     item2.uso(jogador2.getPokemonAtivo());
                     break;
-                case ATACAR:
-                    atacar(ataque2, jogador2.getPokemonAtivo(), jogador1.getPokemonAtivo());
+                case ATACAR: {
+                    Pokemon pokemonAtivo = jogador2.getPokemonAtivo();
+                    if (pokemonAtivo.estaVivo()) {
+                        atacar(ataque2, pokemonAtivo, jogador2.getPokemonAtivo());
+                    } else {
+                        System.out.printf("%s desmaiou!\n",pokemonAtivo);
+                        // TODO criar método que troca após desmaio
+                        trocarPokemon(jogador2, menu.trocarPokemon(jogador2));
+                    }
                     break;
+                }
                 case TROCAR:
                     trocarPokemon(jogador2, pokemon2);
             }
@@ -206,14 +221,36 @@ public class Batalha {
      * @param alvo o Pokémon que está sendo atacado
      */
     private void atacar(Ataque ataque, Pokemon usuario, Pokemon alvo) {
-        ultimoDano = ataque.dano(usuario, alvo, clima);
-        ultimoEfeito = ataque.efeito();
+        System.out.printf("%s usou %s\n", usuario.getNome(), ataque.getNome());
+
+        // Verifica se o ataque acontece e
+        boolean ataqueAcertou = (Util.randInt(0, 101) < ataque.getPrecisao());
+        boolean fezEfeito = ataqueAcertou && (Util.randInt(0, 101) < ataque.getProbEfeito());
+
+        ultimoDano = ataqueAcertou ? ataque.dano(usuario, alvo, clima) : 0;
+        ultimoEfeito = fezEfeito ? ataque.getEfeito() : null;
 
         // Efeitos de held items virão aqui
 
-        alvo.somaHP_atual(-ultimoDano);
-        if (alvo.getEfeito() == null) {
-            alvo.setEfeito(ultimoEfeito);
+        // Dá o dano
+        ultimoDano = Math.min(ultimoDano, alvo.getHP_atual());
+        if (ultimoDano > 0) {
+            System.out.printf("%s tomou %d de dano!\n", alvo.getNome(), ultimoDano);
+            alvo.somaHP_atual(-ultimoDano);
+        }
+        else {
+            System.out.println("O ataque não causou dano.");
+        }
+
+        if (alvo.estaVivo()) {
+            System.out.printf("Seu HP caiu para %d.\n", alvo.getHP_atual());
+            if (ultimoEfeito != null && alvo.getEfeito() == null) {
+                alvo.setEfeito(ultimoEfeito);
+                System.out.printf("%s está %s!\n", alvo.getNome(), ultimoEfeito);
+            }
+        } else {
+            System.out.printf("%s desmaiou!\n", alvo.getNome());
+            // TODO cuidar do desmaio
         }
     }
 
