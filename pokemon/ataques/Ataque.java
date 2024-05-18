@@ -1,9 +1,6 @@
 package pokemon.ataques;
 
-import pokemon.Clima;
-import pokemon.Efeito;
-import pokemon.Pokemon;
-import pokemon.Tipo;
+import pokemon.*;
 
 public abstract class Ataque {
     /**
@@ -40,7 +37,7 @@ public abstract class Ataque {
     /**
      * A probabilidade (em porcentagem) do efeito ser aplicado
      */
-    protected int precisaoEfeito;
+    protected int probEfeito;
     /**
      * String que representa o nome do ataque
      */
@@ -56,7 +53,7 @@ public abstract class Ataque {
     }
 
 
-    public Ataque(String nome, Tipo tipo, int poder, int ppMax, int prioridade, int precisao, Efeito efeito, int precisaoEfeito) {
+    public Ataque(String nome, Tipo tipo, int poder, int ppMax, int prioridade, int precisao, Efeito efeito, int probEfeito) {
         this.nome = nome;
         this.tipo = tipo;
         this.poder = poder;
@@ -65,7 +62,7 @@ public abstract class Ataque {
         this.prioridade = prioridade;
         this.precisao = precisao;
         this.efeito = efeito;
-        this.precisaoEfeito = precisaoEfeito;
+        this.probEfeito = probEfeito;
     }
 
 
@@ -84,12 +81,25 @@ public abstract class Ataque {
      */
     public abstract int dano(Pokemon usuario, Pokemon alvo, Clima clima);
 
-    public abstract Efeito efeito();
-
     public abstract Ataque copiar();
 
     public int getPrioridade() {
         return prioridade;
+    }
+
+    /**
+     * @return o efeito que o ataque pode causar
+     */
+    public Efeito getEfeito() {
+        return efeito;
+    }
+
+    public int getPrecisao() {
+        return precisao;
+    }
+
+    public int getProbEfeito() {
+        return probEfeito;
     }
 
     public int getPp() {

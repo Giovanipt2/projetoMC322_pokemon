@@ -198,10 +198,6 @@ public class Menu {
             }
             if (resposta == 1) {
                 escolhido = true;
-                // A natureza do pokemon é escolhida aleatoriamente
-                Natureza natureza = Natureza.values()[Util.randInt(0, Natureza.values().length - 1)];
-                //pokemonEscolhido.setNatureza(natureza);
-                System.out.println("A natureza do Pokémon é " + natureza + ".");
                 // A escolha de itens de pokemon só será usada na segunda entrega
                 // ItemPokemon item = leituraDeItem();
                 // pokemonEscolhido.adicionarItem(item);
@@ -288,6 +284,7 @@ public class Menu {
                 // A escolha de itens de pokemon só será usada na segunda entrega
                 // ItemPokemon item = leituraDeItem();
                 // pokemonEscolhido.adicionarItem(item);jogador.adicionarPokemon(pokemonEscolhido);
+                jogador.adicionarPokemon(pokemonEscolhido);
                 System.out.println("Pokémon adicionado ao time!");
                 escolhidos++;
                 System.out.println("Faltam " + (4 - escolhidos) + " Pokémons para completar o time.");

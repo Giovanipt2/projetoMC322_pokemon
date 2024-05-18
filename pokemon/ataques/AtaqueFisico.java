@@ -4,8 +4,8 @@ import pokemon.*;
 
 public class AtaqueFisico extends Ataque {
 
-    public AtaqueFisico(String nome, Tipo tipo, int poder, int ppMax, int prioridade, int precisao, Efeito efeito, int precisaoEfeito) {
-        super(nome, tipo, poder, ppMax, prioridade, precisao, efeito, precisaoEfeito);
+    public AtaqueFisico(String nome, Tipo tipo, int poder, int ppMax, int prioridade, int precisao, Efeito efeito, int probEfeito) {
+        super(nome, tipo, poder, ppMax, prioridade, precisao, efeito, probEfeito);
     }
 
     /**
@@ -27,8 +27,6 @@ public class AtaqueFisico extends Ataque {
     public int dano(Pokemon usuario, Pokemon alvo, Clima clima) {
         int d = danoBase(usuario, alvo);
 
-        //TODO Considerar clima
-
         // Dano crítico
         if (critico()) {
             d = Math.round(d * 1.5f);
@@ -48,11 +46,6 @@ public class AtaqueFisico extends Ataque {
         return d;
     }
 
-    //TODO
-    @Override
-    public Efeito efeito() {
-        return null;
-    }
 
     /**
      * Determina se o ataque deve ser crítico.
@@ -67,6 +60,6 @@ public class AtaqueFisico extends Ataque {
 
     @Override
     public AtaqueFisico copiar() {
-        return new AtaqueFisico(nome, tipo, poder, ppMax, prioridade, precisao, efeito, precisaoEfeito);
+        return new AtaqueFisico(nome, tipo, poder, ppMax, prioridade, precisao, efeito, probEfeito);
     }
 }
