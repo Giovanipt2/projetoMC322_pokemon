@@ -4,8 +4,8 @@ import pokemon.*;
 
 public class AtaqueEspecial extends Ataque {
 
-    public AtaqueEspecial(String nome, Tipo tipo, int poder, int ppMax, int prioridade, int precisao, Efeito efeito, int precisaoEfeito) {
-        super(nome, tipo, poder, ppMax, prioridade, precisao, efeito, precisaoEfeito);
+    public AtaqueEspecial(String nome, Tipo tipo, int poder, int ppMax, int prioridade, int precisao, Efeito efeito, int probEfeito) {
+        super(nome, tipo, poder, ppMax, prioridade, precisao, efeito, probEfeito);
     }
 
     /**
@@ -48,18 +48,12 @@ public class AtaqueEspecial extends Ataque {
         return d;
     }
 
-    //TODO
-    @Override
-    public Efeito efeito() {
-        return null;
-    }
-
     private boolean critico() {
         return Util.randBool(1, 24);
     }
 
     @Override
     public AtaqueEspecial copiar() {
-        return new AtaqueEspecial(nome, tipo, poder, ppMax, prioridade, precisao, efeito, precisaoEfeito);
+        return new AtaqueEspecial(nome, tipo, poder, ppMax, prioridade, precisao, efeito, probEfeito);
     }
 }
