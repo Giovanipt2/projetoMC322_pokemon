@@ -355,7 +355,7 @@ public class Menu {
         if (escolha == 0) {
             return null;
         }
-        return listaAtaques.get(escolha - 1).copiar();
+        return listaAtaques.get(escolha - 1);
     }
 
     /**
