@@ -31,6 +31,6 @@ public class I_Efeito extends ItemBatalha {
         if (isFull) {
             return pokemon.getEfeito() != null;
         }
-        return (pokemon.estaVivo()) && (pokemon.getEfeito() == efeito);
+        return (pokemon.getEfeito() == efeito);
     }
 }

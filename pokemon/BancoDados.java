@@ -4,7 +4,10 @@ import pokemon.ataques.Ataque;
 import pokemon.ataques.AtaqueEfeito;
 import pokemon.ataques.AtaqueEspecial;
 import pokemon.ataques.AtaqueFisico;
-import pokemon.itens.ItemPokemon;
+import pokemon.itens.ItemBatalha;
+import pokemon.itens.I_EV;
+import pokemon.itens.I_Pocao;
+import pokemon.itens.I_Efeito;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -15,7 +18,7 @@ public class BancoDados {
     private static Map<String, Pokemon> pokemonsIniciais;
     private static Map<String, Pokemon> pokemons;
     private static Map<String, Ataque> ataques;
-    private static Map<String, ItemPokemon> itensPokemon;
+    private static Map<String, ItemBatalha> itensBatalha;
 
     // Getters
     public static Map<String, Pokemon> getPokemonsIniciais() {
@@ -30,8 +33,8 @@ public class BancoDados {
         return ataques;
     }
 
-    public static Map<String, ItemPokemon> getItensPokemon() {
-        return itensPokemon;
+    public static Map<String, ItemBatalha> getItensBatalha() {
+        return itensBatalha;
     }
 
     /**
@@ -51,10 +54,25 @@ public class BancoDados {
 
     private static void inicializarItens(){
         //Criando 3 itens de exemplo
-        itensPokemon = new HashMap<>();
-        itensPokemon.put("HP Up", new ItemPokemon("HP Up"));
-        itensPokemon.put("Protein", new ItemPokemon("Protein"));
-        itensPokemon.put("Iron", new ItemPokemon("Iron"));
+        itensBatalha = new HashMap<>();
+        itensBatalha.put("HP Up", new I_EV("HP Up",Stat.HP, 10));
+        itensBatalha.put("Protein", new I_EV("Protein",Stat.ATK, 10));
+        itensBatalha.put("Iron", new I_EV("Iron",Stat.DEF, 10));
+        itensBatalha.put("Calcium", new I_EV("Calcium",Stat.ATK_SP, 10));
+        itensBatalha.put("Zinc", new I_EV("Zinc",Stat.DEF_SP, 10));
+        itensBatalha.put("Carbos", new I_EV("Carbos",Stat.SPEED, 10));
+        itensBatalha.put("Potion", new I_Pocao("Potion",false, 20));
+        itensBatalha.put("Potion", new I_Pocao("Super Potion",false, 60));
+        itensBatalha.put("Potion", new I_Pocao("Hyper Potion",false, 120));
+        itensBatalha.put("Potion", new I_Pocao("Max Potion",true, 9999));
+        itensBatalha.put("Antidote", new I_Efeito("Antidote",Efeito.ENVENENADO, false));
+        itensBatalha.put("Burn Heal", new I_Efeito("Burn Heal",Efeito.QUEIMADO, false));
+        itensBatalha.put("Awakening", new I_Efeito("Awakening",Efeito.DORMINDO, false));
+        itensBatalha.put("Paralyze Heal", new I_Efeito("Paralyze Heal",Efeito.PARALISADO, false));
+        itensBatalha.put("Ice Heal", new I_Efeito("Ice Heal",Efeito.CONGELADO, false));
+        itensBatalha.put("Full Heal", new I_Efeito("Full Heal",Efeito.CONFUSO, true));
+
+        
     }
 
     public static void inicializar() {
@@ -65,7 +83,7 @@ public class BancoDados {
         //Array com os ataques do pokémon que está sendo criado
         ArrayList<Ataque> ataquesPokemon = new ArrayList<>();
 
-        if (itensPokemon == null) {
+        if (itensBatalha == null) {
             inicializarItens();
         }
 

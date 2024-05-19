@@ -9,7 +9,7 @@ import pokemon.Pokemon;
  * para garantir um aprimoramento de algum atributo do pokemon
  * instantaneamente e consome o turno do treinador para isso.
  */
-public abstract class ItemBatalha extends Item {
+public class ItemBatalha extends Item {
     // Construtor
     public ItemBatalha(String nome) {
         super(nome);
@@ -22,7 +22,9 @@ public abstract class ItemBatalha extends Item {
      *
      * @param pokemon o Pokémon no qual o item é usado
      */
-    public abstract void uso(Pokemon pokemon);
+    public void uso(Pokemon pokemon) {
+        //Uso fantasma para poder instanciar um array de Itens de Batalha
+    }
 
     /**
      * Diz se o item pode ser usado agora.
