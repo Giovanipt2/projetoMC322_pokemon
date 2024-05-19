@@ -338,24 +338,34 @@ public class Menu {
         }
 
         // Lê a escolha do jogador (verificando se ele passou um inteiro)
-        int escolha = -1;
-        while (escolha < 0 || escolha > listaAtaques.size()) {
+        Ataque escolhido = null;
+        while (escolhido == null) {
             try {
-                escolha = input.nextInt();
+                int indice = input.nextInt() - 1;
                 input.nextLine();
+
+                if (indice == -1) { // Jogador mudou de ideia
+                    return null;
+                }
+
+                if (indice >= 0 && indice < listaAtaques.size()) {
+                    escolhido = listaAtaques.get(indice);
+                    if (escolhido.getPp() <= 0) {
+                        System.out.println("PP insuficiente.");
+                        escolhido = null;
+                    }
+                } else {
+                    System.out.println("Opção inválida.");
+                }
+
             } catch (InputMismatchException e) {
                 System.out.println("Opção inválida.");
                 input.nextLine();
             }
-            if (escolha < 0 || escolha > listaAtaques.size()) {
-                System.out.println("Digite um número entre 1 e " + listaAtaques.size() + ":");
-            }
+
         }
-        // Se o jogador escolher 0, retorna null
-        if (escolha == 0) {
-            return null;
-        }
-        return listaAtaques.get(escolha - 1);
+
+        return escolhido;
     }
 
     /**
