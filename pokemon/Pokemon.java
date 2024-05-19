@@ -3,9 +3,9 @@ package pokemon;
 import pokemon.ataques.Ataque;
 
 import java.util.ArrayList;
-import java.util.Map;
-import java.util.List;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Pokemon {
     /**
@@ -57,14 +57,14 @@ public class Pokemon {
     /**
      * Cria um novo Pokemón.
      *
-     * @param nome o nome do Pokémon
-     * @param tipos os tipos do Pokémon
-     * @param nivel o nível inicial do Pokémon
+     * @param nome      o nome do Pokémon
+     * @param tipos     os tipos do Pokémon
+     * @param nivel     o nível inicial do Pokémon
      * @param statsBase os stats base do Pokémon.
      *                  Stats omitidos recebem o valor 0 por padrão.
-     * @param ataques os ataques que o Pokémon pode usar
+     * @param ataques   os ataques que o Pokémon pode usar
      */
-    public Pokemon(String nome, List<Tipo> tipos, int nivel,  Map<Stat, Integer> statsBase, List<Ataque> ataques) {
+    public Pokemon(String nome, List<Tipo> tipos, int nivel, Map<Stat, Integer> statsBase, List<Ataque> ataques) {
         this.nome = nome;
         this.tipos = new ArrayList<>(tipos);
         this.nivel = nivel;
@@ -80,7 +80,7 @@ public class Pokemon {
         }
 
         this.ataques = new ArrayList<>();
-        for (Ataque ataque: ataques) {
+        for (Ataque ataque : ataques) {
             this.ataques.add(ataque.copiar());
         }
         this.efeito = null;
@@ -93,7 +93,7 @@ public class Pokemon {
      * A cópia tem nível e EVs zerados,
      * e IVs aleatorizados.
      *
-     * @param p o Pokémon a ser copiado
+     * @param p     o Pokémon a ser copiado
      * @param nivel o nível do novo Pokémon
      */
     public Pokemon(Pokemon p, int nivel) {
@@ -101,12 +101,15 @@ public class Pokemon {
     }
 
     /**
-     * Adiciona um item ao pokemon.
-     * @param item O item a ser adicionado
+     * Cria uma cópia do Pokémon.
+     * A cópia tem nível e EVs zerados,
+     * e IVs aleatorizados.
+     *
+     * @param p o Pokémon a ser copiado
      */
-    //public void adicionarItem(ItemPokemon item) {
-        //this.item = item;
-    //}
+    public Pokemon(Pokemon p) {
+        this(p.nome, p.tipos, p.nivel, p.statsBase, p.ataques);
+    }
 
     /**
      * Calcula o valor efetivo de um stat.
@@ -116,12 +119,11 @@ public class Pokemon {
      * @return o valor do stat.
      */
     public int getStat(Stat stat) {
-        int valor = (2 * statsBase.get(stat) + ivs.get(stat) + evs.get(stat)/4) * nivel;
+        int valor = (2 * statsBase.get(stat) + ivs.get(stat) + evs.get(stat) / 4) * nivel;
         valor /= 100;
         if (stat == Stat.HP) {
             valor += nivel + 10;
-        }
-        else {
+        } else {
             valor += 5;
             valor = (int) (valor * natureza.getMultiplicadorStat(stat));
         }
@@ -148,6 +150,7 @@ public class Pokemon {
     public int getEV(Stat stat) {
         return evs.get(stat);
     }
+
     public void setEV(Stat stat, int new_EV) {
         this.evs.put(stat, new_EV);
     }
@@ -156,9 +159,11 @@ public class Pokemon {
     public int getHP_atual() {
         return hp;
     }
-    public void setHP_atual(int novo_hp){
+
+    public void setHP_atual(int novo_hp) {
         this.hp = novo_hp;
     }
+
     public void somaHP_atual(int aumento) {
         this.hp += aumento;
         if (hp < 0) {
@@ -190,6 +195,7 @@ public class Pokemon {
     public Efeito getEfeito() {
         return efeito;
     }
+
     public void setEfeito(Efeito efeito) {
         this.efeito = efeito;
     }
@@ -200,7 +206,7 @@ public class Pokemon {
     public List<Tipo> getTipos() {
         return new ArrayList<>(tipos);
     }
-    
+
     /**
      * Retorna os ataques do Pokémon.
      */
@@ -214,12 +220,13 @@ public class Pokemon {
 
     /**
      * Retorna as informações do Pokémon.
+     *
      * @return uma string com as informações do Pokémon.
      */
     public String toString() {
         String out = "Nome: " + nome + "\n" +
-              "Nível: " + nivel + "\n" +
-              "Ataques: \n";
+                "Nível: " + nivel + "\n" +
+                "Ataques: \n";
         //Mostrar os ataques
         for (int i = 0; i < ataques.size(); i++) {
             out += "[" + (i + 1) + "] " + ataques.get(i).toString() + "\n";

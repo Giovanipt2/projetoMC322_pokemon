@@ -186,7 +186,7 @@ public class Menu {
             }
         }
 
-        return pokemonEscolhido;
+        return new Pokemon(pokemonEscolhido);
     }
 
     /**
@@ -257,7 +257,7 @@ public class Menu {
                 // A escolha de itens de pokemon só será usada na segunda entrega
                 // ItemPokemon item = leituraDeItem();
                 // pokemonEscolhido.adicionarItem(item);jogador.adicionarPokemon(pokemonEscolhido);
-                jogador.adicionarPokemon(pokemonEscolhido);
+                jogador.adicionarPokemon(new Pokemon(pokemonEscolhido));
                 System.out.println("Pokémon adicionado ao time!");
                 escolhidos++;
                 System.out.println("Faltam " + (4 - escolhidos) + " Pokémons para completar o time.");
@@ -334,7 +334,7 @@ public class Menu {
         Pokemon pokemonAtivo = treinador.getPokemonAtivo();
         List<Ataque> listaAtaques = pokemonAtivo.getAtaques();
         for (int i = 0; i < listaAtaques.size(); i++) {
-            System.out.println("[" + (i + 1) + "] " + listaAtaques.get(i).getNome());
+            System.out.printf("[%d] %s (PP: %d)\n", i + 1, listaAtaques.get(i).getNome(), listaAtaques.get(i).getPp());
         }
 
         // Lê a escolha do jogador (verificando se ele passou um inteiro)
@@ -355,7 +355,7 @@ public class Menu {
         if (escolha == 0) {
             return null;
         }
-        return listaAtaques.get(escolha - 1);
+        return listaAtaques.get(escolha - 1).copiar();
     }
 
     /**

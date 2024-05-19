@@ -79,6 +79,7 @@ public class Batalha {
         Acao acao1;
         System.out.println("-----------------------------------");
         System.out.println("Agora é a vez de " + jogador1.getNome() + "!");
+        System.out.println("Seu Pokémon ativo é " + jogador1.getPokemonAtivo().getNome() + ".");
         System.out.println("-----------------------------------");
         while (true) {
             acao1 = menu.escolherAcao(jogador1);
@@ -163,6 +164,7 @@ public class Batalha {
                 break;
             case ATACAR: {
                 Pokemon pokemonAtivo = jogador1.getPokemonAtivo();
+                // Só pode ter desmaiado se ambos atacaram e o jogador 2 foi mais rápido.
                 if (pokemonAtivo.estaVivo()) {
                     atacar(ataque1, pokemonAtivo, jogador2.getPokemonAtivo());
                 } else {
@@ -236,6 +238,7 @@ public class Batalha {
      */
     private void atacar(Ataque ataque, Pokemon usuario, Pokemon alvo) {
         System.out.printf("%s usou %s\n", usuario.getNome(), ataque.getNome());
+        ataque.somaPp(-1);
 
         // Verifica se o ataque acontece e
         boolean ataqueAcertou = (Util.randInt(0, 101) < ataque.getPrecisao());
