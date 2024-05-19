@@ -1,7 +1,13 @@
 package pokemon.ataques;
 
-import pokemon.*;
+import pokemon.Clima;
+import pokemon.Efeito;
+import pokemon.Pokemon;
+import pokemon.Tipo;
 
+/**
+ * Um ataque que pode ser usado por um Pokémon
+ */
 public abstract class Ataque {
     /**
      * O tipo do ataque.
@@ -81,48 +87,75 @@ public abstract class Ataque {
      */
     public abstract int dano(Pokemon usuario, Pokemon alvo, Clima clima);
 
+    /**
+     * Cria uma cópia do ataque.
+     * Ataques precisam ser copiados para manter
+     * a contagem de PP consistente.
+     *
+     * @return uma cópia do ataque.
+     */
     public abstract Ataque copiar();
 
+    /**
+     * @return um inteiro representando a prioridade do ataque.
+     */
     public int getPrioridade() {
         return prioridade;
     }
 
     /**
-     * @return o efeito que o ataque pode causar
+     * @return o efeito que o ataque pode causar.
      */
     public Efeito getEfeito() {
         return efeito;
     }
 
+    /**
+     * @return a probabilidade (em porcentagem) de o ataque
+     * atingir o oponente.
+     */
     public int getPrecisao() {
         return precisao;
     }
 
+    /**
+     * @returna probabilidade (em porcentagem) de, caso o ataque
+     * acerte, causar um efeito no oponente.
+     */
     public int getProbEfeito() {
         return probEfeito;
     }
 
+    /**
+     * @return o PP disponível para o ataque.
+     */
     public int getPp() {
         return pp;
     }
 
+    /**
+     * @param pp o novo PP.
+     */
     public void setPp(int pp) {
         this.pp = pp;
     }
 
+    /**
+     * @return o máximo de PP que o ataque pode ter.
+     */
     public int getPpMax() {
         return ppMax;
     }
 
     /**
-     * Reduz o pp do ataque após sua utilização
+     * Soma um valor ao PP atual do ataque.
      */
     public void somaPp(int soma) {
         this.pp += soma;
     }
 
     /**
-     * Restaura o pp do ataque após a batalha
+     * Restaura o PP do ataque para o valor máximo.
      */
     public void restauraPp() {
         this.pp = ppMax;
