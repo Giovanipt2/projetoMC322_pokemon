@@ -1,13 +1,14 @@
 package pokemon;
+
 import java.util.Scanner;
 
 public class Main {
     private static Treinador torneio(Menu menu) {
         // As batalhas iniciais do torneio são entre o 1º e o 2º, 3º e 4º.
-        Treinador jogador1 = menu.getJogador(0);
-        Treinador jogador2 = menu.getJogador(1);
-        Treinador jogador3 = menu.getJogador(2);
-        Treinador jogador4 = menu.getJogador(3);
+        Treinador jogador1 = menu.lerJogador();
+        Treinador jogador2 = menu.lerJogador();
+        Treinador jogador3 = menu.lerJogador();
+        Treinador jogador4 = menu.lerJogador();
 
         Batalha batalha1 = new Batalha(jogador1, jogador2, menu);
         Batalha batalha2 = new Batalha(jogador3, jogador4, menu);
@@ -27,6 +28,7 @@ public class Main {
         // O vencedor do torneio é o vencedor da batalha final.
         return batalhaFinal.iniciar();
     }
+
     public static void main(String[] args) {
         //Inicializar o banco de dados
         BancoDados.inicializar();
@@ -34,9 +36,6 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         //Inicializar o menu
         Menu menu = new Menu(scanner);
-
-        //Criar os jogadores
-        menu.CriarJogadores();
 
         //Iniciar o torneio
         Treinador vencedor = torneio(menu);

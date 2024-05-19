@@ -13,33 +13,11 @@ import java.util.Scanner;
  * Representa o menu principal do jogo, onde o jogador pode acessar suas informações, seu time de Pokémons, seus itens, etc.
  */
 public class Menu {
-    // O menu possui uma lista de jogadores
-    private ArrayList<Treinador> jogadores;
     private Scanner input;
 
     // Construtor padrão
     public Menu(Scanner input) {
-        this.jogadores = new ArrayList<>();
         this.input = input;
-    }
-
-    /**
-     * Adiciona um jogador à lista de jogadores.
-     *
-     * @param jogador o jogador a ser adicionado
-     */
-    private void adicionarJogador(Treinador jogador) {
-        this.jogadores.add(jogador);
-    }
-
-    /**
-     * Retorna o jogador na posição i da lista de jogadores
-     *
-     * @param i A posição do jogador na lista
-     * @return O jogador na posição i
-     */
-    public Treinador getJogador(int i) {
-        return this.jogadores.get(i);
     }
 
     /**
@@ -214,18 +192,15 @@ public class Menu {
     /**
      * Lê um jogador do console e o adiciona à lista de jogadores
      */
-    private void leituraDeJogador() {
+    public Treinador lerJogador() {
         // Lê o nome do jogador
         System.out.println("Digite o nome do jogador: ");
         String nome = input.nextLine();
         // Cria um novo jogador com o nome lido
         Treinador jogador = new Treinador(nome);
-        // Adiciona o jogador à lista de jogadores
-        this.adicionarJogador(jogador);
 
         System.out.println("Jogador " + nome + " criado com sucesso!");
         System.out.println("Primeiro, escolha um dos Pokémons iniciais para ter acesso a seus dados: ");
-
 
         //ArrayList de pokemons gerais
         ArrayList<Pokemon> pokemonsgerais = new ArrayList<>(BancoDados.getPokemons().values());
@@ -298,15 +273,7 @@ public class Menu {
                 imprimirListaPokemons();
             }
         }
-    }
-
-    /**
-     * Cria os jogadores
-     */
-    public void CriarJogadores() {
-        for (int i = 0; i < 4; i++) {
-            leituraDeJogador();
-        }
+        return jogador;
     }
 
     /**
