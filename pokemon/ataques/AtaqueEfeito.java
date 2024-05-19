@@ -1,7 +1,13 @@
 package pokemon.ataques;
 
-import pokemon.*;
+import pokemon.Clima;
+import pokemon.Efeito;
+import pokemon.Pokemon;
+import pokemon.Tipo;
 
+/**
+ * Um ataque que não dá dano direto, mas causa efeitos no oponente.
+ */
 public class AtaqueEfeito extends Ataque {
 
     public AtaqueEfeito(String nome, Tipo tipo, int poder, int ppMax, int prioridade, int precisao, Efeito efeito, int probEfeito) {

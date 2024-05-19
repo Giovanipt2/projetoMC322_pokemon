@@ -2,6 +2,9 @@ package pokemon.ataques;
 
 import pokemon.*;
 
+/**
+ * Um ataque que dá dano físico.
+ */
 public class AtaqueFisico extends Ataque {
 
     public AtaqueFisico(String nome, Tipo tipo, int poder, int ppMax, int prioridade, int precisao, Efeito efeito, int probEfeito) {
@@ -48,9 +51,8 @@ public class AtaqueFisico extends Ataque {
 
 
     /**
-     * Determina se o ataque deve ser crítico.
-     * Por enquanto, todos os ataques têm uma chance
-     * de 1/24 de serem críticos.
+     * Decide se o ataque dará dano crítico. Por enquanto,
+     * a probabilidade de crítico é 1/24 para todos os ataques físicos.
      *
      * @return {@code true} se o ataque for crítico.
      */
