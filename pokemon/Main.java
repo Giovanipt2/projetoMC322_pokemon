@@ -1,5 +1,8 @@
 package pokemon;
 
+import pokemon.itens.ItemBatalha;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -9,6 +12,15 @@ public class Main {
         Treinador jogador2 = menu.lerJogador();
         Treinador jogador3 = menu.lerJogador();
         Treinador jogador4 = menu.lerJogador();
+
+        // Dá três itens aleatórios a cada jogador
+        ArrayList<ItemBatalha> itens = new ArrayList<>(BancoDados.getItensBatalha().values());
+        for (int i = 0; i < 3; i++) {
+            jogador1.adicionarItem(itens.get(Util.randInt(0, itens.size())));
+            jogador2.adicionarItem(itens.get(Util.randInt(0, itens.size())));
+            jogador3.adicionarItem(itens.get(Util.randInt(0, itens.size())));
+            jogador4.adicionarItem(itens.get(Util.randInt(0, itens.size())));
+        }
 
         Batalha batalha1 = new Batalha(jogador1, jogador2, menu);
         Batalha batalha2 = new Batalha(jogador3, jogador4, menu);
