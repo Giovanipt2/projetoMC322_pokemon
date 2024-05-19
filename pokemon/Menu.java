@@ -52,11 +52,11 @@ public class Menu {
     /**
      * Mostra os itens disponíveis.
      */
-    private void imprimirListaItensPokemon() {
+    private void imprimirListaItensBatalha() {
         // Mostra os itens disponíveis
         System.out.println("-----------------------------------");
         System.out.println("Itens disponíveis: ");
-        ArrayList<ItemPokemon> listaItens = new ArrayList<>(BancoDados.getItensPokemon().values());
+        ArrayList<ItemBatalha> listaItens = new ArrayList<>(BancoDados.getItensBatalha().values());
         for (int i = 0; i < listaItens.size(); i++) {
             System.out.println("[" + (i + 1) + "] " + listaItens.get(i).getNome());
         }
@@ -68,13 +68,13 @@ public class Menu {
      *
      * @return o item escolhido.
      */
-    private ItemPokemon leituraDeItem() {
+    private ItemBatalha leituraDeItem() {
         // Mostrar a lista de itens disponíveis
         System.out.println("Escolha um item para usar: ");
-        imprimirListaItensPokemon();
+        imprimirListaItensBatalha();
 
-        ItemPokemon item = null;
-        ArrayList<ItemPokemon> listaItens = new ArrayList<>(BancoDados.getItensPokemon().values());
+        ItemBatalha item = null;
+        ArrayList<ItemBatalha> listaItens = new ArrayList<>(BancoDados.getItensBatalha().values());
 
 
         // Lê a escolha do jogador (verificando se ele passou um inteiro)
@@ -116,7 +116,7 @@ public class Menu {
             } else {
                 System.out.println("Item não adicionado ao pokemon!");
                 System.out.println("Escolha um item para usar: ");
-                imprimirListaItensPokemon();
+                imprimirListaItensBatalha();
                 // Lê novamente escolha do jogador (verificando se ele passou um inteiro)
                 escolha = 0;
                 while (escolha < 1 || escolha > listaItens.size()) {
