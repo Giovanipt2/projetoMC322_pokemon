@@ -4,10 +4,10 @@ import pokemon.ataques.Ataque;
 import pokemon.itens.ItemBatalha;
 import pokemon.itens.ItemPokemon;
 
-import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * Representa o menu principal do jogo, onde o jogador pode acessar suas informações, seu time de Pokémons, seus itens, etc.
@@ -24,8 +24,9 @@ public class Menu {
     }
 
     /**
-     * Adiciona um jogador à lista de jogadores
-     * @param jogador O jogador a ser adicionado
+     * Adiciona um jogador à lista de jogadores.
+     *
+     * @param jogador o jogador a ser adicionado
      */
     private void adicionarJogador(Treinador jogador) {
         this.jogadores.add(jogador);
@@ -33,6 +34,7 @@ public class Menu {
 
     /**
      * Retorna o jogador na posição i da lista de jogadores
+     *
      * @param i A posição do jogador na lista
      * @return O jogador na posição i
      */
@@ -85,6 +87,7 @@ public class Menu {
 
     /**
      * Permite que o jogador escolha um item para o pokemon atual.
+     *
      * @return o item escolhido.
      */
     private ItemPokemon leituraDeItem() {
@@ -132,8 +135,7 @@ public class Menu {
             if (resposta == 1) {
                 itemEscolhido = true;
                 System.out.println("Item adicionado ao pokemon!");
-            }
-            else {
+            } else {
                 System.out.println("Item não adicionado ao pokemon!");
                 System.out.println("Escolha um item para usar: ");
                 imprimirListaItensPokemon();
@@ -151,7 +153,7 @@ public class Menu {
                 }
             }
         }
-        
+
         return item;
     }
 
@@ -172,7 +174,7 @@ public class Menu {
                     System.out.println("Opção inválida.");
                     input.nextLine();
                 }
-                if (escolha < 1 || escolha > PokemonsIniciais.size()){
+                if (escolha < 1 || escolha > PokemonsIniciais.size()) {
                     System.out.println("Digite um número entre 1 e " + PokemonsIniciais.size() + ":");
                 }
             }
@@ -192,26 +194,22 @@ public class Menu {
                     System.out.println("Opção inválida.");
                     input.nextLine();
                 }
-                if (resposta < 1 || resposta > 2){
+                if (resposta < 1 || resposta > 2) {
                     System.out.println("Digite 1 para sim ou 2 para não:");
                 }
             }
             if (resposta == 1) {
                 escolhido = true;
-                // A escolha de itens de pokemon só será usada na segunda entrega
-                // ItemPokemon item = leituraDeItem();
-                // pokemonEscolhido.adicionarItem(item);
                 System.out.println("Pokémon adicionado ao time!");
-            }
-            else {
+            } else {
                 System.out.println("Pokémon não adicionado ao time!");
                 System.out.println("Escolha um dos Pokémons iniciais para ter acesso a seus dados:");
                 imprimirListaPokemonsIniciais();
             }
         }
-        
+
         return pokemonEscolhido;
-        }
+    }
 
     /**
      * Lê um jogador do console e o adiciona à lista de jogadores
@@ -255,7 +253,7 @@ public class Menu {
                     System.out.println("Opção inválida.");
                     input.nextLine();
                 }
-                if (escolha < 1 || escolha > pokemonsgerais.size()){
+                if (escolha < 1 || escolha > pokemonsgerais.size()) {
                     System.out.println("Digite um número entre 1 e " + pokemonsgerais.size() + ":");
                 }
             }
@@ -275,7 +273,7 @@ public class Menu {
                     System.out.println("Opção inválida.");
                     input.nextLine();
                 }
-                if (resposta < 1 || resposta > 2){
+                if (resposta < 1 || resposta > 2) {
                     System.out.println("Digite 1 para sim ou 2 para não:");
                 }
             }
@@ -288,11 +286,10 @@ public class Menu {
                 System.out.println("Pokémon adicionado ao time!");
                 escolhidos++;
                 System.out.println("Faltam " + (4 - escolhidos) + " Pokémons para completar o time.");
-                if (escolhidos == 4){
+                if (escolhidos == 4) {
                     System.out.println("Time completo! Parabéns!");
                 }
-            }
-            else {
+            } else {
                 System.out.println("Pokémon não adicionado ao time!");
             }
 
@@ -306,16 +303,18 @@ public class Menu {
     /**
      * Cria os jogadores
      */
-    public void CriarJogadores(){
+    public void CriarJogadores() {
         for (int i = 0; i < 4; i++) {
             leituraDeJogador();
         }
     }
 
     /**
-     * Permite que o jogador escolha uma ação
-     * @param treinador O treinador que escolherá a ação
-     * @return A ação escolhida
+     * Escolhe qual tipo de ação um jogador realizará na rodada.
+     * A escolha pode ser alterada depois caso o jogador mude de ideia.
+     *
+     * @param treinador o jogador
+     * @return a ação escolhida.
      */
     public Batalha.Acao escolherAcao(Treinador treinador) {
         // Mostrar as ações disponíveis
@@ -335,7 +334,7 @@ public class Menu {
                 System.out.println("Opção inválida.");
                 input.nextLine();
             }
-            if (escolha < 1 || escolha > 3){
+            if (escolha < 1 || escolha > 3) {
                 System.out.println("Digite um número entre 1 e 3:");
             }
         }
@@ -354,10 +353,12 @@ public class Menu {
     }
 
     /**
-     * Permite que o jogador escolha um ataque do pokemon ativo
-     * @param treinador O treinador que escolherá o ataque
-     * @return O ataque escolhido
-     * Se o usuário digitar 0, a função retorna null
+     * Escolhe o ataque que um jogador utilizará na rodada.
+     * Oferece a opção de voltar caso o jogador mude de ideia.
+     *
+     * @param treinador o jogador
+     * @return o ataque escolhido;
+     * {@code null} caso o jogador cancele a escolha.
      */
     public Ataque escolherAtaque(Treinador treinador) {
         // Mostrar os ataques disponíveis
@@ -379,7 +380,7 @@ public class Menu {
                 System.out.println("Opção inválida.");
                 input.nextLine();
             }
-            if (escolha < 0 || escolha > listaAtaques.size()){
+            if (escolha < 0 || escolha > listaAtaques.size()) {
                 System.out.println("Digite um número entre 1 e " + listaAtaques.size() + ":");
             }
         }
@@ -391,67 +392,95 @@ public class Menu {
     }
 
     /**
-     * Permite que o jogador escolha um pokemon para ser o ativo
-     * @param treinador O treinador que escolherá o pokemon ativo
-     * @return O pokemon escolhido
-     * Se o usuário digitar 0, a função retorna null
+     * Escolhe qual Pokémon um jogador quer ativar.
+     * Oferece a opção de voltar caso o jogador mude de ideia.
+     *
+     * @param treinador o treinador que escolherá o pokemon ativo
+     * @return o pokemon escolhido;
+     * {@code null} caso o jogador cancele a escolha.
      */
     public Pokemon trocarPokemon(Treinador treinador) {
-        // Mostrar os pokémons disponíveis
-        System.out.println("Escolha um pokemon para ser o ativo: ");
+        // Imprime as opções possíveis
+        System.out.println("Escolha um pokemon para ser o ativo:");
         System.out.println("[0] Voltar");
         List<Pokemon> listaPokemons = treinador.getPokemons();
         for (int i = 0; i < listaPokemons.size(); i++) {
-            System.out.println("[" + (i + 1) + "] " + listaPokemons.get(i).getNome());
+            System.out.printf("[%d] %s\n", i + 1, listaPokemons.get(i).getNome());
         }
 
-        // Lê a escolha do jogador (verificando se ele passou um inteiro)
-        int escolha = -1;
-        while (escolha < 0 || escolha > listaPokemons.size()) {
+        // Escolhe uma opção
+        Pokemon escolhido = null;
+        while (escolhido == null) {
             try {
-                escolha = input.nextInt();
+                int indice = input.nextInt() - 1;
                 input.nextLine();
+
+                if (indice == -1) { // Jogador quis voltar
+                    return null;
+                }
+                if (indice >= 0 && indice < listaPokemons.size()) {
+                    escolhido = listaPokemons.get(indice);
+                    if (!escolhido.estaVivo()) {
+                        System.out.printf("%s desmaiou, escolha outro Pokémon.\n", escolhido.getNome());
+                        escolhido = null;
+                    }
+                } else {
+                    System.out.println("Opção inválida.");
+                }
             } catch (InputMismatchException e) {
                 System.out.println("Opção inválida.");
                 input.nextLine();
             }
-            if (escolha < 0 || escolha > listaPokemons.size()){
-                System.out.println("Opção inválida. Digite um número entre 0 e " + listaPokemons.size() + ":");
-            }
         }
-        // Se o jogador escolher 0, retorna null
-        if (escolha == 0) {
-            return null;
-        }
-        Pokemon pokemon = listaPokemons.get(escolha - 1);
-
-        //Verifica se o pokemon escolhido está desmaiado
-        while (!pokemon.estaVivo()) {
-            System.out.println("Esse pokemon está desmaiado! Escolha outro pokemon para ser o ativo: ");
-            // Lê a escolha do jogador (verificando se ele passou um inteiro)
-            escolha = 0;
-            while (escolha < 1 || escolha > listaPokemons.size()) {
-                try {
-                    escolha = input.nextInt();
-                    input.nextLine();
-                } catch (InputMismatchException e) {
-                    System.out.println("Opção inválida.");
-                    input.nextLine();
-                }
-                if (escolha < 1 || escolha > listaPokemons.size()){
-                    System.out.println("Digite um número entre 1 e " + listaPokemons.size() + ":");
-                }
-            }
-            pokemon = listaPokemons.get(escolha - 1);
-        }
-        return pokemon;
+        return escolhido;
     }
 
     /**
-     * Permite que o jogador escolha um item para usar
+     * Escolhe qual Pokémon um jogador quer ativar no lugar de outro que desmaiou.
+     * Não pode ser cancelado.
+     *
+     * @param treinador o jogador
+     * @return o pokemon escolhido.
+     */
+    public Pokemon trocarPosDesmaio(Treinador treinador) {
+        // Imprime as opções
+        System.out.println("Escolha um pokemon para ser o ativo:");
+        List<Pokemon> listaPokemons = treinador.getPokemons();
+        for (int i = 0; i < listaPokemons.size(); i++) {
+            System.out.printf("[%d] %s\n", i + 1, listaPokemons.get(i).getNome());
+        }
+
+        // Escolhe uma opção
+        Pokemon escolhido = null;
+        while (escolhido == null) {
+            try {
+                int indice = input.nextInt() - 1;
+                input.nextLine();
+
+                if (indice >= 0 && indice < listaPokemons.size()) {
+                    escolhido = listaPokemons.get(indice);
+                    if (!escolhido.estaVivo()) {
+                        System.out.printf("%s desmaiou, escolha outro Pokémon.\n", escolhido.getNome());
+                        escolhido = null;
+                    }
+                } else {
+                    System.out.println("Opção inválida.");  // Índice inteiro, mas inválido
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Opção inválida.");  // Jogador não forneceu um inteiro
+                input.nextLine();
+            }
+        }
+        return escolhido;
+    }
+
+    /**
+     * Escolhe o item que o jogador usará na rodada.
+     * Oferece a opção de voltar caso o jogador mude de ideia.
+     *
      * @param treinador O treinador que escolherá o item
-     * @return O item escolhido
-     * Se o usuário digitar 0, a função retorna null
+     * @return o item escolhido;
+     * {@code null} caso o jogador cancele a escolha.
      */
     public ItemBatalha escolherItem(Treinador treinador) {
         // Mostrar os itens disponíveis
@@ -472,7 +501,7 @@ public class Menu {
                 System.out.println("Opção inválida.");
                 input.nextLine();
             }
-            if (escolha < 0 || escolha > listaItens.size()){
+            if (escolha < 0 || escolha > listaItens.size()) {
                 System.out.println("Digite um número entre 1 e " + listaItens.size() + ":");
             }
         }
@@ -489,6 +518,12 @@ public class Menu {
         return item;
     }
 
+    /**
+     * Escolhe com qual Pokémon o jogador inicia a batalha.
+     *
+     * @param treinador o jogador
+     * @return o Pokémon escolhido.
+     */
     public Pokemon escolherPokemonDaBatalha(Treinador treinador) {
         // Mostrar o time do jogador
         System.out.println("Escolha um pokemon para começar a batalha: ");
@@ -507,7 +542,7 @@ public class Menu {
                 System.out.println("Opção inválida.");
                 input.nextLine();
             }
-            if (escolha < 1 || escolha > listaPokemons.size()){
+            if (escolha < 1 || escolha > listaPokemons.size()) {
                 System.out.println("Digite um número entre 1 e " + listaPokemons.size() + ":");
             }
         }

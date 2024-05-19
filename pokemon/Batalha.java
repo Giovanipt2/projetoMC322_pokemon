@@ -39,6 +39,7 @@ public class Batalha {
 
     /**
      * Inicia a batalha entre os dois treinadores.
+     *
      * @return o treinador vencedor da batalha.
      */
     public Treinador iniciar() {
@@ -92,6 +93,8 @@ public class Batalha {
                     pokemon1 = menu.trocarPokemon(jogador1);
                     if (pokemon1 == null) {
                         continue;
+                    } else {
+                        System.out.printf("Vai, %s!\n", pokemon1.getNome());
                     }
                     break;
                 case ITEM:
@@ -123,6 +126,8 @@ public class Batalha {
                     pokemon2 = menu.trocarPokemon(jogador2);
                     if (pokemon2 == null) {
                         continue;
+                    } else {
+                        System.out.printf("Vai, %s!\n", pokemon2.getNome());
                     }
                     break;
                 case ITEM:
@@ -161,8 +166,12 @@ public class Batalha {
                 if (pokemonAtivo.estaVivo()) {
                     atacar(ataque1, pokemonAtivo, jogador2.getPokemonAtivo());
                 } else {
-                    System.out.printf("%s desmaiou!\n",pokemonAtivo);
-                    trocarPokemon(jogador1, menu.trocarPokemon(jogador1));
+                    System.out.printf("%s desmaiou!\n", pokemonAtivo.getNome());
+                    if (jogador1.treinadorDerrotado()) {
+                        System.out.printf("%s foi derrotado!\n", jogador1.getNome());
+                        return;
+                    }
+                    trocarPokemon(jogador1, menu.trocarPosDesmaio(jogador1));
                 }
                 break;
             }
@@ -179,11 +188,14 @@ public class Batalha {
                 case ATACAR: {
                     Pokemon pokemonAtivo = jogador2.getPokemonAtivo();
                     if (pokemonAtivo.estaVivo()) {
-                        atacar(ataque2, pokemonAtivo, jogador2.getPokemonAtivo());
+                        atacar(ataque2, pokemonAtivo, jogador1.getPokemonAtivo());
                     } else {
-                        System.out.printf("%s desmaiou!\n",pokemonAtivo);
-                        // TODO criar método que troca após desmaio
-                        trocarPokemon(jogador2, menu.trocarPokemon(jogador2));
+                        System.out.printf("%s desmaiou!\n", pokemonAtivo.getNome());
+                        if (jogador2.treinadorDerrotado()) {
+                            System.out.printf("%s foi derrotado!\n", jogador2.getNome());
+                            return;
+                        }
+                        trocarPokemon(jogador2, menu.trocarPosDesmaio(jogador2));
                     }
                     break;
                 }
@@ -195,6 +207,7 @@ public class Batalha {
 
     /**
      * Verifica se o jogador 2 deve agir antes do jogador 1.
+     *
      * @param ataque1 o ataque escolhido pelo jogador 1
      * @return {@code true} se o jogador 2 tem prioridade
      */
@@ -216,9 +229,10 @@ public class Batalha {
 
     /**
      * Realiza um ataque.
-     * @param ataque o ataque a ser realizado
+     *
+     * @param ataque  o ataque a ser realizado
      * @param usuario o Pokémon que está usando o ataque
-     * @param alvo o Pokémon que está sendo atacado
+     * @param alvo    o Pokémon que está sendo atacado
      */
     private void atacar(Ataque ataque, Pokemon usuario, Pokemon alvo) {
         System.out.printf("%s usou %s\n", usuario.getNome(), ataque.getNome());
@@ -237,8 +251,7 @@ public class Batalha {
         if (ultimoDano > 0) {
             System.out.printf("%s tomou %d de dano!\n", alvo.getNome(), ultimoDano);
             alvo.somaHP_atual(-ultimoDano);
-        }
-        else {
+        } else {
             System.out.println("O ataque não causou dano.");
         }
 
@@ -248,18 +261,17 @@ public class Batalha {
                 alvo.setEfeito(ultimoEfeito);
                 System.out.printf("%s está %s!\n", alvo.getNome(), ultimoEfeito);
             }
-        } else {
-            System.out.printf("%s desmaiou!\n", alvo.getNome());
-            // TODO cuidar do desmaio
         }
     }
 
     /**
      * Troca o Pokémon ativo de um treinador.
+     *
      * @param treinador o treinador que está trocando de Pokémon
-     * @param pokemon o novo Pokémon ativo
+     * @param pokemon   o novo Pokémon ativo
      */
     private void trocarPokemon(Treinador treinador, Pokemon pokemon) {
+        System.out.printf("Vai, %s!\n", pokemon.getNome());
         treinador.setPokemonAtivo(pokemon);
     }
 }
