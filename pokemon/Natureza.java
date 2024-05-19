@@ -1,8 +1,9 @@
 package pokemon;
 
 /**
- * Enumeração usada para representar as possíveis naturezas dos pokémons
- * Cada uma está relacionada com um possível incremento ou decremento em determinado atributo
+ * As possíveis naturezas de um Pokémon.
+ * Dependendo da natureza, os Pokémons podem ter
+ * certos stats aumentados ou reduzidos.
  */
 public enum Natureza {
     LONELY(Stat.HP, Stat.SPEED),
