@@ -1,5 +1,8 @@
 package pokemon;
 
+/**
+ * Os atributos principais de um Pokémon.
+ */
 public enum Stat {
     HP,
     ATK,

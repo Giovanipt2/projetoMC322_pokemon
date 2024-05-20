@@ -6,6 +6,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
+    /**
+     * Começa um torneio de quatro jogadores
+     * @param menu um menu já instanciado
+     * @return o vencedor do torneio.
+     */
     private static Treinador torneio(Menu menu) {
         // As batalhas iniciais do torneio são entre o 1º e o 2º, 3º e 4º.
         Treinador jogador1 = menu.lerJogador();
@@ -41,6 +46,9 @@ public class Main {
         return batalhaFinal.iniciar();
     }
 
+    /**
+     * Realiza um torneio de Pokémons e imprime o vencedor.
+     */
     public static void main(String[] args) {
         //Inicializar o banco de dados
         BancoDados.inicializar();

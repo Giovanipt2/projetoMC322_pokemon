@@ -4,16 +4,25 @@ import pokemon.ataques.Ataque;
 import pokemon.ataques.AtaqueEfeito;
 import pokemon.ataques.AtaqueEspecial;
 import pokemon.ataques.AtaqueFisico;
+import pokemon.itens.BoostEV;
+import pokemon.itens.CuraEfeito;
+import pokemon.itens.Pocao;
 import pokemon.itens.ItemBatalha;
-import pokemon.itens.I_EV;
-import pokemon.itens.I_Pocao;
-import pokemon.itens.I_Efeito;
 
-import java.util.Map;
-import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+/**
+ * Um banco de dados que guarda instâncias pré-definidas
+ * de Pokémons, Ataques e Itens.
+ *
+ * <p>Antes de utilizar o banco de dados, é necessário
+ * inicializá-lo, usando o método {@link BancoDados#inicializar()}.
+ * Como todas as instâncias são salvas na própria classe, não é
+ * necessário instanciar o banco de dados em si.
+ */
 public class BancoDados {
     private static Map<String, Pokemon> pokemonsIniciais;
     private static Map<String, Pokemon> pokemons;
@@ -21,18 +30,60 @@ public class BancoDados {
     private static Map<String, ItemBatalha> itensBatalha;
 
     // Getters
+
+    /**
+     * Retorna um mapa com os Pokémons iniciais pré-instanciados.
+     * Os Pokémons iniciais são as formas mais evoluídas dos Pokémons que podem
+     * ser escolhidos no começo dos jogos de Pokémon das gerações III e VI.
+     * A chave de cada Pokémon é seu nome, com a primeira letra maiúscula.
+     *
+     * <p>Note que o mapa retornado é apenas uma cópia rasa do mapa
+     * interno do banco de dados, ou seja, os Pokémons contidos nele
+     * precisam ser copiados antes de serem modificados (por exemplo,
+     * usando o construtor {@link Pokemon#Pokemon(Pokemon)}).
+     *
+     * @return mapa com os Pokémons iniciais.
+     */
     public static Map<String, Pokemon> getPokemonsIniciais() {
-        return pokemonsIniciais;
+        return new HashMap<>(pokemonsIniciais);
     }
 
+    /**
+     * Retorna um mapa com os Pokémons não-iniciais (no caso, todos lendários)
+     * pré-instanciados. A chave de cada Pokémon é seu nome, com a primeira letra maiúscula.
+     *
+     * <p>Note que o mapa retornado é apenas uma cópia rasa do mapa
+     * interno do banco de dados, ou seja, os Pokémons contidos nele
+     * precisam ser copiados antes de serem modificados (por exemplo,
+     * usando o construtor {@link Pokemon#Pokemon(Pokemon)}).
+     *
+     * @return mapa com os Pokémons não iniciais.
+     */
     public static Map<String, Pokemon> getPokemons() {
         return pokemons;
     }
 
+    /**
+     * Retorna um mapa com os ataques pré-instanciados.
+     * A chave de cada ataque é seu nome, com a primeira letra de cada palavra maiúscula.
+     *
+     * <p>Note que o mapa retornado é apenas uma cópia rasa do mapa
+     * interno do banco de dados, ou seja, os ataques contidos nele
+     * precisam ser copiados antes de serem modificados usando o método
+     * {@link Ataque#copiar()}.
+     *
+     * @return mapa com os ataques.
+     */
     public static Map<String, Ataque> getAtaques() {
         return ataques;
     }
 
+    /**
+     * Retorna um mapa com os itens pré-instanciados.
+     * A chave de cada item é seu nome, com a primeira letra de cada palavra maiúscula.
+     *
+     * @return mapa com os itens.
+     */
     public static Map<String, ItemBatalha> getItensBatalha() {
         return itensBatalha;
     }
@@ -40,41 +91,44 @@ public class BancoDados {
     /**
      * Retorna um novo Pokémon da espécie escolhida
      *
-     * @param especie o nome da espécie do Pokémon,
-     *                com a primeira letra maiúscula.
+     * @param especie o nome da espécie do Pokémon, com a primeira letra maiúscula.
      * @return o novo Pokémon criado; {@code null} se a espécie
      * não estiver no banco de dados.
      */
     public Pokemon copiaPokemon(String especie) {
         if (pokemons.containsKey(especie)) {
-            return new Pokemon(pokemons.get(especie), 100);
+            return new Pokemon(pokemons.get(especie));
         }
         return null;
     }
 
-    private static void inicializarItens(){
+    private static void inicializarItens() {
         //Criando 3 itens de exemplo
         itensBatalha = new HashMap<>();
-        itensBatalha.put("HP Up", new I_EV("HP Up",Stat.HP, 10));
-        itensBatalha.put("Protein", new I_EV("Protein",Stat.ATK, 10));
-        itensBatalha.put("Iron", new I_EV("Iron",Stat.DEF, 10));
-        itensBatalha.put("Calcium", new I_EV("Calcium",Stat.ATK_SP, 10));
-        itensBatalha.put("Zinc", new I_EV("Zinc",Stat.DEF_SP, 10));
-        itensBatalha.put("Carbos", new I_EV("Carbos",Stat.SPEED, 10));
-        itensBatalha.put("Potion", new I_Pocao("Potion",false, 20));
-        itensBatalha.put("Potion", new I_Pocao("Super Potion",false, 60));
-        itensBatalha.put("Potion", new I_Pocao("Hyper Potion",false, 120));
-        itensBatalha.put("Potion", new I_Pocao("Max Potion",true, 9999));
-        itensBatalha.put("Antidote", new I_Efeito("Antidote",Efeito.ENVENENADO, false));
-        itensBatalha.put("Burn Heal", new I_Efeito("Burn Heal",Efeito.QUEIMADO, false));
-        itensBatalha.put("Awakening", new I_Efeito("Awakening",Efeito.DORMINDO, false));
-        itensBatalha.put("Paralyze Heal", new I_Efeito("Paralyze Heal",Efeito.PARALISADO, false));
-        itensBatalha.put("Ice Heal", new I_Efeito("Ice Heal",Efeito.CONGELADO, false));
-        itensBatalha.put("Full Heal", new I_Efeito("Full Heal",Efeito.CONFUSO, true));
+        itensBatalha.put("HP Up", new BoostEV("HP Up", Stat.HP, 10));
+        itensBatalha.put("Protein", new BoostEV("Protein", Stat.ATK, 10));
+        itensBatalha.put("Iron", new BoostEV("Iron", Stat.DEF, 10));
+        itensBatalha.put("Calcium", new BoostEV("Calcium", Stat.ATK_SP, 10));
+        itensBatalha.put("Zinc", new BoostEV("Zinc", Stat.DEF_SP, 10));
+        itensBatalha.put("Carbos", new BoostEV("Carbos", Stat.SPEED, 10));
+        itensBatalha.put("Potion", new Pocao("Potion", false, 20));
+        itensBatalha.put("Super Potion", new Pocao("Super Potion", false, 60));
+        itensBatalha.put("Hyper Potion", new Pocao("Hyper Potion", false, 120));
+        itensBatalha.put("Max Potion", new Pocao("Max Potion", true, 9999));
+        itensBatalha.put("Antidote", new CuraEfeito("Antidote", Efeito.ENVENENADO, false));
+        itensBatalha.put("Burn Heal", new CuraEfeito("Burn Heal", Efeito.QUEIMADO, false));
+        itensBatalha.put("Awakening", new CuraEfeito("Awakening", Efeito.DORMINDO, false));
+        itensBatalha.put("Paralyze Heal", new CuraEfeito("Paralyze Heal", Efeito.PARALISADO, false));
+        itensBatalha.put("Ice Heal", new CuraEfeito("Ice Heal", Efeito.CONGELADO, false));
+        itensBatalha.put("Full Heal", new CuraEfeito("Full Heal", Efeito.CONFUSO, true));
 
-        
+
     }
 
+    /**
+     * Inicializa o banco de dados. Deve ser chamado uma única vez
+     * antes que os demais métodos da classe sejam chamados.
+     */
     public static void inicializar() {
         //Array com os tipos do pokémon que está sendo criado
         List<Tipo> tiposPokemon = new ArrayList<>();
@@ -136,7 +190,7 @@ public class BancoDados {
             ataques.put("Brave Bird", new AtaqueFisico("Brave Bird", Tipo.VOADOR, 120, 15, 0, 100, null, 0));
             ataques.put("Gunk Shot", new AtaqueFisico("Gunk Shot", Tipo.VENENOSO, 120, 5, 0, 80, Efeito.ENVENENADO, 30));
             ataques.put("Fire Punch", new AtaqueFisico("Fire Punch", Tipo.FOGO, 75, 15, 0, 100, Efeito.QUEIMADO, 10));
-            ataques.put("Hyperspace Fury", new AtaqueFisico("Hyperspace Fury",Tipo.SOMBRIO, 100, 5, 0, 100, null, 0));
+            ataques.put("Hyperspace Fury", new AtaqueFisico("Hyperspace Fury", Tipo.SOMBRIO, 100, 5, 0, 100, null, 0));
             ataques.put("Psychic Fangs", new AtaqueFisico("Psychic Fangs", Tipo.PSIQUICO, 85, 10, 0, 100, null, 0));
             ataques.put("High Horsepower", new AtaqueFisico("High Horsepower", Tipo.TERRA, 95, 10, 0, 95, null, 0));
             ataques.put("Glacial Lance", new AtaqueFisico("Glacial Lance", Tipo.GELO, 130, 5, 0, 100, null, 0));
@@ -159,14 +213,14 @@ public class BancoDados {
             ataques.put("Splishy Splash", new AtaqueEspecial("Splishy Splash", Tipo.AGUA, 80, 15, 0, 100, Efeito.PARALISADO, 30));
             ataques.put("Leaf Storm", new AtaqueEspecial("Leaf Storm", Tipo.PLANTA, 130, 5, 0, 90, null, 0));
             ataques.put("Dragon Pulse", new AtaqueEspecial("Dragon Pulse", Tipo.DRAGAO, 85, 10, 0, 100, null, 0));
-            ataques.put("Spark", new AtaqueFisico("Spark", Tipo.ELETRICO, 65, 20, 0,100, Efeito.PARALISADO, 30));
+            ataques.put("Spark", new AtaqueFisico("Spark", Tipo.ELETRICO, 65, 20, 0, 100, Efeito.PARALISADO, 30));
             ataques.put("Wood Hammer", new AtaqueFisico("Wood Hammer", Tipo.PLANTA, 120, 15, 0, 100, null, 0));
             ataques.put("Hammer Arm", new AtaqueFisico("Hammer Arm", Tipo.LUTADOR, 100, 10, 0, 90, null, 0));
-        }   
+        }
 
         if (pokemons == null) {
             pokemons = new HashMap<>();
-            
+
 
             // Criando o Dialga
             tiposPokemon.add(Tipo.METALICO);
@@ -186,7 +240,7 @@ public class BancoDados {
 
             pokemons.put("Dialga", new Pokemon("Dialga", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
 
-            
+
             // Criando o Palkia
             tiposPokemon.clear();
             statsBasePokemon.clear();
@@ -320,8 +374,8 @@ public class BancoDados {
             ataquesPokemon.add(ataques.get("Earthquake"));
 
             pokemons.put("Groudon", new Pokemon("Groudon", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
-        
-            
+
+
             //Criando o Blacephalon
             tiposPokemon.clear();
             statsBasePokemon.clear();
@@ -389,7 +443,7 @@ public class BancoDados {
 
             pokemons.put("Reshiram", new Pokemon("Reshiram", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
 
-            
+
             //Criando o Zekrom
             tiposPokemon.clear();
             statsBasePokemon.clear();
@@ -433,7 +487,7 @@ public class BancoDados {
             ataquesPokemon.add(ataques.get("Thunder"));
 
             pokemons.put("Xerneas", new Pokemon("Xerneas", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
-            
+
 
             //Criando o Yveltal
             tiposPokemon.clear();
@@ -699,7 +753,7 @@ public class BancoDados {
 
             tiposPokemon.add(Tipo.AGUA);
             tiposPokemon.add(Tipo.TERRA);
-            
+
             statsBasePokemon.put(Stat.HP, 100);
             statsBasePokemon.put(Stat.ATK, 110);
             statsBasePokemon.put(Stat.DEF, 90);
@@ -721,7 +775,7 @@ public class BancoDados {
             ataquesPokemon.clear();
 
             tiposPokemon.add(Tipo.PLANTA);
-            
+
             statsBasePokemon.put(Stat.HP, 70);
             statsBasePokemon.put(Stat.ATK, 85);
             statsBasePokemon.put(Stat.DEF, 65);
@@ -733,7 +787,7 @@ public class BancoDados {
             ataquesPokemon.add(ataques.get("Dragon Pulse"));
             ataquesPokemon.add(ataques.get("Splishy Splash"));
             ataquesPokemon.add(ataques.get("Stone Edge"));
-            
+
             pokemonsIniciais.put("Sceptile", new Pokemon("Sceptile", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
 
 
@@ -744,7 +798,7 @@ public class BancoDados {
 
             tiposPokemon.add(Tipo.PLANTA);
             tiposPokemon.add(Tipo.LUTADOR);
-            
+
             statsBasePokemon.put(Stat.HP, 88);
             statsBasePokemon.put(Stat.ATK, 107);
             statsBasePokemon.put(Stat.DEF, 122);
@@ -756,8 +810,8 @@ public class BancoDados {
             ataquesPokemon.add(ataques.get("Hammer Arm"));
             ataquesPokemon.add(ataques.get("Aqua Tail"));
             ataquesPokemon.add(ataques.get("Spark"));
-            
+
             pokemonsIniciais.put("Chesnaught", new Pokemon("Chesnaught", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
-        }   
+        }
     }
 }

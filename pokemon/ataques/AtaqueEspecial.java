@@ -2,6 +2,9 @@ package pokemon.ataques;
 
 import pokemon.*;
 
+/**
+ * Um ataque que dá dano especial.
+ */
 public class AtaqueEspecial extends Ataque {
 
     public AtaqueEspecial(String nome, Tipo tipo, int poder, int ppMax, int prioridade, int precisao, Efeito efeito, int probEfeito) {
@@ -27,8 +30,6 @@ public class AtaqueEspecial extends Ataque {
     public int dano(Pokemon usuario, Pokemon alvo, Clima clima) {
         int d = danoBase(usuario, alvo);
 
-        //TODO Considerar clima
-
         // Dano crítico
         if (critico()) {
             d = Math.round(d * 1.5f);
@@ -48,6 +49,12 @@ public class AtaqueEspecial extends Ataque {
         return d;
     }
 
+    /**
+     * Decide se o ataque dará dano crítico. Por enquanto,
+     * a probabilidade de crítico é 1/24 para todos os ataques especiais.
+     *
+     * @return {@code true} se o ataque for crítico.
+     */
     private boolean critico() {
         return Util.randBool(1, 24);
     }
