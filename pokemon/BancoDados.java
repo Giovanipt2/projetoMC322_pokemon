@@ -4,9 +4,9 @@ import pokemon.ataques.Ataque;
 import pokemon.ataques.AtaqueEfeito;
 import pokemon.ataques.AtaqueEspecial;
 import pokemon.ataques.AtaqueFisico;
-import pokemon.itens.I_EV;
-import pokemon.itens.I_Efeito;
-import pokemon.itens.I_Pocao;
+import pokemon.itens.BoostEV;
+import pokemon.itens.CuraEfeito;
+import pokemon.itens.Pocao;
 import pokemon.itens.ItemBatalha;
 
 import java.util.ArrayList;
@@ -105,22 +105,22 @@ public class BancoDados {
     private static void inicializarItens() {
         //Criando 3 itens de exemplo
         itensBatalha = new HashMap<>();
-        itensBatalha.put("HP Up", new I_EV("HP Up", Stat.HP, 10));
-        itensBatalha.put("Protein", new I_EV("Protein", Stat.ATK, 10));
-        itensBatalha.put("Iron", new I_EV("Iron", Stat.DEF, 10));
-        itensBatalha.put("Calcium", new I_EV("Calcium", Stat.ATK_SP, 10));
-        itensBatalha.put("Zinc", new I_EV("Zinc", Stat.DEF_SP, 10));
-        itensBatalha.put("Carbos", new I_EV("Carbos", Stat.SPEED, 10));
-        itensBatalha.put("Potion", new I_Pocao("Potion", false, 20));
-        itensBatalha.put("Super Potion", new I_Pocao("Super Potion", false, 60));
-        itensBatalha.put("Hyper Potion", new I_Pocao("Hyper Potion", false, 120));
-        itensBatalha.put("Max Potion", new I_Pocao("Max Potion", true, 9999));
-        itensBatalha.put("Antidote", new I_Efeito("Antidote", Efeito.ENVENENADO, false));
-        itensBatalha.put("Burn Heal", new I_Efeito("Burn Heal", Efeito.QUEIMADO, false));
-        itensBatalha.put("Awakening", new I_Efeito("Awakening", Efeito.DORMINDO, false));
-        itensBatalha.put("Paralyze Heal", new I_Efeito("Paralyze Heal", Efeito.PARALISADO, false));
-        itensBatalha.put("Ice Heal", new I_Efeito("Ice Heal", Efeito.CONGELADO, false));
-        itensBatalha.put("Full Heal", new I_Efeito("Full Heal", Efeito.CONFUSO, true));
+        itensBatalha.put("HP Up", new BoostEV("HP Up", Stat.HP, 10));
+        itensBatalha.put("Protein", new BoostEV("Protein", Stat.ATK, 10));
+        itensBatalha.put("Iron", new BoostEV("Iron", Stat.DEF, 10));
+        itensBatalha.put("Calcium", new BoostEV("Calcium", Stat.ATK_SP, 10));
+        itensBatalha.put("Zinc", new BoostEV("Zinc", Stat.DEF_SP, 10));
+        itensBatalha.put("Carbos", new BoostEV("Carbos", Stat.SPEED, 10));
+        itensBatalha.put("Potion", new Pocao("Potion", false, 20));
+        itensBatalha.put("Super Potion", new Pocao("Super Potion", false, 60));
+        itensBatalha.put("Hyper Potion", new Pocao("Hyper Potion", false, 120));
+        itensBatalha.put("Max Potion", new Pocao("Max Potion", true, 9999));
+        itensBatalha.put("Antidote", new CuraEfeito("Antidote", Efeito.ENVENENADO, false));
+        itensBatalha.put("Burn Heal", new CuraEfeito("Burn Heal", Efeito.QUEIMADO, false));
+        itensBatalha.put("Awakening", new CuraEfeito("Awakening", Efeito.DORMINDO, false));
+        itensBatalha.put("Paralyze Heal", new CuraEfeito("Paralyze Heal", Efeito.PARALISADO, false));
+        itensBatalha.put("Ice Heal", new CuraEfeito("Ice Heal", Efeito.CONGELADO, false));
+        itensBatalha.put("Full Heal", new CuraEfeito("Full Heal", Efeito.CONFUSO, true));
 
 
     }

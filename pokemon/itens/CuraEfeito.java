@@ -5,17 +5,15 @@ import pokemon.Efeito;
 import pokemon.Pokemon;
 
 /**
- * Classe de itens usados para remover os efeitos danosos aplicados em um
- * Pokémon em batalha. Para os propósitos do nosso laboratório, eles não
- * serão aplicados em Pokémons com 0 de HP ou sem nenhum efeito aplicado.
+ * Um item que cancela o efeito aplicado em um Pokémon.
  */
-public class I_Efeito extends ItemBatalha {
+public class CuraEfeito extends ItemBatalha {
     private Efeito efeito; // Determina o efeito que o remédio cura
-    private boolean isFull; // Determina se é o FullHeal(Cura qualquer efeito que o pokemon tenha)
+    private boolean isFull; // Determina se é o FullHeal (cura qualquer efeito que o pokemon tenha)
 
 
     // Construtor
-    public I_Efeito(String nome, Efeito efeito, boolean isFull) {
+    public CuraEfeito(String nome, Efeito efeito, boolean isFull) {
         super(nome);
         this.efeito = efeito;
         this.isFull = isFull;

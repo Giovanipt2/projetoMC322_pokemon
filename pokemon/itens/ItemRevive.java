@@ -3,16 +3,15 @@ package pokemon.itens;
 import pokemon.Pokemon;
 import pokemon.Stat;
 
-/*
- * Classe responsável pelos itens que podem ser usados para reviver
- * um pokemon abatido. Esses itens só podem ser usados em pokemons com
- * 0 de HP, sem excessões.
+/**
+ * Um item que revive um Pokémon desmaiado.
+ * Sua implementação está incompleta.
  */
-public class I_Reviver extends ItemBatalha {
+public class ItemRevive extends ItemBatalha {
     private boolean isMax;
 
     // Construtor;
-    public I_Reviver(String nome, boolean isMax) {
+    public ItemRevive(String nome, boolean isMax) {
         super(nome);
         this.isMax = isMax;
     }

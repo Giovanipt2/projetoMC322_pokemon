@@ -5,16 +5,14 @@ import pokemon.Pokemon;
 import pokemon.Stat;
 
 /**
- * Classe que representa os itens que adicionam diretamente
- * nos EVs de um pokemon.
- * !NOTA IMPORTANTE: OS ITENS DE EV NAO RESETAM QUANDO O POKEMON MORRE!
+ * Um item que aumenta um EV (valor se esforço) de um Pokémon
  */
-public class I_EV extends ItemBatalha {
-    private Stat statAfetado; // Responsável por indicar qual EV será boostado
+public class BoostEV extends ItemBatalha {
+    private Stat statAfetado;
     private int aumento;
 
     //Construtor
-    public I_EV(String nome, Stat statAfetado, int aumento) {
+    public BoostEV(String nome, Stat statAfetado, int aumento) {
         super(nome);
         this.statAfetado = statAfetado;
         this.aumento = aumento;

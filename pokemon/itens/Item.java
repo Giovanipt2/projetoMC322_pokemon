@@ -1,10 +1,7 @@
 package pokemon.itens;
 
 /**
- * Essa classe será a responsável para classificar os itens
- * que os treinadores podem usar ativamente durante o combate,
- * isto é, eles atribuirão um efeito para o pokemon vigente em
- * combate, consumindo o turno do treinador.
+ * Um item genérico.
  */
 public abstract class Item {
     private String nome;    //Refere-se ao nome do item
