@@ -52,6 +52,10 @@ public class Pokemon {
      * Natureza do Pokémon
      */
     private Natureza natureza;
+    /**
+     * Caminho para o sprite do Pokémon
+     */
+    private String sprite;
 
 
     /**
@@ -64,7 +68,7 @@ public class Pokemon {
      *                  Stats omitidos recebem o valor 0 por padrão.
      * @param ataques   os ataques que o Pokémon pode usar
      */
-    public Pokemon(String nome, List<Tipo> tipos, int nivel, Map<Stat, Integer> statsBase, List<Ataque> ataques) {
+    public Pokemon(String nome, List<Tipo> tipos, int nivel, Map<Stat, Integer> statsBase, List<Ataque> ataques, String sprite) {
         this.nome = nome;
         this.tipos = new ArrayList<>(tipos);
         this.nivel = nivel;
@@ -86,6 +90,7 @@ public class Pokemon {
         this.efeito = null;
         this.natureza = Natureza.random();
         this.hp = getStat(Stat.HP);
+        this.sprite = sprite;
     }
 
     /**
@@ -97,7 +102,7 @@ public class Pokemon {
      * @param nivel o nível do novo Pokémon
      */
     public Pokemon(Pokemon p, int nivel) {
-        this(p.nome, p.tipos, nivel, p.statsBase, p.ataques);
+        this(p.nome, p.tipos, nivel, p.statsBase, p.ataques, p.sprite);
     }
 
     /**
@@ -108,7 +113,7 @@ public class Pokemon {
      * @param p o Pokémon a ser copiado
      */
     public Pokemon(Pokemon p) {
-        this(p.nome, p.tipos, p.nivel, p.statsBase, p.ataques);
+        this(p.nome, p.tipos, p.nivel, p.statsBase, p.ataques, p.sprite);
     }
 
     /**
@@ -214,6 +219,9 @@ public class Pokemon {
         return new ArrayList<>(ataques);
     }
 
+    public String getSprite() {
+        return sprite;
+    }
     public boolean estaVivo() {
         return hp > 0;
     }

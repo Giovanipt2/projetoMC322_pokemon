@@ -132,7 +132,7 @@ public class BancoDados {
     public static void inicializar() {
         //Array com os tipos do pokémon que está sendo criado
         List<Tipo> tiposPokemon = new ArrayList<>();
-        //HashMap com os status base do pokémon que está senco criado
+        //HashMap com os status base do pokémon que está sendo criado
         Map<Stat, Integer> statsBasePokemon = new HashMap<>();
         //Array com os ataques do pokémon que está sendo criado
         ArrayList<Ataque> ataquesPokemon = new ArrayList<>();
@@ -238,7 +238,8 @@ public class BancoDados {
             ataquesPokemon.add(ataques.get("Thunder"));
             ataquesPokemon.add(ataques.get("Flash Cannon"));
 
-            pokemons.put("Dialga", new Pokemon("Dialga", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+            pokemons.put("Dialga", new Pokemon("Dialga", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
+                    "pokemon/sprites/dialga.png"));
 
 
             // Criando o Palkia
@@ -261,7 +262,8 @@ public class BancoDados {
             ataquesPokemon.add(ataques.get("Fire Blast"));
             ataquesPokemon.add(ataques.get("Earth Power"));
 
-            pokemons.put("Palkia", new Pokemon("Palkia", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+            pokemons.put("Palkia", new Pokemon("Palkia", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
+                    "pokemon/sprites/palkia.png"));
 
 
             //Criando a Kartana
@@ -284,7 +286,8 @@ public class BancoDados {
             ataquesPokemon.add(ataques.get("Smart Strike"));
             ataquesPokemon.add(ataques.get("Knock Off"));
 
-            pokemons.put("Kartana", new Pokemon("Kartana", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+            pokemons.put("Kartana", new Pokemon("Kartana", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
+                    "pokemon/sprites/kartana.png"));
 
 
             //Criando a Zacian
@@ -307,7 +310,8 @@ public class BancoDados {
             ataquesPokemon.add(ataques.get("Close Combat"));
             ataquesPokemon.add(ataques.get("Play Rough"));
 
-            pokemons.put("Zacian", new Pokemon("Zacian", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+            pokemons.put("Zacian", new Pokemon("Zacian", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
+                    "pokemon/sprites/zacian.png"));
 
 
             //Criando o Mewtwo
@@ -329,7 +333,8 @@ public class BancoDados {
             ataquesPokemon.add(ataques.get("Aura Sphere"));
             ataquesPokemon.add(ataques.get("Ice Beam"));
 
-            pokemons.put("Mewtwo", new Pokemon("Mewtwo", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+            pokemons.put("Mewtwo", new Pokemon("Mewtwo", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
+                    "pokemon/sprites/mewtwo.png"));
 
 
             //Criando o Kyogre
@@ -351,7 +356,8 @@ public class BancoDados {
             ataquesPokemon.add(ataques.get("Origin Pulse"));
             ataquesPokemon.add(ataques.get("Water Spout"));
 
-            pokemons.put("Kyogre", new Pokemon("Kyogre", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+            pokemons.put("Kyogre", new Pokemon("Kyogre", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
+                    "pokemon/sprites/kyogre.png"));
 
 
             //Criando o Groudon
@@ -373,7 +379,8 @@ public class BancoDados {
             ataquesPokemon.add(ataques.get("Toxic"));
             ataquesPokemon.add(ataques.get("Earthquake"));
 
-            pokemons.put("Groudon", new Pokemon("Groudon", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+            pokemons.put("Groudon", new Pokemon("Groudon", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
+                    "pokemon/sprites/groudon.png"));
 
 
             //Criando o Blacephalon
@@ -396,7 +403,8 @@ public class BancoDados {
             ataquesPokemon.add(ataques.get("Blizzard"));
             ataquesPokemon.add(ataques.get("Psychic"));
 
-            pokemons.put("Blacephalon", new Pokemon("Blacephalon", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+            pokemons.put("Blacephalon", new Pokemon("Blacephalon", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
+                    "pokemon/sprites/blacephalon.png"));
 
 
             //Criando o Darkrai
@@ -418,7 +426,8 @@ public class BancoDados {
             ataquesPokemon.add(ataques.get("Dark Pulse"));
             ataquesPokemon.add(ataques.get("Psychic"));
 
-            pokemons.put("Darkrai", new Pokemon("Darkrai", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+            pokemons.put("Darkrai", new Pokemon("Darkrai", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
+                    "pokemon/sprites/darkrai.png"));
 
 
             //Criando o Reshiram
@@ -441,7 +450,8 @@ public class BancoDados {
             ataquesPokemon.add(ataques.get("Hyper Beam"));
             ataquesPokemon.add(ataques.get("Aeroblast"));
 
-            pokemons.put("Reshiram", new Pokemon("Reshiram", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+            pokemons.put("Reshiram", new Pokemon("Reshiram", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
+                    "pokemon/sprites/reshiram.png"));
 
 
             //Criando o Zekrom
@@ -464,7 +474,8 @@ public class BancoDados {
             ataquesPokemon.add(ataques.get("Extreme Speed"));
             ataquesPokemon.add(ataques.get("Drill Peck"));
 
-            pokemons.put("Zekrom", new Pokemon("Zekrom", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+            pokemons.put("Zekrom", new Pokemon("Zekrom", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
+                    "pokemon/sprites/zekrom.png"));
 
 
             //Criando o Xerneas
@@ -486,7 +497,8 @@ public class BancoDados {
             ataquesPokemon.add(ataques.get("Surf"));
             ataquesPokemon.add(ataques.get("Thunder"));
 
-            pokemons.put("Xerneas", new Pokemon("Xerneas", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+            pokemons.put("Xerneas", new Pokemon("Xerneas", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
+                    "pokemon/sprites/xerneas.png"));
 
 
             //Criando o Yveltal
@@ -509,7 +521,8 @@ public class BancoDados {
             ataquesPokemon.add(ataques.get("U-turn"));
             ataquesPokemon.add(ataques.get("Earth Power"));
 
-            pokemons.put("Yveltal", new Pokemon("Yveltal", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+            pokemons.put("Yveltal", new Pokemon("Yveltal", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
+                    "pokemon/sprites/yveltal.png"));
 
 
             //Criando o Ho-Oh
@@ -532,7 +545,8 @@ public class BancoDados {
             ataquesPokemon.add(ataques.get("Toxic"));
             ataquesPokemon.add(ataques.get("Earthquake"));
 
-            pokemons.put("Ho-OH", new Pokemon("Ho-Oh", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+            pokemons.put("Ho-OH", new Pokemon("Ho-Oh", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
+                    "pokemon/sprites/ho-oh.png"));
 
 
             //Criando o Hoopa
@@ -555,7 +569,8 @@ public class BancoDados {
             ataquesPokemon.add(ataques.get("Hyperspace Fury"));
             ataquesPokemon.add(ataques.get("Psychic Fangs"));
 
-            pokemons.put("Hoopa", new Pokemon("Hoopa", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+            pokemons.put("Hoopa", new Pokemon("Hoopa", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
+                    "pokemon/sprites/hoopa.png"));
 
 
             //Criando o Calyrex-Ice
@@ -578,7 +593,8 @@ public class BancoDados {
             ataquesPokemon.add(ataques.get("High Horsepower"));
             ataquesPokemon.add(ataques.get("Close Combat"));
 
-            pokemons.put("Calyrex-Ice", new Pokemon("Calyrex-Ice", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+            pokemons.put("Calyrex-Ice", new Pokemon("Calyrex-Ice", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
+                    "pokemon/sprites/calyrex-ice.png"));
 
 
             //Criando o Calyrex-Shadow
@@ -601,7 +617,8 @@ public class BancoDados {
             ataquesPokemon.add(ataques.get("Moonblast"));
             ataquesPokemon.add(ataques.get("Aura Sphere"));
 
-            pokemons.put("Calyrex-Shadow", new Pokemon("Calyrex-Shadow", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+            pokemons.put("Calyrex-Shadow", new Pokemon("Calyrex-Shadow", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
+                    "pokemon/sprites/calyrex-shadow.png"));
 
 
             //Criando o Regigigas
@@ -623,7 +640,8 @@ public class BancoDados {
             ataquesPokemon.add(ataques.get("Body Slam"));
             ataquesPokemon.add(ataques.get("Knock Off"));
 
-            pokemons.put("Regigigas", new Pokemon("Regigigas", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+            pokemons.put("Regigigas", new Pokemon("Regigigas", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
+                    "pokemon/sprites/regigigas.png"));
 
 
             //Criando a Pheromosa
@@ -646,7 +664,8 @@ public class BancoDados {
             ataquesPokemon.add(ataques.get("Diamond Storm"));
             ataquesPokemon.add(ataques.get("Sunsteel Strike"));
 
-            pokemons.put("Pheromosa", new Pokemon("Pheromosa", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+            pokemons.put("Pheromosa", new Pokemon("Pheromosa", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
+                    "pokemon/sprites/pheromosa.png"));
 
 
             //Criando a Diancie
@@ -669,7 +688,8 @@ public class BancoDados {
             ataquesPokemon.add(ataques.get("Diamond Storm"));
             ataquesPokemon.add(ataques.get("Moonblast"));
 
-            pokemons.put("Diancie", new Pokemon("Diancie", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+            pokemons.put("Diancie", new Pokemon("Diancie", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
+                    "pokemon/sprites/diancie.png"));
         }
 
         // Criando os pokemons iniciais
@@ -697,7 +717,8 @@ public class BancoDados {
             ataquesPokemon.add(ataques.get("Close Combat"));
             ataquesPokemon.add(ataques.get("Knock Off"));
 
-            pokemonsIniciais.put("Blaziken", new Pokemon("Blaziken", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+            pokemonsIniciais.put("Blaziken", new Pokemon("Blaziken", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
+                    "pokemon/sprites/blaziken.png"));
 
 
             //Criando o Incineroar
@@ -720,7 +741,8 @@ public class BancoDados {
             ataquesPokemon.add(ataques.get("Darkest Lariat"));
             ataquesPokemon.add(ataques.get("U-turn"));
 
-            pokemonsIniciais.put("Incineroar", new Pokemon("Incineroar", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+            pokemonsIniciais.put("Incineroar", new Pokemon("Incineroar", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
+                    "pokemon/sprites/incineroar.png"));
 
 
             //Criando o Greninja
@@ -743,7 +765,8 @@ public class BancoDados {
             ataquesPokemon.add(ataques.get("Water Shuriken"));
             ataquesPokemon.add(ataques.get("Ice Beam"));
 
-            pokemonsIniciais.put("Greninja", new Pokemon("Greninja", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+            pokemonsIniciais.put("Greninja", new Pokemon("Greninja", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
+                    "pokemon/sprites/greninja.png"));
 
 
             //Criando o Swampert
@@ -766,7 +789,8 @@ public class BancoDados {
             ataquesPokemon.add(ataques.get("Earthquake"));
             ataquesPokemon.add(ataques.get("Superpower"));
 
-            pokemonsIniciais.put("Swampert", new Pokemon("Swampert", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+            pokemonsIniciais.put("Swampert", new Pokemon("Swampert", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
+                    "pokemon/sprites/swampert.png"));
 
 
             //Criando o Sceptile
@@ -788,7 +812,8 @@ public class BancoDados {
             ataquesPokemon.add(ataques.get("Splishy Splash"));
             ataquesPokemon.add(ataques.get("Stone Edge"));
 
-            pokemonsIniciais.put("Sceptile", new Pokemon("Sceptile", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+            pokemonsIniciais.put("Sceptile", new Pokemon("Sceptile", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
+                    "pokemon/sprites/sceptile.png"));
 
 
             //Criando o Chesnaught
@@ -811,7 +836,8 @@ public class BancoDados {
             ataquesPokemon.add(ataques.get("Aqua Tail"));
             ataquesPokemon.add(ataques.get("Spark"));
 
-            pokemonsIniciais.put("Chesnaught", new Pokemon("Chesnaught", tiposPokemon, 100, statsBasePokemon, ataquesPokemon));
+            pokemonsIniciais.put("Chesnaught", new Pokemon("Chesnaught", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
+                    "pokemon/sprites/chesnaught.png"));
         }
     }
 }
