@@ -1,15 +1,30 @@
 package pokemon.GUI;
 
-import javax.swing.*;
+import pokemon.BancoDados;
+import pokemon.Pokemon;
 
-public class MenuPrincipal {
-    private JFrame frame;
+import javax.swing.*;
+import java.awt.*;
+
+public class MenuPrincipal extends JFrame {
+    private JPanel painelAtivo;
+    private Pokemon pokemonEscolhido;
 
     public MenuPrincipal() {
-        inicializar();
+        super();
+        setTitle("Pokémon MC322");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
+        painelAtivo = new JPanel();
+        getContentPane().add(painelAtivo, BorderLayout.CENTER);
+        painelAtivo.add(new SeletorDePokemon(BancoDados.getPokemons().values(), this));
+
+        setVisible(true);
+        pack();
     }
 
-    private void inicializar() {
-
+    public void setPokemonEscolhido(Pokemon pokemon) {
+        pokemonEscolhido = pokemon;
+        System.out.println(pokemonEscolhido);
     }
 }

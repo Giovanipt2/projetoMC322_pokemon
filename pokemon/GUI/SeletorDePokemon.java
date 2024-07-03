@@ -1,41 +1,50 @@
 package pokemon.GUI;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-
-import pokemon.BancoDados;
 import pokemon.Pokemon;
 
-public class SeletorDePokemon extends JFrame {
-    private JPanel painel;
-    private ArrayList<JButton> opcoes;
+import javax.swing.*;
+import java.awt.*;
+import java.util.Collection;
+
+public class SeletorDePokemon extends JPanel {
+    private MenuPrincipal pai;
+
+    /**
+     * O último Pokémon clicado.
+     */
     private Pokemon selecionado;
-    public SeletorDePokemon(ArrayList<Pokemon> pokemons) {
-        super();
-        inicializar(pokemons);
+
+    public SeletorDePokemon(Collection<Pokemon> pokemons, MenuPrincipal pai) {
+        super(new GridLayout((int) Math.sqrt(pokemons.size()), 0, 6, 6));
+        this.pai = pai;
+        for (Pokemon pokemon : pokemons) {
+            add(criarBotao(pokemon));
+        }
+        setVisible(true);
     }
 
-    private void inicializar(ArrayList<Pokemon> pokemons) {
-        painel = new JPanel(new GridLayout(pokemons.size()/4 + 1, 3, 6, 5));
-        setTitle("Pokémon Demo");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(800,600);
-        for (Pokemon p : pokemons) {
-            //TODO colocar sprites dos pokemons
-            JButton b = new JButton(p.getNome(), new ImageIcon(p.getSprite()));
-            b.setFocusPainted(false);
-            b.addActionListener(e -> {
-                //TODO implementar direito
-                selecionado = p;
-                System.out.println(selecionado);
-            });
-            painel.add(b);
+    private void inicializar(Collection<Pokemon> pokemons) {
+
+    }
+
+    private JButton criarBotao(Pokemon pokemon) {
+        JButton botao = new JButton(pokemon.getNome());
+        botao.setIcon(new ImageIcon(pokemon.getSprite()));
+        botao.setFocusPainted(false);
+        if (!pokemon.estaVivo()) {
+            botao.setEnabled(false);
         }
-        add(painel);
-        pack();
-        setVisible(true);
+        botao.setFocusPainted(false);
+        botao.addActionListener(e -> {
+            int escolha = JOptionPane.showConfirmDialog(null, "Deseja enviar " +
+                    pokemon.getNome() + "?", null, JOptionPane.YES_NO_OPTION);
+            if (escolha == 0) {  // Sim
+                selecionado = pokemon;
+                pai.setPokemonEscolhido(pokemon);
+                setVisible(false);
+            }
+        });
+
+        return botao;
     }
 }
