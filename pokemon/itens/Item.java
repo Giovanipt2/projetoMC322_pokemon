@@ -1,9 +1,11 @@
 package pokemon.itens;
 
+import java.io.Serializable;
+
 /**
  * Um item genérico.
  */
-public abstract class Item {
+public abstract class Item implements Serializable{
     private String nome;    //Refere-se ao nome do item
 
     // Construtor
