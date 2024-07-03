@@ -1,5 +1,6 @@
 package pokemon.itens;
 
+import pokemon.ExcecaoUsoItem;
 import pokemon.Pokemon;
 import pokemon.Stat;
 
@@ -17,7 +18,10 @@ public class ItemRevive extends ItemBatalha {
     }
 
     @Override
-    public void uso(Pokemon pokemon) {
+    public void uso(Pokemon pokemon) throws ExcecaoUsoItem {
+        if (!usavel(pokemon)) {
+            throw new ExcecaoUsoItem();
+        }
         if (isMax) {
             pokemon.setHP_atual(pokemon.getStat(Stat.HP));
         } else {

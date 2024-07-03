@@ -2,6 +2,7 @@ package pokemon.itens;
 
 
 import pokemon.Efeito;
+import pokemon.ExcecaoUsoItem;
 import pokemon.Pokemon;
 
 /**
@@ -20,7 +21,10 @@ public class CuraEfeito extends ItemBatalha {
     }
 
     @Override
-    public void uso(Pokemon pokemon) {
+    public void uso(Pokemon pokemon) throws ExcecaoUsoItem {
+        if (!usavel(pokemon)) {
+            throw new ExcecaoUsoItem();
+        }
         pokemon.setEfeito(null);
     }
 

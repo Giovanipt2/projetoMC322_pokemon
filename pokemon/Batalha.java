@@ -147,7 +147,11 @@ public class Batalha {
         if (segundoVaiAntes) {
             switch (acao2) {
                 case ITEM:
-                    item2.uso(jogador2.getPokemonAtivo());
+                    try {
+                        item2.uso(jogador2.getPokemonAtivo());
+                    } catch (ExcecaoUsoItem e) {
+                        System.out.println(e.getMessage());
+                    }
                     break;
                 case ATACAR:
                     atacar(ataque2, jogador2.getPokemonAtivo(), jogador1.getPokemonAtivo());
@@ -160,7 +164,11 @@ public class Batalha {
         // Realiza a ação do jogador 1
         switch (acao1) {
             case ITEM:
-                item1.uso(jogador1.getPokemonAtivo());
+                try {
+                    item1.uso(jogador1.getPokemonAtivo());
+                } catch (ExcecaoUsoItem e) {
+                    System.out.println(e.getMessage());
+                }
                 break;
             case ATACAR: {
                 Pokemon pokemonAtivo = jogador1.getPokemonAtivo();
@@ -185,7 +193,11 @@ public class Batalha {
         if (!segundoVaiAntes) {
             switch (acao2) {
                 case ITEM:
-                    item2.uso(jogador2.getPokemonAtivo());
+                    try {
+                        item2.uso(jogador2.getPokemonAtivo());
+                    } catch (ExcecaoUsoItem e) {
+                        System.out.println(e.getMessage());
+                    }
                     break;
                 case ATACAR: {
                     Pokemon pokemonAtivo = jogador2.getPokemonAtivo();

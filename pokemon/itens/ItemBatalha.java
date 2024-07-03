@@ -1,6 +1,7 @@
 package pokemon.itens;
 
 
+import pokemon.ExcecaoUsoItem;
 import pokemon.Pokemon;
 
 /**
@@ -20,7 +21,7 @@ public abstract class ItemBatalha extends Item {
      *
      * @param pokemon o Pokémon no qual o item é usado
      */
-    public abstract void uso(Pokemon pokemon);
+    public abstract void uso(Pokemon pokemon) throws ExcecaoUsoItem;
         //Uso fantasma para poder instanciar um array de Itens de Batalha
 
     /**
