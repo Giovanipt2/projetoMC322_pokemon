@@ -23,6 +23,6 @@ public abstract class Item implements Serializable{
     }
 
     public String toString() {
-        return "Nome: " + nome + "\n" + "Aqui aparecerão os dados do item...\n";
+        return "Nome: " + nome + "\n";
     }
 }
