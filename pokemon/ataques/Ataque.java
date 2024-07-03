@@ -134,6 +134,13 @@ public abstract class Ataque {
     }
 
     /**
+     * @return O tipo do ataque
+     */
+    public Tipo getTipo() {
+        return tipo;
+    }
+
+    /**
      * @param pp o novo PP.
      */
     public void setPp(int pp) {
