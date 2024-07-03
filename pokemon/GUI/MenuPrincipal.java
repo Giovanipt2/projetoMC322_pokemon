@@ -2,13 +2,14 @@ package pokemon.GUI;
 
 import pokemon.BancoDados;
 import pokemon.Pokemon;
-
+import pokemon.ataques.*;
 import javax.swing.*;
 import java.awt.*;
 
 public class MenuPrincipal extends JFrame {
     private JPanel painelAtivo;
     private Pokemon pokemonEscolhido;
+    private Ataque ataqueEscolhido;
 
     public MenuPrincipal() {
         super();
@@ -26,5 +27,10 @@ public class MenuPrincipal extends JFrame {
     public void setPokemonEscolhido(Pokemon pokemon) {
         pokemonEscolhido = pokemon;
         System.out.println(pokemonEscolhido);
+    }
+
+    public void setAtaqueEscolhido(Ataque ataque) {
+        ataqueEscolhido = ataque;
+        System.out.println(ataqueEscolhido);
     }
 }

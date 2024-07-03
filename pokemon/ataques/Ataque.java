@@ -1,5 +1,6 @@
 package pokemon.ataques;
 
+import java.io.Serializable;
 import pokemon.Clima;
 import pokemon.Efeito;
 import pokemon.Pokemon;
@@ -8,7 +9,7 @@ import pokemon.Tipo;
 /**
  * Um ataque que pode ser usado por um Pokémon
  */
-public abstract class Ataque {
+public abstract class Ataque implements Serializable {
     /**
      * O tipo do ataque.
      */
@@ -131,6 +132,13 @@ public abstract class Ataque {
      */
     public int getPp() {
         return pp;
+    }
+
+    /**
+     * @return O tipo do ataque
+     */
+    public Tipo getTipo() {
+        return tipo;
     }
 
     /**
