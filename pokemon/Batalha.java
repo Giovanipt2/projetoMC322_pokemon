@@ -27,6 +27,20 @@ public class Batalha {
         ATACAR, TROCAR, ITEM;
     }
 
+    /**
+     * @return o jogador 1.
+     */
+    public Treinador getJogador1() {
+        return jogador1;
+    }
+
+    /**
+     * @return o jogador 2.
+     */
+    public Treinador getJogador2() {
+        return jogador2;
+    }
+
     public Batalha(Treinador jogador1, Treinador jogador2, Menu menu) {
         if (jogador1 == null || jogador2 == null) {
             throw new IllegalArgumentException("Os jogadores não podem ser null.");
