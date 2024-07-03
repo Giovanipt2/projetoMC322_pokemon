@@ -10,6 +10,10 @@ import java.io.Serializable;
 
 public class Pokemon implements Serializable{
     /**
+     * Serial version UID
+     */
+    private static final long serialVersionUID = 1L;
+    /**
      * O nome do Pokémon
      */
     private String nome;

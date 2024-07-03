@@ -11,6 +11,10 @@ import pokemon.Tipo;
  */
 public abstract class Ataque implements Serializable {
     /**
+     * Serial version UID
+     */
+    private static final long serialVersionUID = 2L;
+    /**
      * O tipo do ataque.
      */
     protected Tipo tipo;
