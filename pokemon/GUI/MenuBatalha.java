@@ -1,5 +1,6 @@
 package pokemon.GUI;
 
+import pokemon.BancoDados;
 import pokemon.Batalha;
 import pokemon.Pokemon;
 import pokemon.Stat;
@@ -34,12 +35,14 @@ public class MenuBatalha extends JPanel {
 
         // Adiciona sprites e nomes dos Pokémons
         labelPokemon1 = new JLabel(new ImageIcon(pokemon1.getSprite()));
-        labelPokemon1.setText(pokemon1.getNome());
+        labelPokemon1.setText(pokemon1.getNome() + " (" + pokemon1.getHP_atual() + "/" +
+                pokemon1.getStat(Stat.HP) + ")");
         labelPokemon1.setVerticalTextPosition(JLabel.BOTTOM);
         labelPokemon1.setHorizontalTextPosition(JLabel.CENTER);
 
         labelPokemon2 = new JLabel(new ImageIcon(pokemon2.getSprite()));
-        labelPokemon2.setText(pokemon2.getNome());
+        labelPokemon2.setText(pokemon2.getNome() + " (" + pokemon2.getHP_atual() + "/" +
+                pokemon2.getStat(Stat.HP) + ")");
         labelPokemon2.setVerticalTextPosition(JLabel.BOTTOM);
         labelPokemon2.setHorizontalTextPosition(JLabel.CENTER);
 
@@ -65,7 +68,11 @@ public class MenuBatalha extends JPanel {
         add(barrasDeVida);
 
         // Adiciona os botões correspondentes às ações
-        jogadorAtual = new JLabel("Escolha uma ação, jogador X:"); // TODO verificar de quem é a vez
+        jogadorAtual = new JLabel();
+        pokemon.Treinador jogadorAtivo = batalha.getJogadorAtivo();
+        if (jogadorAtivo != null) {
+            jogadorAtual.setText("Escolha uma ação, " + jogadorAtivo.getNome());
+        }
 
         atacar = new JButton("Atacar");
         atacar.addActionListener(e -> {
@@ -101,9 +108,11 @@ public class MenuBatalha extends JPanel {
         pokemon1 = batalha.getJogador1().getPokemonAtivo();
         pokemon2 = batalha.getJogador2().getPokemonAtivo();
         labelPokemon1.setIcon(new ImageIcon(pokemon1.getSprite()));
-        labelPokemon1.setText(pokemon1.getNome());
+        labelPokemon1.setText(pokemon1.getNome() + " (" + pokemon1.getHP_atual() + "/" +
+                pokemon1.getStat(Stat.HP) + ")");
         labelPokemon2.setIcon(new ImageIcon(pokemon2.getSprite()));
-        labelPokemon2.setText(pokemon2.getNome());
+        labelPokemon2.setText(pokemon2.getNome() + " (" + pokemon2.getHP_atual() + "/" +
+                pokemon2.getStat(Stat.HP) + ")");
 
         vida1.setMaximum(pokemon1.getStat(Stat.HP));
         vida1.setValue(pokemon1.getHP_atual());
@@ -112,10 +121,11 @@ public class MenuBatalha extends JPanel {
         vida2.setMaximum(pokemon2.getStat(Stat.HP));
         vida2.setValue(pokemon2.getHP_atual());
         vida2.setForeground(corBarra(vida2.getPercentComplete()));
-
-        // TODO atualizar de quem é a vez
+        pokemon.Treinador jogadorAtivo = batalha.getJogadorAtivo();
+        if (jogadorAtivo != null) {
+            jogadorAtual.setText("Escolha uma ação, " + jogadorAtivo.getNome());
+        }
     }
-
 
     /**
      * Retorna a cor que a barra de vida de um Pokémon deve ter.
