@@ -9,8 +9,9 @@ public class SeletorDeAtaques extends JPanel {
     private MenuPrincipal pai;
 
 
-    public SeletorDeAtaques(Collection<? extends Ataque> Ataques) {
+    public SeletorDeAtaques(Collection<? extends Ataque> Ataques, MenuPrincipal pai) {
         super(new GridLayout(2, 2)); // GridLayout com 2 linhas e 2 colunas
+        this.pai = pai;
 
         // Criando os botões para cada ataque
         for (Ataque ataque : Ataques) {

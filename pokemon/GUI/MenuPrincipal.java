@@ -6,6 +6,7 @@ import pokemon.itens.*;
 import pokemon.ataques.*;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BandCombineOp;
 
 public class MenuPrincipal extends JFrame {
     private JPanel painelAtivo;
@@ -21,7 +22,8 @@ public class MenuPrincipal extends JFrame {
         painelAtivo = new JPanel();
         getContentPane().add(painelAtivo, BorderLayout.CENTER);
         painelAtivo.add(new SeletorDePokemon(BancoDados.getPokemons().values(), this));
-
+        painelAtivo.add(new SeletorDeItens(BancoDados.getItensBatalha().values(), this));
+        painelAtivo.add(new SeletorDeAtaques(BancoDados.getAtaques().values(), this));
         setVisible(true);
         pack();
     }
