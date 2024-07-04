@@ -8,6 +8,7 @@ public class Batalha {
     private Treinador jogador2;
     private Menu menu;
     private Clima clima;
+    private Treinador jogadorAtivo;
 
     /**
      * O último dano calculado. Salvo caso precise ser
@@ -49,6 +50,13 @@ public class Batalha {
         this.jogador2 = jogador2;
         clima = Clima.NORMAL;
         this.menu = menu;
+    }
+
+    /**
+     * @return o jogador ativo (escolhendo ou realizando uma ação)
+     */
+    public Treinador getJogadorAtivo() {
+        return jogadorAtivo;    //TODO alterar na hora certa
     }
 
     /**
