@@ -21,7 +21,7 @@ public class Elixir extends ItemBatalha {
      * @param pokemon o Pokémon
      */
     @Override
-    public void uso(Pokemon pokemon) {
+    public void usar(Pokemon pokemon) {
         for (Ataque ataque : pokemon.getAtaques()) {
             if (ataque.getPp() + aumento < ataque.getPpMax()) {
                 ataque.somaPp(aumento);

@@ -11,5 +11,5 @@ public enum Clima {
     TEMPESTADE_DE_AREIA,
     GRANIZO,
     NEVE,
-    VENTO;
+    VENTO
 }

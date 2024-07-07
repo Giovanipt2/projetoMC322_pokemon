@@ -11,5 +11,5 @@ public enum Efeito {
     PARALISADO,
     ENVENENADO,
     DORMINDO,
-    CONFUSO;
+    CONFUSO
 }

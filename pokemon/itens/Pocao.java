@@ -19,7 +19,7 @@ public class Pocao extends ItemBatalha {
     }
 
     @Override
-    public void uso(Pokemon pokemon) throws ExcecaoUsoItem {
+    public void usar(Pokemon pokemon) throws ExcecaoUsoItem {
         if (!usavel(pokemon)) {
             throw new ExcecaoUsoItem();
         }

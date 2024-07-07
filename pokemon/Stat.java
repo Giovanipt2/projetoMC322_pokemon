@@ -9,5 +9,5 @@ public enum Stat {
     DEF,
     ATK_SP,
     DEF_SP,
-    SPEED;
+    SPEED
 }

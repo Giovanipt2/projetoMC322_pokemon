@@ -119,6 +119,7 @@ public class MontadorDeTime extends JPanel {
 
         return painel;
     }
+
     public void setCallback(Runnable callback) {
         this.callback = callback;
     }

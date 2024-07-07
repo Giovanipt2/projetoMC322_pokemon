@@ -23,15 +23,13 @@ public class BoostEV extends ItemBatalha {
         return statAfetado;
     }
 
-    ;
-
     /**
-     * Adiciona diretamente 10 pontos no EV indicado por boostEV.Para os fins do projeto 1,
+     * Adiciona diretamente 10 pontos no EV indicado por boostEV. Para os fins do projeto 1,
      * não adicionamos as penas que somam apenas 1 ponto no EV, todos os 6 itens de EV adicionam
      * diretamente 10 pontos a tal EV(O limite de EVs não será explorado, por que nenhum pokemon alcançará
      * esse limite na nossa definição)
      */
-    public void uso(Pokemon pokemon) {
+    public void usar(Pokemon pokemon) {
         pokemon.setEV(statAfetado, (pokemon.getEV(statAfetado) + aumento));
     }
 }
