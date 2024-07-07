@@ -12,8 +12,10 @@ public class Main {
     public static void main(String[] args) {
         //Inicializar o banco de dados
         BancoDados.inicializar();
-        Treinador jogador1 = new Treinador("Jogador 1");
-        Treinador jogador2 = new Treinador("Jogador 2");
+        Treinador jogador1 = new Treinador(JOptionPane.showInputDialog(null,
+                "Insira o nome do primeiro jogador:"));
+        Treinador jogador2 = new Treinador(JOptionPane.showInputDialog(null,
+                "Insira o nome do segundo jogador:"));
         Batalha batalha = new Batalha(jogador1, jogador2, null);
 
         SwingUtilities.invokeLater(() -> new MenuPrincipal(batalha).start());

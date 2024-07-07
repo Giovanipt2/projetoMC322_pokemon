@@ -98,6 +98,7 @@ public class MenuPrincipal extends JFrame {
         Container cPane = getContentPane();
         Treinador jogador = batalha.getJogador1();
 
+        menuBatalha.setPrompt("Escolha uma ação, " + jogador.getNome() + ":");
         menuBatalha.update();
         menuBatalha.setCallbackAtacar(() -> {
             SeletorDeAtaques seletor = new SeletorDeAtaques(jogador.getPokemonAtivo().getAtaques());
@@ -139,6 +140,8 @@ public class MenuPrincipal extends JFrame {
     private void escolherAcao2() {
         Container cPane = getContentPane();
         Treinador jogador = batalha.getJogador2();
+
+        menuBatalha.setPrompt("Escolha uma ação, " + jogador.getNome() + ":");
 
         menuBatalha.setCallbackAtacar(() -> {
             SeletorDeAtaques seletor = new SeletorDeAtaques(jogador.getPokemonAtivo().getAtaques());

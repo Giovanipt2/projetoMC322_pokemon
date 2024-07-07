@@ -13,10 +13,11 @@ public class MenuBatalha extends JPanel {
     private Pokemon pokemon2;
     private final JLabel labelPokemon1;
     private final JLabel labelPokemon2;
-    private final JLabel jogadorAtual;
+    private final JLabel prompt;
     private final JProgressBar vida1;
     private final JProgressBar vida2;
 
+    private String textoPrompt;
     private Runnable callbackAtacar;
     private Runnable callbackTrocar;
     private Runnable callbackItem;
@@ -68,13 +69,11 @@ public class MenuBatalha extends JPanel {
         add(barrasDeVida);
 
         // Adiciona os botões correspondentes às ações
-        jogadorAtual = new JLabel();
-        pokemon.Treinador jogadorAtivo = batalha.getJogadorAtivo();
-        if (jogadorAtivo != null) {
-            jogadorAtual.setText("Escolha uma ação, " + jogadorAtivo.getNome());
-        } else {
-            jogadorAtual.setText("Jogador não encontrado");
-        }
+        prompt = new JLabel();
+        prompt.setText(textoPrompt);
+        JPanel texto = new JPanel();
+        texto.add(prompt);
+        add(texto);
 
         JButton atacar = new JButton("Atacar");
         atacar.addActionListener(e -> {
@@ -92,7 +91,6 @@ public class MenuBatalha extends JPanel {
         });
 
         JPanel opcoes = new JPanel(new FlowLayout());
-        opcoes.add(jogadorAtual);
         opcoes.add(atacar);
         opcoes.add(trocar);
         opcoes.add(item);
@@ -119,10 +117,6 @@ public class MenuBatalha extends JPanel {
         vida2.setMaximum(pokemon2.getStat(Stat.HP));
         vida2.setValue(pokemon2.getHP_atual());
         vida2.setForeground(corBarra(vida2.getPercentComplete()));
-        pokemon.Treinador jogadorAtivo = batalha.getJogadorAtivo();
-        if (jogadorAtivo != null) {
-            jogadorAtual.setText("Escolha uma ação, " + jogadorAtivo.getNome());
-        }
     }
 
     public void setCallbackAtacar(Runnable callback) {
@@ -135,6 +129,11 @@ public class MenuBatalha extends JPanel {
 
     public void setCallbackItem(Runnable callback) {
         callbackItem = callback;
+    }
+
+    public void setPrompt(String texto) {
+        textoPrompt = texto;
+        prompt.setText(texto);
     }
 
 //    public static void main(String[] args) {
