@@ -1,6 +1,7 @@
 package pokemon;
 
 import pokemon.ataques.Ataque;
+import pokemon.itens.Item;
 import pokemon.itens.ItemBatalha;
 
 public class Batalha {
@@ -9,6 +10,16 @@ public class Batalha {
     private Menu menu;
     private Clima clima;
     private Treinador jogadorAtivo;
+
+    // Últimas escolhas de cada jogador
+    private Acao acao1;
+    private Acao acao2;
+    private Ataque ataque1;
+    private Ataque ataque2;
+    private Pokemon pokemon1;
+    private Pokemon pokemon2;
+    private Item item1;
+    private Item item2;
 
     /**
      * O último dano calculado. Salvo caso precise ser
@@ -80,6 +91,68 @@ public class Batalha {
         }
 
         return jogador1.treinadorDerrotado() ? jogador2 : jogador1;
+    }
+
+    public boolean acabou() {
+        return jogador1.treinadorDerrotado() || jogador2.treinadorDerrotado();
+    }
+
+    public void setAtaqueEscolhido(Ataque ataque, int jogador) {
+        if (jogador == 1) {
+            acao1 = Acao.ATACAR;
+            ataque1 = ataque;
+        } else {
+            acao2 = Acao.ATACAR;
+            ataque2 = ataque;
+        }
+    }
+
+    public void setPokemonEscolhido(Pokemon pokemon, int jogador) {
+        if (jogador == 1) {
+            acao1 = Acao.TROCAR;
+            pokemon1 = pokemon;
+        } else {
+            acao2 = Acao.TROCAR;
+            pokemon2 = pokemon;
+        }
+    }
+
+    public void setItemEscolhido(Item item, int jogador) {
+        if (jogador == 1) {
+            acao1 = Acao.ITEM;
+            item1 = item;
+        } else {
+            acao2 = Acao.ITEM;
+            item2 = item;
+        }
+    }
+
+    public String realizarAcao(Treinador jogador) {
+        if (jogador == jogador1) {
+            return switch (acao1) {
+                case ATACAR -> atacar(ataque1, jogador1.getPokemonAtivo(), jogador2.getPokemonAtivo());
+                case TROCAR -> {
+                    String out = jogador1.getPokemonAtivo().getNome() + ", volte!\n" +
+                            pokemon1.getNome() + ", avance!";
+                    jogador1.setPokemonAtivo(pokemon1);
+                    yield out;
+                }
+                case ITEM -> jogador1.getNome() + " usou " + item1.getNome();
+                case null -> null;
+            };
+        } else {
+            return switch (acao2) {
+                case ATACAR -> atacar(ataque2, jogador2.getPokemonAtivo(), jogador1.getPokemonAtivo());
+                case TROCAR -> {
+                    String out = jogador2.getPokemonAtivo().getNome() + ", volte!\n" +
+                            pokemon2.getNome() + ", avance!";
+                    jogador2.setPokemonAtivo(pokemon2);
+                    yield out;
+                }
+                case ITEM -> jogador2.getNome() + " usou " + item2.getNome();
+                case null -> null;
+            };
+        }
     }
 
     /**
@@ -263,6 +336,22 @@ public class Batalha {
                 - jogador2.getPokemonAtivo().getStat(Stat.SPEED)) < 0;
     }
 
+    public boolean primeiroComeca() {
+        if (acao2 != Acao.ATACAR) {
+            return false;
+        }
+        if (acao1 != Acao.ATACAR) {
+            return true;
+        }
+
+        int difPrioridade = ataque1.getPrioridade() - ataque2.getPrioridade();
+        if (difPrioridade != 0) {
+            return difPrioridade > 0;
+        }
+        return (jogador1.getPokemonAtivo().getStat(Stat.SPEED)
+                - jogador2.getPokemonAtivo().getStat(Stat.SPEED)) > 0;
+    }
+
     /**
      * Realiza um ataque.
      *
@@ -270,8 +359,8 @@ public class Batalha {
      * @param usuario o Pokémon que está usando o ataque
      * @param alvo    o Pokémon que está sendo atacado
      */
-    private void atacar(Ataque ataque, Pokemon usuario, Pokemon alvo) {
-        System.out.printf("%s usou %s\n", usuario.getNome(), ataque.getNome());
+    private String atacar(Ataque ataque, Pokemon usuario, Pokemon alvo) {
+        String out = usuario.getNome() + " usou " + ataque.getNome() + ".\n";
         ataque.somaPp(-1);
 
         // Verifica se o ataque acontece e
@@ -286,19 +375,12 @@ public class Batalha {
         // Dá o dano
         ultimoDano = Math.min(ultimoDano, alvo.getHP_atual());
         if (ultimoDano > 0) {
-            System.out.printf("%s tomou %d de dano!\n", alvo.getNome(), ultimoDano);
+            out += alvo.getNome() + " tomou " + ultimoDano + " de dano!";
             alvo.somaHP_atual(-ultimoDano);
         } else {
-            System.out.println("O ataque não causou dano.");
+            out += "O ataque não causou dano.";
         }
-
-        if (alvo.estaVivo()) {
-            System.out.printf("Seu HP caiu para %d.\n", alvo.getHP_atual());
-            if (ultimoEfeito != null && alvo.getEfeito() == null) {
-                alvo.setEfeito(ultimoEfeito);
-                System.out.printf("%s está %s!\n", alvo.getNome(), ultimoEfeito);
-            }
-        }
+        return out;
     }
 
     /**

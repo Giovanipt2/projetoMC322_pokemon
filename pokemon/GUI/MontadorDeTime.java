@@ -4,12 +4,11 @@ import pokemon.Pokemon;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class MontadorDeTime extends JPanel implements ActionListener {
+public class MontadorDeTime extends JPanel {
     private int inicaisSelecionados = 0;
     private int lendariosSelecionados = 0;
     private JLabel explicacao;
@@ -18,6 +17,7 @@ public class MontadorDeTime extends JPanel implements ActionListener {
     private JButton confirmador;
 
     private ArrayList<Pokemon> escolhidos;
+    private Runnable callback;
 
     /**
      * Um JCheckBox com um ícone extra.
@@ -51,8 +51,12 @@ public class MontadorDeTime extends JPanel implements ActionListener {
             return checkBox.isEnabled();
         }
 
-        public boolean isSelected() {
+        boolean isSelected() {
             return checkBox.isSelected();
+        }
+
+        void setSelected(boolean b) {
+            checkBox.setSelected(b);
         }
 
         JCheckBox getCheckBox() {
@@ -61,7 +65,7 @@ public class MontadorDeTime extends JPanel implements ActionListener {
     }
 
     public MontadorDeTime(Collection<? extends Pokemon> iniciais, Collection<? extends Pokemon> lendarios) {
-        super(new GridLayout(7, 4));
+        super(new GridLayout(0, 6));
         botoesIniciais = new ArrayList<>();
         botoesLendarios = new ArrayList<>();
         escolhidos = new ArrayList<>();
@@ -72,8 +76,7 @@ public class MontadorDeTime extends JPanel implements ActionListener {
                 if (checkBox.isSelected()) {
                     inicaisSelecionados++;
                     escolhidos.add(pokemon);
-                }
-                else {
+                } else {
                     inicaisSelecionados--;
                     escolhidos.remove(pokemon);
                 }
@@ -88,8 +91,7 @@ public class MontadorDeTime extends JPanel implements ActionListener {
                 if (checkBox.isSelected()) {
                     lendariosSelecionados++;
                     escolhidos.add(pokemon);
-                }
-                else {
+                } else {
                     lendariosSelecionados--;
                     escolhidos.remove(pokemon);
                 }
@@ -103,10 +105,14 @@ public class MontadorDeTime extends JPanel implements ActionListener {
         add(explicacao);
         confirmador = new JButton("Confirmar");
         confirmador.addActionListener(e -> {
-            // TODO sair
+            callback.run();
         });
         confirmador.setEnabled(false);
         add(confirmador);
+    }
+
+    public void setCallback(Runnable callback) {
+        this.callback = callback;
     }
 
     public void update() {
@@ -127,21 +133,21 @@ public class MontadorDeTime extends JPanel implements ActionListener {
         confirmador.setEnabled(inicaisSelecionados == 1 && lendariosSelecionados == 3);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
+    public ArrayList<Pokemon> getEscolhidos() {
+        return escolhidos;
+    }
+
+    public void reset() {
         for (PokemonCheckBox checkBox : botoesIniciais) {
-            if (e.getSource() == checkBox.getCheckBox()) {
-                inicaisSelecionados += (checkBox.isSelected() ? 1 : -1);
-                update();
-                return;
-            }
+            checkBox.setEnabled(true);
+            checkBox.setSelected(false);
         }
         for (PokemonCheckBox checkBox : botoesLendarios) {
-            if (e.getSource() == checkBox.getCheckBox()) {
-                lendariosSelecionados += (checkBox.isSelected() ? 1 : -1);
-                update();
-                return;
-            }
+            checkBox.setEnabled(true);
+            checkBox.setSelected(false);
         }
+        escolhidos = new ArrayList<>();
+        inicaisSelecionados = 0;
+        lendariosSelecionados = 0;
     }
 }
