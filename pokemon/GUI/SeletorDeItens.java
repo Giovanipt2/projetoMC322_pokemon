@@ -12,11 +12,24 @@ public class SeletorDeItens extends JPanel {
     private Item escolhido;
 
     // Construtor
-    public SeletorDeItens(Collection<? extends Item> itens) {
-        super(new GridLayout(1, 0, 6, 6));
+    public SeletorDeItens(Collection<? extends Item> itens, String prompt) {
+        super();
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+
+        JPanel promptECancelar = new JPanel(new FlowLayout());
+        promptECancelar.add(new JLabel(prompt));
+        JButton cancelar = new JButton("Cancelar");
+        cancelar.addActionListener(e -> {
+            getParent().remove(this);
+        });
+        promptECancelar.add(cancelar);
+        add(promptECancelar);
+
+        JPanel botoes = new JPanel(new GridLayout(1, 0, 6, 6));
         for (Item item : itens) {
-            add(criarBotao(item));
+            botoes.add(criarBotao(item));
         }
+        add(botoes);
         setVisible(true);
     }
 

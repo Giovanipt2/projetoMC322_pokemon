@@ -11,7 +11,7 @@ import java.util.Collection;
 public class MontadorDeTime extends JPanel {
     private int inicaisSelecionados = 0;
     private int lendariosSelecionados = 0;
-    private JLabel explicacao;
+    private JLabel prompt;
     private ArrayList<PokemonCheckBox> botoesIniciais;
     private ArrayList<PokemonCheckBox> botoesLendarios;
     private JButton confirmador;
@@ -65,7 +65,16 @@ public class MontadorDeTime extends JPanel {
     }
 
     public MontadorDeTime(Collection<? extends Pokemon> iniciais, Collection<? extends Pokemon> lendarios) {
-        super(new GridLayout(0, 6));
+        super();
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        prompt = new JLabel("Escolha um pokémon inicial e três lendários");
+        add(prompt);
+        add(criarPainelCheckbox(iniciais, lendarios));
+
+    }
+
+    private JPanel criarPainelCheckbox(Collection<? extends Pokemon> iniciais, Collection<? extends Pokemon> lendarios) {
+        JPanel painel = new JPanel(new GridLayout(0, 6));
         botoesIniciais = new ArrayList<>();
         botoesLendarios = new ArrayList<>();
         escolhidos = new ArrayList<>();
@@ -83,7 +92,7 @@ public class MontadorDeTime extends JPanel {
                 update();
             });
             botoesIniciais.add(checkBox);
-            add(checkBox);
+            painel.add(checkBox);
         }
         for (Pokemon pokemon : lendarios) {
             PokemonCheckBox checkBox = new PokemonCheckBox(pokemon);
@@ -98,19 +107,18 @@ public class MontadorDeTime extends JPanel {
                 update();
             });
             botoesLendarios.add(checkBox);
-            add(checkBox);
+            painel.add(checkBox);
         }
 
-        explicacao = new JLabel("Escolha um pokémon inicial e três lendários");
-        add(explicacao);
         confirmador = new JButton("Confirmar");
         confirmador.addActionListener(e -> {
             callback.run();
         });
         confirmador.setEnabled(false);
-        add(confirmador);
-    }
+        painel.add(confirmador);
 
+        return painel;
+    }
     public void setCallback(Runnable callback) {
         this.callback = callback;
     }
@@ -149,5 +157,9 @@ public class MontadorDeTime extends JPanel {
         escolhidos = new ArrayList<>();
         inicaisSelecionados = 0;
         lendariosSelecionados = 0;
+    }
+
+    public void setPrompt(String text) {
+        prompt.setText(text);
     }
 }
