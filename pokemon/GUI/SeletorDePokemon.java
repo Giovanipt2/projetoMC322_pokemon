@@ -7,24 +7,15 @@ import java.awt.*;
 import java.util.Collection;
 
 public class SeletorDePokemon extends JPanel {
-    private MenuPrincipal pai;
+    private Runnable callback;
+    private Pokemon escolhido;
 
-    /**
-     * O último Pokémon clicado.
-     */
-    private Pokemon selecionado;
-
-    public SeletorDePokemon(Collection<Pokemon> pokemons, MenuPrincipal pai) {
+    public SeletorDePokemon(Collection<? extends Pokemon> pokemons) {
         super(new GridLayout((int) Math.sqrt(pokemons.size()), 0, 6, 6));
-        this.pai = pai;
         for (Pokemon pokemon : pokemons) {
             add(criarBotao(pokemon));
         }
         setVisible(true);
-    }
-
-    private void inicializar(Collection<Pokemon> pokemons) {
-
     }
 
     private JButton criarBotao(Pokemon pokemon) {
@@ -39,12 +30,19 @@ public class SeletorDePokemon extends JPanel {
             int escolha = JOptionPane.showConfirmDialog(null, "Deseja enviar " +
                     pokemon.getNome() + "?", null, JOptionPane.YES_NO_OPTION);
             if (escolha == 0) {  // Sim
-                selecionado = pokemon;
-                pai.setPokemonEscolhido(pokemon);
-                setVisible(false);
+                escolhido = pokemon;
+                callback.run();
             }
         });
 
         return botao;
+    }
+
+    public void setCallback(Runnable callback) {
+        this.callback = callback;
+    }
+
+    public Pokemon pokemonEscolhido() {
+        return escolhido;
     }
 }

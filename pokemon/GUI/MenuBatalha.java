@@ -1,6 +1,5 @@
 package pokemon.GUI;
 
-import pokemon.BancoDados;
 import pokemon.Batalha;
 import pokemon.Pokemon;
 import pokemon.Stat;
@@ -12,14 +11,15 @@ public class MenuBatalha extends JPanel {
     private Batalha batalha;
     private Pokemon pokemon1;
     private Pokemon pokemon2;
-    private JLabel labelPokemon1;
-    private JLabel labelPokemon2;
-    private JLabel jogadorAtual;
-    private JProgressBar vida1;
-    private JProgressBar vida2;
-    private JButton atacar;
-    private JButton trocar;
-    private JButton item;
+    private final JLabel labelPokemon1;
+    private final JLabel labelPokemon2;
+    private final JLabel jogadorAtual;
+    private final JProgressBar vida1;
+    private final JProgressBar vida2;
+
+    private Runnable callbackAtacar;
+    private Runnable callbackTrocar;
+    private Runnable callbackItem;
 
     /**
      * Cria e inicializa um novo Menu de Batalha
@@ -72,25 +72,23 @@ public class MenuBatalha extends JPanel {
         pokemon.Treinador jogadorAtivo = batalha.getJogadorAtivo();
         if (jogadorAtivo != null) {
             jogadorAtual.setText("Escolha uma ação, " + jogadorAtivo.getNome());
+        } else {
+            jogadorAtual.setText("Jogador não encontrado");
         }
 
-        atacar = new JButton("Atacar");
+        JButton atacar = new JButton("Atacar");
         atacar.addActionListener(e -> {
-            //TODO
-            pokemon2.somaHP_atual(-10); // Teste
-            update();
+            callbackAtacar.run();
         });
 
-        trocar = new JButton("Trocar");
+        JButton trocar = new JButton("Trocar");
         trocar.addActionListener(e -> {
-            //TODO
-            update();
+            callbackTrocar.run();
         });
 
-        item = new JButton("Item");
+        JButton item = new JButton("Item");
         item.addActionListener(e -> {
-            //TODO
-            update();
+            callbackItem.run();
         });
 
         JPanel opcoes = new JPanel(new FlowLayout());
@@ -126,6 +124,44 @@ public class MenuBatalha extends JPanel {
             jogadorAtual.setText("Escolha uma ação, " + jogadorAtivo.getNome());
         }
     }
+
+    public void setCallbackAtacar(Runnable callback) {
+        callbackAtacar = callback;
+    }
+
+    public void setCallbackTrocar(Runnable callback) {
+        callbackTrocar = callback;
+    }
+
+    public void setCallbackItem(Runnable callback) {
+        callbackItem = callback;
+    }
+
+//    public static void main(String[] args) {
+//        BancoDados.inicializar();
+//        JFrame frame = new JFrame();
+//        pokemon.Treinador t1 = new pokemon.Treinador("t1");
+//        pokemon.Treinador t2 = new pokemon.Treinador("t2");
+//
+//        t1.adicionarPokemon(BancoDados.getPokemons().get("Diancie"));
+//        t1.adicionarPokemon(BancoDados.getPokemons().get("Kyogre"));
+//        t1.adicionarPokemon(BancoDados.getPokemons().get("Groudon"));
+//        t1.adicionarPokemon(BancoDados.getPokemons().get("Mewtwo"));
+//        t1.setPokemonAtivo(BancoDados.getPokemons().get("Groudon"));
+//
+//        t2.adicionarPokemon(BancoDados.getPokemons().get("Zacian"));
+//        t2.adicionarPokemon(BancoDados.getPokemons().get("Hoopa"));
+//        t2.adicionarPokemon(BancoDados.getPokemons().get("Kartana"));
+//        t2.adicionarPokemon(BancoDados.getPokemons().get("Dialga"));
+//        t2.setPokemonAtivo(BancoDados.getPokemons().get("Kartana"));
+//
+//
+//        Batalha batalha = new Batalha(t1, t2, null);
+//        //frame.add(new MenuBatalha(batalha));
+//        frame.add(new MontadorDeTime(BancoDados.getPokemonsIniciais().values(), BancoDados.getPokemons().values()));
+//        frame.pack();
+//        frame.setVisible(true);
+//    }
 
     /**
      * Retorna a cor que a barra de vida de um Pokémon deve ter.

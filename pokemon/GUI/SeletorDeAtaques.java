@@ -1,17 +1,17 @@
 package pokemon.GUI;
 
+import pokemon.ataques.Ataque;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.Collection;
-import pokemon.ataques.*;
 
 public class SeletorDeAtaques extends JPanel {
-    private MenuPrincipal pai;
+    private Runnable callback;
+    private Ataque escolhido;
 
-
-    public SeletorDeAtaques(Collection<? extends Ataque> Ataques, MenuPrincipal pai) {
+    public SeletorDeAtaques(Collection<? extends Ataque> Ataques) {
         super(new GridLayout(2, 2)); // GridLayout com 2 linhas e 2 colunas
-        this.pai = pai;
 
         // Criando os botões para cada ataque
         for (Ataque ataque : Ataques) {
@@ -27,11 +27,19 @@ public class SeletorDeAtaques extends JPanel {
             int escolha = JOptionPane.showConfirmDialog(null, "Deseja usar este ataque " +
                     ataque.getNome() + "?", null, JOptionPane.YES_NO_OPTION);
             if (escolha == 0) {  // Sim
-                pai.setAtaqueEscolhido(ataque);
-                setVisible(false);
+                escolhido = ataque;
+                callback.run();
             }
         });
 
         return botao;
+    }
+
+    public void setCallback(Runnable callback) {
+        this.callback = callback;
+    }
+
+    public Ataque ataqueEscolhido() {
+        return escolhido;
     }
 }
