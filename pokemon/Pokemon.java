@@ -2,16 +2,18 @@ package pokemon;
 
 import pokemon.ataques.Ataque;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.io.Serializable;
 
-public class Pokemon implements Serializable{
+public class Pokemon implements Serializable {
     /**
      * Serial version UID
      */
+    @Serial
     private static final long serialVersionUID = 1L;
     /**
      * O nome do Pokémon
@@ -45,9 +47,6 @@ public class Pokemon implements Serializable{
      * Os ataques que podem ser usados pelo Pokémon
      */
     private List<Ataque> ataques;
-    /**
-     * O item atual do Pokémon (null se não há)
-     */
     //private ItemPokemon item;
     /**
      * O efeito atual do Pokémon (null se não há)
@@ -227,6 +226,7 @@ public class Pokemon implements Serializable{
     public String getSprite() {
         return sprite;
     }
+
     public boolean estaVivo() {
         return hp > 0;
     }
@@ -237,17 +237,17 @@ public class Pokemon implements Serializable{
      * @return uma string com as informações do Pokémon.
      */
     public String toString() {
-        String out = "Nome: " + nome + "\n" +
+        StringBuilder out = new StringBuilder("Nome: " + nome + "\n" +
                 "Nível: " + nivel + "\n" +
-                "Ataques: \n";
+                "Ataques: \n");
         //Mostrar os ataques
         for (int i = 0; i < ataques.size(); i++) {
-            out += "[" + (i + 1) + "] " + ataques.get(i).toString() + "\n";
+            out.append("[").append(i + 1).append("] ").append(ataques.get(i).toString()).append("\n");
         }
-        out += "Stats: \n";
+        out.append("Stats: \n");
         for (Stat s : Stat.values()) {
-            out += s + ": " + getStat(s) + "\n";
+            out.append(s).append(": ").append(getStat(s)).append("\n");
         }
-        return out;
+        return out.toString();
     }
 }

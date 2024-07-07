@@ -6,24 +6,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Treinador.java
- * Representa um treinador de pokémon que participará do torneio
- * Seus atributos são: nome, time (array de Pokémons) e itens (array de itens de batalha)
+ * Um treinador de Pokémons, que representa um jogador.
  */
 public class Treinador {
     private String nome;        //String que representa o nome do treinador
-    private int id;             //Número inteiro que representa o id de um treinador
     private ArrayList<Pokemon> time;    //Array que guarda os Pokémons no time do treinador
     private ArrayList<ItemBatalha> itens;    //Array que guarda os itens de batalha do treinador
     private Pokemon pokemonAtivo; //Pokemon que está em batalha
-    public static int numTreinadores;  //Número inteiro que representa a quantidade de jogadores no torneio
 
     //Construtor
     public Treinador(String nome) {
         this.nome = nome;
-        this.id = numTreinadores++;
-        this.time = new ArrayList<Pokemon>();
-        this.itens = new ArrayList<ItemBatalha>();
+        this.time = new ArrayList<>();
+        this.itens = new ArrayList<>();
         this.pokemonAtivo = null;
     }
 
@@ -32,20 +27,18 @@ public class Treinador {
         return nome;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public ArrayList<Pokemon> getTime() {
-        return new ArrayList<>(time);
-    }
-
     public ArrayList<ItemBatalha> getItens() {
         return new ArrayList<>(itens);
     }
+
+    public List<Pokemon> getPokemons() {
+        return time;
+    }
+
     public Pokemon getPokemonAtivo() {
         return pokemonAtivo;
     }
+
     public void setPokemonAtivo(Pokemon pokemon) {
         if (!time.contains(pokemon)) {
             throw new IllegalArgumentException("O Pokémon " + pokemon
@@ -53,13 +46,10 @@ public class Treinador {
         }
         pokemonAtivo = pokemon;
     }
-    public List<Pokemon> getPokemons() {
-        return time;
-    }
-
 
     /**
      * Método para adicionar o pokémon escolhido ao time do treinador
+     *
      * @param pokemon Instância da classe Pokemon
      * @return True, se foi possível adicionar o pokémon; ou false, caso contrário
      */
@@ -70,16 +60,17 @@ public class Treinador {
 
     /**
      * Método para adicionar o item de batatlha escolhido aos itens do treinador
+     *
      * @param item Item de batalha que o treinador escolheu
-     * @return  True, se foi possível adicionar o item; ou false, caso contrário
      */
-    public boolean adicionarItem(ItemBatalha item) {
-        return itens.add(item);
+    public void adicionarItem(ItemBatalha item) {
+        itens.add(item);
     }
 
 
     /**
      * Método para remover o item de batlha que foi usado pelo treinador
+     *
      * @param item Item de batalha que o treinador gastou
      * @return True, se foi possível remover o item; ou false, caso contrário
      */
@@ -90,10 +81,11 @@ public class Treinador {
 
     /**
      * Método para verificar se o treinador ainda tem pokémons não desmaiados
+     *
      * @return True, caso tenha perdido todos os pokémons; ou 0, caso contrário
      */
     public boolean treinadorDerrotado() {
-        for (Pokemon pokemon : time) { 
+        for (Pokemon pokemon : time) {
             if (pokemon.estaVivo()) {
                 return false;
             }
@@ -119,26 +111,25 @@ public class Treinador {
      */
     @Override
     public String toString() {
-        String out = "";
+        StringBuilder out = new StringBuilder();
 
-        out += "Nome: " + nome + "\n";
-        out += "ID: " + id + "\n";
-        out += "Pokémons:";
-        
+        out.append("Nome: ").append(nome).append("\n");
+        out.append("Pokémons:");
+
         for (Pokemon pokemon : time) {
-            out += " " + pokemon.getNome();
+            out.append(" ").append(pokemon.getNome());
         }
-        
-        out += ".\n";
 
-        out += "Itens de batalha:";
+        out.append(".\n");
+
+        out.append("Itens de batalha:");
 
         for (ItemBatalha item : itens) {
-            out += " " + item.getNome();
+            out.append(" ").append(item.getNome());
         }
 
-        out += ".\n";
+        out.append(".\n");
 
-        return out;
+        return out.toString();
     }
 }

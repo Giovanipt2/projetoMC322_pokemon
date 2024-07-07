@@ -6,22 +6,17 @@ import pokemon.ataques.AtaqueEspecial;
 import pokemon.ataques.AtaqueFisico;
 import pokemon.itens.BoostEV;
 import pokemon.itens.CuraEfeito;
-import pokemon.itens.Pocao;
 import pokemon.itens.ItemBatalha;
+import pokemon.itens.Pocao;
 
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.io.Serializable;
-import java.io.ObjectInputStream;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.FileOutputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.lang.ClassCastException;
 
 
 /**
@@ -139,42 +134,41 @@ public class BancoDados implements Serializable {
      * Inicializa o banco de dados. Deve ser chamado uma única vez
      * antes que os demais métodos da classe sejam chamados.
      */
-    @SuppressWarnings("unchecked") // Isso foi necessário devido ao cast de Object para HashMap (fizemos as verificações necessárias para garantir que o cast é seguro)
+    @SuppressWarnings("unchecked")
+    // Isso foi necessário devido ao cast de Object para HashMap (fizemos as verificações necessárias para garantir que o cast é seguro)
     public static void inicializar() {
         // Se o arquivo "bancoDados.bytej" existir, carregar o banco de dados a partir dele
-        if (Files.exists(Paths.get("bancoDados.bytej"))) {
+        Path path = Paths.get("bancoDados.bytej");
+        if (Files.exists(path)) {
             try {
-            FileInputStream fileIn = new FileInputStream("bancoDados.bytej");
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-            try {
-                ataques = (HashMap<String, Ataque>) in.readObject();
-                pokemons = (HashMap<String, Pokemon>) in.readObject();
-                pokemonsIniciais = (HashMap<String, Pokemon>) in.readObject();
-                in.close();
-                fileIn.close();
+                FileInputStream fileIn = new FileInputStream("bancoDados.bytej");
+                ObjectInputStream in = new ObjectInputStream(fileIn);
+                try {
+                    ataques = (HashMap<String, Ataque>) in.readObject();
+                    pokemons = (HashMap<String, Pokemon>) in.readObject();
+                    pokemonsIniciais = (HashMap<String, Pokemon>) in.readObject();
+                    in.close();
+                    fileIn.close();
                 } catch (ClassCastException e) {
-                e.printStackTrace();
+                    e.printStackTrace();
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
+            } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
             }
 
-        }
-        else {
-                //Array com os tipos do pokémon que está sendo criado
-                List<Tipo> tiposPokemon = new ArrayList<>();
-                //HashMap com os status base do pokémon que está sendo criado
-                Map<Stat, Integer> statsBasePokemon = new HashMap<>();
-                //Array com os ataques do pokémon que está sendo criado
-                ArrayList<Ataque> ataquesPokemon = new ArrayList<>();
+        } else {
+            //Array com os tipos do pokémon que está sendo criado
+            List<Tipo> tiposPokemon = new ArrayList<>();
+            //HashMap com os status base do pokémon que está sendo criado
+            Map<Stat, Integer> statsBasePokemon = new HashMap<>();
+            //Array com os ataques do pokémon que está sendo criado
+            ArrayList<Ataque> ataquesPokemon = new ArrayList<>();
 
-                if (itensBatalha == null) {
+            if (itensBatalha == null) {
                 inicializarItens();
-                }
+            }
 
-                if (ataques == null) {
+            if (ataques == null) {
                 ataques = new HashMap<>();
                 ataques.put("Draco Meteor", new AtaqueEspecial("Draco Meteor", Tipo.DRAGAO, 130, 5, 0, 90, null, 0));
                 ataques.put("Fire Blast", new AtaqueEspecial("Fire Blast", Tipo.FOGO, 110, 5, 0, 85, Efeito.QUEIMADO, 10));
@@ -249,9 +243,9 @@ public class BancoDados implements Serializable {
                 ataques.put("Spark", new AtaqueFisico("Spark", Tipo.ELETRICO, 65, 20, 0, 100, Efeito.PARALISADO, 30));
                 ataques.put("Wood Hammer", new AtaqueFisico("Wood Hammer", Tipo.PLANTA, 120, 15, 0, 100, null, 0));
                 ataques.put("Hammer Arm", new AtaqueFisico("Hammer Arm", Tipo.LUTADOR, 100, 10, 0, 90, null, 0));
-                }
+            }
 
-                if (pokemons == null) {
+            if (pokemons == null) {
                 pokemons = new HashMap<>();
 
 
@@ -723,10 +717,10 @@ public class BancoDados implements Serializable {
 
                 pokemons.put("Diancie", new Pokemon("Diancie", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
                         "pokemon/sprites/diancie.png"));
-                }
+            }
 
-                // Criando os pokemons iniciais
-                if (pokemonsIniciais == null) {
+            // Criando os pokemons iniciais
+            if (pokemonsIniciais == null) {
                 pokemonsIniciais = new HashMap<>();
 
 
@@ -871,22 +865,22 @@ public class BancoDados implements Serializable {
 
                 pokemonsIniciais.put("Chesnaught", new Pokemon("Chesnaught", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
                         "pokemon/sprites/chesnaught.png"));
-                }
+            }
 
-                // Criando o arquivo .bytej que contém a serialização do banco de dados se ele ainda não tiver sido criado
-                if (!Files.exists(Paths.get("bancoDados.bytej"))) {
+            // Criando o arquivo .bytej que contém a serialização do banco de dados se ele ainda não tiver sido criado
+            if (!Files.exists(path)) {
                 try {
-                        FileOutputStream fileOut = new FileOutputStream("bancoDados.bytej");
-                        ObjectOutputStream out = new ObjectOutputStream(fileOut);
-                        out.writeObject(ataques);
-                        out.writeObject(pokemons);
-                        out.writeObject(pokemonsIniciais);
-                        out.close();
-                        fileOut.close();
+                    FileOutputStream fileOut = new FileOutputStream("bancoDados.bytej");
+                    ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                    out.writeObject(ataques);
+                    out.writeObject(pokemons);
+                    out.writeObject(pokemonsIniciais);
+                    out.close();
+                    fileOut.close();
                 } catch (IOException e) {
-                        e.printStackTrace();
-                        }
-                }   
-        }   
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 }

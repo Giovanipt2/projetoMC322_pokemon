@@ -1,10 +1,12 @@
 package pokemon.ataques;
 
-import java.io.Serializable;
 import pokemon.Clima;
 import pokemon.Efeito;
 import pokemon.Pokemon;
 import pokemon.Tipo;
+
+import java.io.Serial;
+import java.io.Serializable;
 
 /**
  * Um ataque que pode ser usado por um Pokémon
@@ -13,6 +15,7 @@ public abstract class Ataque implements Serializable {
     /**
      * Serial version UID
      */
+    @Serial
     private static final long serialVersionUID = 2L;
     /**
      * O tipo do ataque.
@@ -124,7 +127,7 @@ public abstract class Ataque implements Serializable {
     }
 
     /**
-     * @returna probabilidade (em porcentagem) de, caso o ataque
+     * @return probabilidade (em porcentagem) de, caso o ataque
      * acerte, causar um efeito no oponente.
      */
     public int getProbEfeito() {

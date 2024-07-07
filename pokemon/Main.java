@@ -1,6 +1,7 @@
 package pokemon;
 
 import pokemon.GUI.MenuPrincipal;
+import pokemon.itens.ItemBatalha;
 
 import javax.swing.*;
 
@@ -24,7 +25,12 @@ public class Main {
         }
         Treinador jogador1 = new Treinador(nomeTreinador1);
         Treinador jogador2 = new Treinador(nomeTreinador2);
-        Batalha batalha = new Batalha(jogador1, jogador2, null);
+
+        for (ItemBatalha item : BancoDados.getItensBatalha().values()) {
+            jogador1.adicionarItem(item);
+            jogador2.adicionarItem(item);
+        }
+        Batalha batalha = new Batalha(jogador1, jogador2);
 
         SwingUtilities.invokeLater(() -> new MenuPrincipal(batalha).start());
     }

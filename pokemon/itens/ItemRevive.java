@@ -18,14 +18,14 @@ public class ItemRevive extends ItemBatalha {
     }
 
     @Override
-    public void uso(Pokemon pokemon) throws ExcecaoUsoItem {
+    public void usar(Pokemon pokemon) throws ExcecaoUsoItem {
         if (!usavel(pokemon)) {
             throw new ExcecaoUsoItem();
         }
         if (isMax) {
             pokemon.setHP_atual(pokemon.getStat(Stat.HP));
         } else {
-            pokemon.setHP_atual(pokemon.getStat(Stat.HP)/2);
+            pokemon.setHP_atual(pokemon.getStat(Stat.HP) / 2);
         }
     }
 
@@ -33,5 +33,5 @@ public class ItemRevive extends ItemBatalha {
     public boolean usavel(Pokemon pokemon) {
         return (pokemon.getHP_atual() == 0);
     }
-    
+
 }

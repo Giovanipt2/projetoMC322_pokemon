@@ -1,18 +1,17 @@
 package pokemon.GUI;
 
-import pokemon.itens.Item;
+import pokemon.itens.ItemBatalha;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.Collection;
 
 public class SeletorDeItens extends JPanel {
-    private MenuPrincipal origem;
     private Runnable callback;
-    private Item escolhido;
+    private ItemBatalha escolhido;
 
     // Construtor
-    public SeletorDeItens(Collection<? extends Item> itens, String prompt) {
+    public SeletorDeItens(Collection<? extends ItemBatalha> itens, String prompt) {
         super();
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
@@ -25,8 +24,8 @@ public class SeletorDeItens extends JPanel {
         promptECancelar.add(cancelar);
         add(promptECancelar);
 
-        JPanel botoes = new JPanel(new GridLayout(1, 0, 6, 6));
-        for (Item item : itens) {
+        JPanel botoes = new JPanel(new GridLayout(0, 1, 6, 6));
+        for (ItemBatalha item : itens) {
             botoes.add(criarBotao(item));
         }
         add(botoes);
@@ -35,7 +34,7 @@ public class SeletorDeItens extends JPanel {
 
 
     // Método de criação do botão para esse painel
-    private JButton criarBotao(Item item) {
+    private JButton criarBotao(ItemBatalha item) {
         JButton botao = new JButton(item.getNome());
         botao.setFocusPainted(false);
         botao.addActionListener(e -> {
@@ -53,7 +52,7 @@ public class SeletorDeItens extends JPanel {
         this.callback = callback;
     }
 
-    public Item itemEscolhido() {
+    public ItemBatalha itemEscolhido() {
         return escolhido;
     }
 }
