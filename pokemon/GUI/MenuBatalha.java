@@ -136,32 +136,6 @@ public class MenuBatalha extends JPanel {
         prompt.setText(texto);
     }
 
-//    public static void main(String[] args) {
-//        BancoDados.inicializar();
-//        JFrame frame = new JFrame();
-//        pokemon.Treinador t1 = new pokemon.Treinador("t1");
-//        pokemon.Treinador t2 = new pokemon.Treinador("t2");
-//
-//        t1.adicionarPokemon(BancoDados.getPokemons().get("Diancie"));
-//        t1.adicionarPokemon(BancoDados.getPokemons().get("Kyogre"));
-//        t1.adicionarPokemon(BancoDados.getPokemons().get("Groudon"));
-//        t1.adicionarPokemon(BancoDados.getPokemons().get("Mewtwo"));
-//        t1.setPokemonAtivo(BancoDados.getPokemons().get("Groudon"));
-//
-//        t2.adicionarPokemon(BancoDados.getPokemons().get("Zacian"));
-//        t2.adicionarPokemon(BancoDados.getPokemons().get("Hoopa"));
-//        t2.adicionarPokemon(BancoDados.getPokemons().get("Kartana"));
-//        t2.adicionarPokemon(BancoDados.getPokemons().get("Dialga"));
-//        t2.setPokemonAtivo(BancoDados.getPokemons().get("Kartana"));
-//
-//
-//        Batalha batalha = new Batalha(t1, t2, null);
-//        //frame.add(new MenuBatalha(batalha));
-//        frame.add(new MontadorDeTime(BancoDados.getPokemonsIniciais().values(), BancoDados.getPokemons().values()));
-//        frame.pack();
-//        frame.setVisible(true);
-//    }
-
     /**
      * Retorna a cor que a barra de vida de um Pokémon deve ter.
      *

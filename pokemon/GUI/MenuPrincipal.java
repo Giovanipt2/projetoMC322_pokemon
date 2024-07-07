@@ -30,11 +30,8 @@ public class MenuPrincipal extends JFrame {
         cardLayout = new CardLayout();
         cPane.setLayout(cardLayout);
 
-
         montadorDeTime = new MontadorDeTime(BancoDados.getPokemonsIniciais().values(),
                 BancoDados.getPokemons().values());
-
-
         setVisible(true);
     }
 
@@ -53,6 +50,8 @@ public class MenuPrincipal extends JFrame {
         montadorDeTime.setCallback(() -> {
             montarTime(batalha.getJogador1());
             montadorDeTime.reset();
+            montadorDeTime.setPrompt("Escolha um Pokémon inicial e três lendários, " +
+                    batalha.getJogador2().getNome());
 
             // Callback do segundo jogador
             montadorDeTime.setCallback(() -> {
@@ -61,6 +60,8 @@ public class MenuPrincipal extends JFrame {
                 escolherPrimeiroPokemonAtivo();
             });
         });
+        montadorDeTime.setPrompt("Escolha um Pokémon inicial e três lendários, " +
+                batalha.getJogador1().getNome());
         getContentPane().add(montadorDeTime);
         cardLayout.next(getContentPane());
         pack();
@@ -69,8 +70,10 @@ public class MenuPrincipal extends JFrame {
     private void escolherPrimeiroPokemonAtivo() {
         Treinador jogador1 = batalha.getJogador1();
         Treinador jogador2 = batalha.getJogador2();
-        SeletorDePokemon seletor1 = new SeletorDePokemon(jogador1.getPokemons());
-        SeletorDePokemon seletor2 = new SeletorDePokemon(jogador2.getPokemons());
+        SeletorDePokemon seletor1 = new SeletorDePokemon(jogador1.getPokemons(),
+                "Escolha um Pokémon para enviar, " + jogador1.getNome(), false);
+        SeletorDePokemon seletor2 = new SeletorDePokemon(jogador2.getPokemons(),
+                "Escolha um Pokémon para enviar, " + jogador2.getNome(), false);
 
         Container cPane = getContentPane();
 
@@ -101,7 +104,8 @@ public class MenuPrincipal extends JFrame {
         menuBatalha.setPrompt("Escolha uma ação, " + jogador.getNome() + ":");
         menuBatalha.update();
         menuBatalha.setCallbackAtacar(() -> {
-            SeletorDeAtaques seletor = new SeletorDeAtaques(jogador.getPokemonAtivo().getAtaques());
+            SeletorDeAtaques seletor = new SeletorDeAtaques(jogador.getPokemonAtivo().getAtaques(),
+                    "Escolha um ataque, " + jogador.getPokemonAtivo().getNome());
             seletor.setCallback(() -> {
                 batalha.setAtaqueEscolhido(seletor.ataqueEscolhido(), 1);
                 cPane.remove(seletor);
@@ -112,7 +116,8 @@ public class MenuPrincipal extends JFrame {
         });
 
         menuBatalha.setCallbackTrocar(() -> {
-            SeletorDePokemon seletor = new SeletorDePokemon(jogador.getPokemons());
+            SeletorDePokemon seletor = new SeletorDePokemon(jogador.getPokemons(),
+                    "Escolha um Pokémon para enviar, " + jogador.getNome());
             seletor.setCallback(() -> {
                 batalha.setPokemonEscolhido(seletor.pokemonEscolhido(), 1);
                 cPane.remove(seletor);
@@ -123,10 +128,8 @@ public class MenuPrincipal extends JFrame {
         });
 
         menuBatalha.setCallbackItem(() -> {
-            if (jogador.getItens().isEmpty()) {
-                return;
-            }
-            SeletorDeItens seletor = new SeletorDeItens(jogador.getItens());
+            SeletorDeItens seletor = new SeletorDeItens(jogador.getItens(),
+                    "Escolha um item, " + jogador.getNome());
             seletor.setCallback(() -> {
                 batalha.setItemEscolhido(seletor.itemEscolhido(), 1);
                 cPane.remove(seletor);
@@ -144,7 +147,8 @@ public class MenuPrincipal extends JFrame {
         menuBatalha.setPrompt("Escolha uma ação, " + jogador.getNome() + ":");
 
         menuBatalha.setCallbackAtacar(() -> {
-            SeletorDeAtaques seletor = new SeletorDeAtaques(jogador.getPokemonAtivo().getAtaques());
+            SeletorDeAtaques seletor = new SeletorDeAtaques(jogador.getPokemonAtivo().getAtaques(),
+                    "Escolha um ataque, " + jogador.getPokemonAtivo().getNome());
             seletor.setCallback(() -> {
                 batalha.setAtaqueEscolhido(seletor.ataqueEscolhido(), 2);
                 cPane.remove(seletor);
@@ -155,7 +159,8 @@ public class MenuPrincipal extends JFrame {
         });
 
         menuBatalha.setCallbackTrocar(() -> {
-            SeletorDePokemon seletor = new SeletorDePokemon(jogador.getPokemons());
+            SeletorDePokemon seletor = new SeletorDePokemon(jogador.getPokemons(),
+                    "Escolha um Pokémon para enviar, " + jogador.getNome());
             seletor.setCallback(() -> {
                 batalha.setPokemonEscolhido(seletor.pokemonEscolhido(), 2);
                 cPane.remove(seletor);
@@ -166,10 +171,8 @@ public class MenuPrincipal extends JFrame {
         });
 
         menuBatalha.setCallbackItem(() -> {
-            if (jogador.getItens().isEmpty()) {
-                return;
-            }
-            SeletorDeItens seletor = new SeletorDeItens(jogador.getItens());
+            SeletorDeItens seletor = new SeletorDeItens(jogador.getItens(),
+                    "Escolha um item, " + jogador.getNome());
             seletor.setCallback(() -> {
                 batalha.setItemEscolhido(seletor.itemEscolhido(), 2);
                 cPane.remove(seletor);
@@ -196,7 +199,8 @@ public class MenuPrincipal extends JFrame {
             if (ageDepois.treinadorDerrotado()) {
                 anunciarVitoria(ageAntes);
             }
-            SeletorDePokemon seletor = new SeletorDePokemon(ageDepois.getPokemons());
+            SeletorDePokemon seletor = new SeletorDePokemon(ageDepois.getPokemons(),
+                    "Escolha um Pokémon para enviar, " + ageDepois.getNome(), false);
             seletor.setCallback(() -> {
                 ageDepois.setPokemonAtivo(seletor.pokemonEscolhido());
                 getContentPane().remove(seletor);
@@ -211,7 +215,8 @@ public class MenuPrincipal extends JFrame {
                 if (ageAntes.treinadorDerrotado()) {
                     anunciarVitoria(ageDepois);
                 }
-                SeletorDePokemon seletor = new SeletorDePokemon(ageAntes.getPokemons());
+                SeletorDePokemon seletor = new SeletorDePokemon(ageAntes.getPokemons(),
+                        "Escolha um Pokémon para enviar, " + ageAntes.getNome(), false);
                 seletor.setCallback(() -> {
                     ageAntes.setPokemonAtivo(seletor.pokemonEscolhido());
                     getContentPane().remove(seletor);

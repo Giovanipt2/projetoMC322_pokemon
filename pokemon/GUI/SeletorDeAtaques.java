@@ -10,13 +10,26 @@ public class SeletorDeAtaques extends JPanel {
     private Runnable callback;
     private Ataque escolhido;
 
-    public SeletorDeAtaques(Collection<? extends Ataque> Ataques) {
-        super(new GridLayout(2, 2)); // GridLayout com 2 linhas e 2 colunas
 
+    public SeletorDeAtaques(Collection<? extends Ataque> ataques, String prompt) {
+        super();
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+
+        JPanel promptECancelar = new JPanel(new FlowLayout());
+        promptECancelar.add(new JLabel(prompt));
+        JButton cancelar = new JButton("Cancelar");
+        cancelar.addActionListener(e -> {
+            getParent().remove(this);
+        });
+        promptECancelar.add(cancelar);
+        add(promptECancelar);
+
+        JPanel botoes = new JPanel(new GridLayout(2, 2));
         // Criando os botões para cada ataque
-        for (Ataque ataque : Ataques) {
-            add(criarBotao(ataque));
+        for (Ataque ataque : ataques) {
+            botoes.add(criarBotao(ataque));
         }
+        add(botoes);
 
         setVisible(true);
     }
