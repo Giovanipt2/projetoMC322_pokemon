@@ -22,7 +22,12 @@ public class SeletorDeAtaques extends JPanel {
     }
 
     private JButton criarBotao(Ataque ataque) {
-        JButton botao = new JButton(ataque.getNome() + " (" + ataque.getTipo() + ")");
+        int pp = ataque.getPp();
+        JButton botao = new JButton(ataque.getNome() + " (" + ataque.getTipo() + ") " +
+                pp + "/" + ataque.getPpMax());
+        if (pp == 0) {
+            botao.setEnabled(false);
+        }
         botao.addActionListener(e -> {
             int escolha = JOptionPane.showConfirmDialog(null, "Deseja usar este ataque " +
                     ataque.getNome() + "?", null, JOptionPane.YES_NO_OPTION);
