@@ -147,6 +147,7 @@ public class BancoDados implements Serializable {
                     ataques = (HashMap<String, Ataque>) in.readObject();
                     pokemons = (HashMap<String, Pokemon>) in.readObject();
                     pokemonsIniciais = (HashMap<String, Pokemon>) in.readObject();
+                    itensBatalha = (HashMap<String, ItemBatalha>) in.readObject();
                     in.close();
                     fileIn.close();
                 } catch (ClassCastException e) {
@@ -875,6 +876,7 @@ public class BancoDados implements Serializable {
                     out.writeObject(ataques);
                     out.writeObject(pokemons);
                     out.writeObject(pokemonsIniciais);
+                    out.writeObject(itensBatalha);
                     out.close();
                     fileOut.close();
                 } catch (IOException e) {
