@@ -154,17 +154,24 @@ public class Batalha {
         boolean ataqueAcertou = (Util.randInt(0, 101) < ataque.getPrecisao());
         boolean fezEfeito = ataqueAcertou && (Util.randInt(0, 101) < ataque.getProbEfeito());
 
-
-        int ultimoDano = ataqueAcertou ? ataque.dano(usuario, alvo, clima) : 0;
+        boolean crit = ataque.critico();
+        int ultimoDano = ataqueAcertou ? ataque.dano(usuario, alvo, clima, crit) : 0;
 
         // Efeitos de held items virão aqui
 
         // Dá o dano
         ultimoDano = Math.min(ultimoDano, alvo.getHP_atual());
         if (ultimoDano > 0) {
+            if (crit) {
+                out += "Dano crítico!\n";
+            }
             out += alvo.getNome() + " tomou " + ultimoDano + " de dano!";
             alvo.somaHP_atual(-ultimoDano);
-        } else {
+        }
+        else if (!ataqueAcertou) {
+            out += "O ataque errou.";
+        }
+        else {
             out += "O ataque não causou dano.";
         }
         if (fezEfeito) {

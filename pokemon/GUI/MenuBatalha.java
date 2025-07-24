@@ -111,8 +111,7 @@ public class MenuBatalha extends JPanel {
                 pokemon2.getStat(Stat.HP) + ")");
 
         vida1.setMaximum(pokemon1.getStat(Stat.HP));
-        vida1.setValue(pokemon1.getHP_atual());
-        vida1.setForeground(corBarra(vida1.getPercentComplete()));
+        updateHealthBar(vida1, pokemon1);
 
         vida2.setMaximum(pokemon2.getStat(Stat.HP));
         vida2.setValue(pokemon2.getHP_atual());
@@ -149,5 +148,38 @@ public class MenuBatalha extends JPanel {
             return Color.ORANGE;
         }
         return Color.RED;
+    }
+
+    private void displayTextSlowly(JLabel label, String text) {
+        new Thread(() -> {
+            String displayed = "";
+            for (char c : text.toCharArray()) {
+                displayed += c;
+                label.setText(displayed);
+                try {
+                    Thread.sleep(20);
+                } catch (InterruptedException e) {
+                    label.setText(text);
+                }
+            }
+        }).start();
+    }
+
+    private void updateHealthBar(JProgressBar bar, Pokemon pokemon) {
+        new Thread(() -> {
+            int currentValue = bar.getValue();
+            int targetValue = pokemon.getHP_atual();
+            while (targetValue < currentValue) {
+                currentValue--;
+                bar.setValue(currentValue);
+                setForeground(corBarra(bar.getPercentComplete()));
+                try {
+                    Thread.sleep(4);
+                } catch (InterruptedException e) {
+                    bar.setValue(targetValue);
+                }
+            }
+            bar.setValue(targetValue);
+        }).start();
     }
 }
