@@ -100,7 +100,7 @@ public enum Tipo {
             };
             case FANTASMA -> switch (tipoDef) {
                 case NORMAL -> 0.0f;
-                case DRAGAO -> 0.5f;
+                case SOMBRIO -> 0.5f;
                 case PSIQUICO, FANTASMA -> 2.0f;
                 default -> 1.0f;
             };

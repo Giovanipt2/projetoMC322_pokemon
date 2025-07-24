@@ -72,19 +72,18 @@ public class Pokemon implements Serializable {
      *                  Stats omitidos recebem o valor 0 por padrão.
      * @param ataques   os ataques que o Pokémon pode usar
      */
-    public Pokemon(String nome, List<Tipo> tipos, int nivel, Map<Stat, Integer> statsBase, List<Ataque> ataques, String sprite) {
+    public Pokemon(String nome, List<Tipo> tipos, int nivel, Map<Stat, Integer> statsBase, List<Ataque> ataques, String sprite, Map<Stat, Integer> evs, Natureza naturezaDefinida) {
         this.nome = nome;
         this.tipos = new ArrayList<>(tipos);
         this.nivel = nivel;
         this.statsBase = new HashMap<>(statsBase);
-        this.evs = new HashMap<>();
+        this.evs = new HashMap<>(evs);
         this.ivs = new HashMap<>();
         for (Stat s : Stat.values()) {
             if (!this.statsBase.containsKey(s)) {
                 statsBase.put(s, 0);    // Stats não informados são zerados
             }
-            evs.put(s, 0);
-            ivs.put(s, Util.randInt(0, 32));
+            ivs.put(s, 31);
         }
 
         this.ataques = new ArrayList<>();
@@ -92,21 +91,9 @@ public class Pokemon implements Serializable {
             this.ataques.add(ataque.copiar());
         }
         this.efeito = null;
-        this.natureza = Natureza.random();
+        this.natureza = naturezaDefinida;
         this.hp = getStat(Stat.HP);
         this.sprite = sprite;
-    }
-
-    /**
-     * Cria uma cópia do Pokémon.
-     * A cópia tem nível e EVs zerados,
-     * e IVs aleatorizados.
-     *
-     * @param p     o Pokémon a ser copiado
-     * @param nivel o nível do novo Pokémon
-     */
-    public Pokemon(Pokemon p, int nivel) {
-        this(p.nome, p.tipos, nivel, p.statsBase, p.ataques, p.sprite);
     }
 
     /**
@@ -117,7 +104,7 @@ public class Pokemon implements Serializable {
      * @param p o Pokémon a ser copiado
      */
     public Pokemon(Pokemon p) {
-        this(p.nome, p.tipos, p.nivel, p.statsBase, p.ataques, p.sprite);
+        this(p.nome, p.tipos, p.nivel, p.statsBase, p.ataques, p.sprite, p.evs, p.natureza);
     }
 
     /**

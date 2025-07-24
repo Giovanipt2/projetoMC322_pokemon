@@ -21,7 +21,7 @@ public class AtaqueEspecial extends Ataque {
      */
     public int danoBase(Pokemon usuario, Pokemon alvo) {
         int d = 2 * usuario.getNivel() / 5 + 2;
-        d *= poder * (usuario.getStat(Stat.ATK_SP) / alvo.getStat(Stat.DEF_SP));
+        d *= poder * ((float) usuario.getStat(Stat.ATK_SP) / (float) alvo.getStat(Stat.DEF_SP));
         d /= 50;
         return d + 2;
     }
@@ -29,22 +29,27 @@ public class AtaqueEspecial extends Ataque {
     @Override
     public int dano(Pokemon usuario, Pokemon alvo, Clima clima) {
         int d = danoBase(usuario, alvo);
+        System.out.println("Dano base: " + d);
 
         // Dano crítico
         if (critico()) {
             d = Math.round(d * 1.5f);
         }
+        System.out.println("Dano: " + d);
 
         // Multiplicador aleatório (de 85% a 100%)
         d = Math.round(d * ((float) Util.randInt(85, 101) / 100));
+        System.out.println("Dano: " + d);
 
         // STAB (Bônus de ataque do mesmo tipo do Pokémon
         if (usuario.getTipos().contains(tipo)) {
-            d *= Math.round(d * 1.5f);
+            d = Math.round(d * 1.5f);
         }
+        System.out.println("Dano se for stab: " + d);
 
         // Eficácia do tipo de ataque
         d = Math.round(d * tipo.multiplicador(alvo.getTipos()));
+        System.out.println("Dano considerando tipo do alvo: " + d);
 
         return d;
     }
