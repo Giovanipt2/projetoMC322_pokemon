@@ -27,11 +27,11 @@ public class AtaqueFisico extends Ataque {
     }
 
     @Override
-    public int dano(Pokemon usuario, Pokemon alvo, Clima clima) {
+    public int dano(Pokemon usuario, Pokemon alvo, Clima clima, boolean crit) {
         int d = danoBase(usuario, alvo);
 
         // Dano crítico
-        if (critico()) {
+        if (crit) {
             d = Math.round(d * 1.5f);
         }
 
@@ -40,7 +40,7 @@ public class AtaqueFisico extends Ataque {
 
         // STAB (Bônus de ataque do mesmo tipo do Pokémon
         if (usuario.getTipos().contains(tipo)) {
-            d *= Math.round(d * 1.5f);
+            d = Math.round(d * 1.5f);
         }
 
         // Eficácia do tipo de ataque
@@ -56,7 +56,8 @@ public class AtaqueFisico extends Ataque {
      *
      * @return {@code true} se o ataque for crítico.
      */
-    private boolean critico() {
+    @Override
+    public boolean critico() {
         return Util.randBool(1, 24);
     }
 

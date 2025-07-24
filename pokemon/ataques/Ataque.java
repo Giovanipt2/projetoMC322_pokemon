@@ -93,7 +93,7 @@ public abstract class Ataque implements Serializable {
      * @param clima   o clima atual
      * @return o dano.
      */
-    public abstract int dano(Pokemon usuario, Pokemon alvo, Clima clima);
+    public abstract int dano(Pokemon usuario, Pokemon alvo, Clima clima, boolean crit);
 
     /**
      * Cria uma cópia do ataque.
@@ -174,5 +174,9 @@ public abstract class Ataque implements Serializable {
      */
     public void restauraPp() {
         this.pp = ppMax;
+    }
+
+    public boolean critico() {
+        return false;
     }
 }

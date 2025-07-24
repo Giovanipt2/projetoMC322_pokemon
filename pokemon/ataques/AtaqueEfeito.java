@@ -19,7 +19,7 @@ public class AtaqueEfeito extends Ataque {
      * @return 0 (ataques de efeito não causam dano).
      */
     @Override
-    public int dano(Pokemon usuario, Pokemon alvo, Clima clima) {
+    public int dano(Pokemon usuario, Pokemon alvo, Clima clima, boolean crit) {
         return 0;
     }
 
