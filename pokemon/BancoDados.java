@@ -902,7 +902,7 @@ public class BancoDados implements Serializable {
                 );
 
                 pokemons.put("Pheromosa", new Pokemon("Pheromosa", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/regigigas.png", evsPheromosa, naturezaPheromosa));
+                        "pokemon/sprites/pheromosa.png", evsPheromosa, naturezaPheromosa));
 
 
                 //Criando a Diancie
@@ -976,8 +976,8 @@ public class BancoDados implements Serializable {
                         Stat.SPEED, 252
                 );
 
-                pokemons.put("Blaziken", new Pokemon("Blaziken", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/dialga.png", evsBlaziken, naturezaBlaziken));
+                pokemonsIniciais.put("Blaziken", new Pokemon("Blaziken", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
+                        "pokemon/sprites/blaziken.png", evsBlaziken, naturezaBlaziken));
 
 
                 //Criando o Incineroar
@@ -1011,7 +1011,7 @@ public class BancoDados implements Serializable {
                         Stat.SPEED, 92
                 );
 
-                pokemons.put("Incineroar", new Pokemon("Incineroar", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
+                pokemonsIniciais.put("Incineroar", new Pokemon("Incineroar", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
                         "pokemon/sprites/incineroar.png", evsIncineroar, naturezaIncineroar));
 
 
@@ -1046,7 +1046,7 @@ public class BancoDados implements Serializable {
                         Stat.SPEED, 252
                 );
 
-                pokemons.put("Greninja", new Pokemon("Greninja", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
+                pokemonsIniciais.put("Greninja", new Pokemon("Greninja", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
                         "pokemon/sprites/greninja.png", evsGreninja, naturezaGreninja));
 
 
@@ -1081,7 +1081,7 @@ public class BancoDados implements Serializable {
                         Stat.SPEED, 0
                 );
 
-                pokemons.put("Swampert", new Pokemon("Swampert", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
+                pokemonsIniciais.put("Swampert", new Pokemon("Swampert", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
                         "pokemon/sprites/swampert.png", evsSwampert, naturezaSwampert));
 
 
@@ -1115,7 +1115,7 @@ public class BancoDados implements Serializable {
                         Stat.SPEED, 252
                 );
 
-                pokemons.put("Sceptile", new Pokemon("Sceptile", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
+                pokemonsIniciais.put("Sceptile", new Pokemon("Sceptile", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
                         "pokemon/sprites/sceptile.png", evsSceptile, naturezaSceptile));
 
 
@@ -1150,7 +1150,7 @@ public class BancoDados implements Serializable {
                         Stat.SPEED, 52
                 );
 
-                pokemons.put("Chesnaught", new Pokemon("Chesnaught", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
+                pokemonsIniciais.put("Chesnaught", new Pokemon("Chesnaught", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
                         "pokemon/sprites/chesnaught.png", evsChesnaught, naturezaChesnaught));
             }
 
