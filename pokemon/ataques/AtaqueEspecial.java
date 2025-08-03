@@ -21,7 +21,7 @@ public class AtaqueEspecial extends Ataque {
      */
     public int danoBase(Pokemon usuario, Pokemon alvo) {
         int d = 2 * usuario.getNivel() / 5 + 2;
-        d *= poder * (usuario.getStat(Stat.ATK_SP) / alvo.getStat(Stat.DEF_SP));
+        d *= poder * ((float) usuario.getStat(Stat.ATK_SP) / (float) alvo.getStat(Stat.DEF_SP));
         d /= 50;
         return d + 2;
     }
@@ -55,7 +55,6 @@ public class AtaqueEspecial extends Ataque {
      *
      * @return {@code true} se o ataque for crítico.
      */
-    @Override
     public boolean critico() {
         return Util.randBool(1, 24);
     }

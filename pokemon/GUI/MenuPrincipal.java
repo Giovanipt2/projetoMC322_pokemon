@@ -102,6 +102,7 @@ public class MenuPrincipal extends JFrame {
         Treinador jogador = batalha.getJogador1();
 
         menuBatalha.setPrompt("Escolha uma ação, " + jogador.getNome() + ":");
+        menuBatalha.setJogadorAtivo(1);
         menuBatalha.update();
         menuBatalha.setCallbackAtacar(() -> {
             SeletorDeAtaques seletor = new SeletorDeAtaques(jogador.getPokemonAtivo().getAtaques(),
@@ -145,7 +146,8 @@ public class MenuPrincipal extends JFrame {
         Treinador jogador = batalha.getJogador2();
 
         menuBatalha.setPrompt("Escolha uma ação, " + jogador.getNome() + ":");
-
+        menuBatalha.setJogadorAtivo(2);
+        menuBatalha.update();
         menuBatalha.setCallbackAtacar(() -> {
             SeletorDeAtaques seletor = new SeletorDeAtaques(jogador.getPokemonAtivo().getAtaques(),
                     "Escolha um ataque, " + jogador.getPokemonAtivo().getNome());

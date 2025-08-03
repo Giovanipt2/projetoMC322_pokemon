@@ -38,7 +38,7 @@ public class SeletorDePokemon extends JPanel {
 
     private JButton criarBotao(Pokemon pokemon) {
         JButton botao = new JButton(pokemon.getNome());
-        botao.setIcon(new ImageIcon(pokemon.getSprite()));
+        botao.setIcon(new ImageIcon(pokemon.getSpritesPath() + "/icon.png"));
         botao.setFocusPainted(false);
         if (!pokemon.estaVivo()) {
             botao.setEnabled(false);

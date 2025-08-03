@@ -21,7 +21,7 @@ public class AtaqueFisico extends Ataque {
      */
     public int danoBase(Pokemon usuario, Pokemon alvo) {
         int d = 2 * usuario.getNivel() / 5 + 2;
-        d *= poder * (usuario.getStat(Stat.ATK) / alvo.getStat(Stat.DEF));
+        d *= poder * ((float) usuario.getStat(Stat.ATK) / (float) alvo.getStat(Stat.DEF));
         d /= 50;
         return d + 2;
     }
@@ -29,6 +29,7 @@ public class AtaqueFisico extends Ataque {
     @Override
     public int dano(Pokemon usuario, Pokemon alvo, Clima clima, boolean crit) {
         int d = danoBase(usuario, alvo);
+        // Imprime o dano base do pokémon
 
         // Dano crítico
         if (crit) {
@@ -56,7 +57,6 @@ public class AtaqueFisico extends Ataque {
      *
      * @return {@code true} se o ataque for crítico.
      */
-    @Override
     public boolean critico() {
         return Util.randBool(1, 24);
     }

@@ -11,6 +11,7 @@ public class MenuBatalha extends JPanel {
     private Batalha batalha;
     private Pokemon pokemon1;
     private Pokemon pokemon2;
+    private int jogadorAtivo;
     private final JLabel labelPokemon1;
     private final JLabel labelPokemon2;
     private final JLabel prompt;
@@ -21,6 +22,7 @@ public class MenuBatalha extends JPanel {
     private Runnable callbackAtacar;
     private Runnable callbackTrocar;
     private Runnable callbackItem;
+
 
     /**
      * Cria e inicializa um novo Menu de Batalha
@@ -35,13 +37,13 @@ public class MenuBatalha extends JPanel {
         pokemon2 = batalha.getJogador2().getPokemonAtivo();
 
         // Adiciona sprites e nomes dos Pokémons
-        labelPokemon1 = new JLabel(new ImageIcon(pokemon1.getSprite()));
+        labelPokemon1 = new JLabel(new ImageIcon(pokemon1.getSpritesPath() + "/back.gif"));
         labelPokemon1.setText(pokemon1.getNome() + " (" + pokemon1.getHP_atual() + "/" +
                 pokemon1.getStat(Stat.HP) + ")");
         labelPokemon1.setVerticalTextPosition(JLabel.BOTTOM);
         labelPokemon1.setHorizontalTextPosition(JLabel.CENTER);
 
-        labelPokemon2 = new JLabel(new ImageIcon(pokemon2.getSprite()));
+        labelPokemon2 = new JLabel(new ImageIcon(pokemon2.getSpritesPath() + "/front.gif"));
         labelPokemon2.setText(pokemon2.getNome() + " (" + pokemon2.getHP_atual() + "/" +
                 pokemon2.getStat(Stat.HP) + ")");
         labelPokemon2.setVerticalTextPosition(JLabel.BOTTOM);
@@ -103,10 +105,16 @@ public class MenuBatalha extends JPanel {
     public void update() {
         pokemon1 = batalha.getJogador1().getPokemonAtivo();
         pokemon2 = batalha.getJogador2().getPokemonAtivo();
-        labelPokemon1.setIcon(new ImageIcon(pokemon1.getSprite()));
+
+
+        //BufferedImage gifPokemon1 = new BufferedImage();
+        String gifPath1 = pokemon1.getSpritesPath() + "/back.gif";
+        String gifPath2 = pokemon2.getSpritesPath() + "/front.gif";
+
+        labelPokemon1.setIcon(new ImageIcon(gifPath1));
         labelPokemon1.setText(pokemon1.getNome() + " (" + pokemon1.getHP_atual() + "/" +
                 pokemon1.getStat(Stat.HP) + ")");
-        labelPokemon2.setIcon(new ImageIcon(pokemon2.getSprite()));
+        labelPokemon2.setIcon(new ImageIcon(gifPath2));
         labelPokemon2.setText(pokemon2.getNome() + " (" + pokemon2.getHP_atual() + "/" +
                 pokemon2.getStat(Stat.HP) + ")");
 
@@ -181,5 +189,9 @@ public class MenuBatalha extends JPanel {
             }
             bar.setValue(targetValue);
         }).start();
+    }
+
+    public void setJogadorAtivo(int jogadorAtivo) {
+        this.jogadorAtivo = jogadorAtivo;
     }
 }

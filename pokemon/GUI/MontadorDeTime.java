@@ -31,7 +31,7 @@ public class MontadorDeTime extends JPanel {
             super();
             this.pokemon = pokemon;
             checkBox = new JCheckBox(pokemon.getNome());
-            sprite = new JLabel(new ImageIcon(pokemon.getSprite()));
+            sprite = new JLabel(new ImageIcon(pokemon.getSpritesPath() + "/icon.png"));
             add(checkBox);
             add(sprite);
         }

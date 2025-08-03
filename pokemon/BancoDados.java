@@ -266,8 +266,19 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Thunder"));
                 ataquesPokemon.add(ataques.get("Flash Cannon"));
 
+                Natureza naturezaDialga = Natureza.MODEST;
+
+                Map<Stat,Integer> evsDialga = Map.of(
+                        Stat.HP, 252,
+                        Stat.ATK, 0,
+                        Stat.DEF, 4,
+                        Stat.ATK_SP, 252,
+                        Stat.DEF_SP, 0,
+                        Stat.SPEED, 0
+                );
+
                 pokemons.put("Dialga", new Pokemon("Dialga", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/dialga.png"));
+                        "pokemon/sprites/dialga/", evsDialga, naturezaDialga));
 
 
                 // Criando o Palkia
@@ -290,8 +301,19 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Fire Blast"));
                 ataquesPokemon.add(ataques.get("Earth Power"));
 
+                Natureza naturezaPalkia = Natureza.TIMID;
+
+                Map<Stat,Integer> evsPalkia = Map.of(
+                        Stat.HP, 0,
+                        Stat.ATK, 0,
+                        Stat.DEF, 0,
+                        Stat.ATK_SP, 252,
+                        Stat.DEF_SP, 4,
+                        Stat.SPEED, 252
+                );
+
                 pokemons.put("Palkia", new Pokemon("Palkia", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/palkia.png"));
+                        "pokemon/sprites/palkia/", evsPalkia, naturezaPalkia));
 
 
                 //Criando a Kartana
@@ -314,8 +336,19 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Smart Strike"));
                 ataquesPokemon.add(ataques.get("Knock Off"));
 
+                Natureza naturezaKartana = Natureza.JOLLY;
+
+                Map<Stat,Integer> evsKartana = Map.of(
+                        Stat.HP, 0,
+                        Stat.ATK, 252,
+                        Stat.DEF, 4,
+                        Stat.ATK_SP, 0,
+                        Stat.DEF_SP, 0,
+                        Stat.SPEED, 252
+                );
+
                 pokemons.put("Kartana", new Pokemon("Kartana", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/kartana.png"));
+                        "pokemon/sprites/kartana/", evsKartana, naturezaKartana));
 
 
                 //Criando a Zacian
@@ -338,8 +371,19 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Close Combat"));
                 ataquesPokemon.add(ataques.get("Play Rough"));
 
+                Natureza naturezaZacian = Natureza.JOLLY;
+
+                Map<Stat,Integer> evsZacian = Map.of(
+                        Stat.HP, 0,
+                        Stat.ATK, 252,
+                        Stat.DEF, 4,
+                        Stat.ATK_SP, 0,
+                        Stat.DEF_SP, 0,
+                        Stat.SPEED, 252
+                );
+
                 pokemons.put("Zacian", new Pokemon("Zacian", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/zacian.png"));
+                        "pokemon/sprites/zacian/", evsZacian, naturezaZacian));
 
 
                 //Criando o Mewtwo
@@ -361,8 +405,19 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Aura Sphere"));
                 ataquesPokemon.add(ataques.get("Ice Beam"));
 
+                Natureza naturezaMewtwo = Natureza.TIMID;
+
+                Map<Stat,Integer> evsMewtwo = Map.of(
+                        Stat.HP, 4,
+                        Stat.ATK, 0,
+                        Stat.DEF, 0,
+                        Stat.ATK_SP, 252,
+                        Stat.DEF_SP, 0,
+                        Stat.SPEED, 252
+                );
+
                 pokemons.put("Mewtwo", new Pokemon("Mewtwo", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/mewtwo.png"));
+                        "pokemon/sprites/mewtwo/", evsMewtwo, naturezaMewtwo));
 
 
                 //Criando o Kyogre
@@ -384,8 +439,19 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Origin Pulse"));
                 ataquesPokemon.add(ataques.get("Water Spout"));
 
+                Natureza naturezaKyogre = Natureza.MODEST;
+
+                Map<Stat,Integer> evsKyogre = Map.of(
+                        Stat.HP, 252,
+                        Stat.ATK, 0,
+                        Stat.DEF, 4,
+                        Stat.ATK_SP, 252,
+                        Stat.DEF_SP, 0,
+                        Stat.SPEED, 0
+                );
+
                 pokemons.put("Kyogre", new Pokemon("Kyogre", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/kyogre.png"));
+                        "pokemon/sprites/kyogre/", evsKyogre, naturezaKyogre));
 
 
                 //Criando o Groudon
@@ -407,8 +473,19 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Toxic"));
                 ataquesPokemon.add(ataques.get("Earthquake"));
 
+                Natureza naturezaGroudon = Natureza.IMPISH;
+
+                Map<Stat,Integer> evsGroudon = Map.of(
+                        Stat.HP, 240,
+                        Stat.ATK, 0,
+                        Stat.DEF, 252,
+                        Stat.ATK_SP, 0,
+                        Stat.DEF_SP, 0,
+                        Stat.SPEED, 16
+                );
+
                 pokemons.put("Groudon", new Pokemon("Groudon", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/groudon.png"));
+                        "pokemon/sprites/groudon/", evsGroudon, naturezaGroudon));
 
 
                 //Criando o Blacephalon
@@ -431,8 +508,19 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Blizzard"));
                 ataquesPokemon.add(ataques.get("Psychic"));
 
+                Natureza naturezaBlacephalon = Natureza.TIMID;
+
+                Map<Stat,Integer> evsBlacephalon = Map.of(
+                        Stat.HP, 0,
+                        Stat.ATK, 0,
+                        Stat.DEF, 0,
+                        Stat.ATK_SP, 252,
+                        Stat.DEF_SP, 4,
+                        Stat.SPEED, 252
+                );
+
                 pokemons.put("Blacephalon", new Pokemon("Blacephalon", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/blacephalon.png"));
+                        "pokemon/sprites/blacephalon/", evsBlacephalon, naturezaBlacephalon));
 
 
                 //Criando o Darkrai
@@ -454,8 +542,19 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Dark Pulse"));
                 ataquesPokemon.add(ataques.get("Psychic"));
 
+                Natureza naturezaDarkrai = Natureza.TIMID;
+
+                Map<Stat,Integer> evsDarkrai = Map.of(
+                        Stat.HP, 0,
+                        Stat.ATK, 0,
+                        Stat.DEF, 0,
+                        Stat.ATK_SP, 252,
+                        Stat.DEF_SP, 4,
+                        Stat.SPEED, 252
+                );
+
                 pokemons.put("Darkrai", new Pokemon("Darkrai", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/darkrai.png"));
+                        "pokemon/sprites/darkrai/", evsDarkrai, naturezaDarkrai));
 
 
                 //Criando o Reshiram
@@ -478,8 +577,19 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Hyper Beam"));
                 ataquesPokemon.add(ataques.get("Aeroblast"));
 
+                Natureza naturezaReshiram = Natureza.MODEST;
+
+                Map<Stat,Integer> evsReshiram = Map.of(
+                        Stat.HP, 252,
+                        Stat.ATK, 0,
+                        Stat.DEF, 0,
+                        Stat.ATK_SP, 252,
+                        Stat.DEF_SP, 4,
+                        Stat.SPEED, 0
+                );
+
                 pokemons.put("Reshiram", new Pokemon("Reshiram", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/reshiram.png"));
+                        "pokemon/sprites/reshiram/", evsReshiram, naturezaReshiram));
 
 
                 //Criando o Zekrom
@@ -502,8 +612,19 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Extreme Speed"));
                 ataquesPokemon.add(ataques.get("Drill Peck"));
 
+                Natureza naturezaZekrom = Natureza.JOLLY;
+
+                Map<Stat,Integer> evsZekrom = Map.of(
+                        Stat.HP, 0,
+                        Stat.ATK, 252,
+                        Stat.DEF, 4,
+                        Stat.ATK_SP, 0,
+                        Stat.DEF_SP, 0,
+                        Stat.SPEED, 252
+                );
+
                 pokemons.put("Zekrom", new Pokemon("Zekrom", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/zekrom.png"));
+                        "pokemon/sprites/zekrom/", evsZekrom, naturezaZekrom));
 
 
                 //Criando o Xerneas
@@ -525,8 +646,19 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Surf"));
                 ataquesPokemon.add(ataques.get("Thunder"));
 
+                Natureza naturezaXerneas = Natureza.TIMID;
+
+                Map<Stat,Integer> evsXerneas = Map.of(
+                        Stat.HP, 4,
+                        Stat.ATK, 0,
+                        Stat.DEF, 0,
+                        Stat.ATK_SP, 252,
+                        Stat.DEF_SP, 0,
+                        Stat.SPEED, 252
+                );
+
                 pokemons.put("Xerneas", new Pokemon("Xerneas", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/xerneas.png"));
+                        "pokemon/sprites/xerneas/", evsXerneas, naturezaXerneas));
 
 
                 //Criando o Yveltal
@@ -549,8 +681,19 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("U-turn"));
                 ataquesPokemon.add(ataques.get("Earth Power"));
 
+                Natureza naturezaYveltal = Natureza.IMPISH;
+
+                Map<Stat,Integer> evsYveltal = Map.of(
+                        Stat.HP, 252,
+                        Stat.ATK, 0,
+                        Stat.DEF, 252,
+                        Stat.ATK_SP, 4,
+                        Stat.DEF_SP, 0,
+                        Stat.SPEED, 0
+                );
+
                 pokemons.put("Yveltal", new Pokemon("Yveltal", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/yveltal.png"));
+                        "pokemon/sprites/yveltal/", evsYveltal, naturezaYveltal));
 
 
                 //Criando o Ho-Oh
@@ -573,8 +716,19 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Toxic"));
                 ataquesPokemon.add(ataques.get("Earthquake"));
 
-                pokemons.put("Ho-OH", new Pokemon("Ho-Oh", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/ho-oh.png"));
+                Natureza naturezaHooh = Natureza.IMPISH;
+
+                Map<Stat,Integer> evsHooh = Map.of(
+                        Stat.HP, 248,
+                        Stat.ATK, 0,
+                        Stat.DEF, 252,
+                        Stat.ATK_SP, 0,
+                        Stat.DEF_SP, 8,
+                        Stat.SPEED, 0
+                );
+
+                pokemons.put("Ho-Oh", new Pokemon("Ho-Oh", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
+                        "pokemon/sprites/ho_oh/", evsHooh, naturezaHooh));
 
 
                 //Criando o Hoopa
@@ -597,8 +751,19 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Hyperspace Fury"));
                 ataquesPokemon.add(ataques.get("Psychic Fangs"));
 
+                Natureza naturezaHoopa = Natureza.QUIET;
+
+                Map<Stat,Integer> evsHoopa = Map.of(
+                        Stat.HP, 252,
+                        Stat.ATK, 0,
+                        Stat.DEF, 180,
+                        Stat.ATK_SP, 76,
+                        Stat.DEF_SP, 0,
+                        Stat.SPEED, 0
+                );
+
                 pokemons.put("Hoopa", new Pokemon("Hoopa", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/hoopa.png"));
+                        "pokemon/sprites/hoopa/", evsHoopa, naturezaHoopa));
 
 
                 //Criando o Calyrex-Ice
@@ -621,8 +786,19 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("High Horsepower"));
                 ataquesPokemon.add(ataques.get("Close Combat"));
 
+                Natureza naturezaCalyrexIce = Natureza.ADAMANT;
+
+                Map<Stat,Integer> evsCalyrexIce = Map.of(
+                        Stat.HP, 248,
+                        Stat.ATK, 252,
+                        Stat.DEF, 0,
+                        Stat.ATK_SP, 0,
+                        Stat.DEF_SP, 0,
+                        Stat.SPEED, 0
+                );
+
                 pokemons.put("Calyrex-Ice", new Pokemon("Calyrex-Ice", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/calyrex-ice.png"));
+                        "pokemon/sprites/calyrex_ice/", evsCalyrexIce, naturezaCalyrexIce));
 
 
                 //Criando o Calyrex-Shadow
@@ -634,19 +810,30 @@ public class BancoDados implements Serializable {
                 tiposPokemon.add(Tipo.FANTASMA);
 
                 statsBasePokemon.put(Stat.HP, 100);
-                statsBasePokemon.put(Stat.ATK, 165);
-                statsBasePokemon.put(Stat.DEF, 150);
-                statsBasePokemon.put(Stat.ATK_SP, 85);
-                statsBasePokemon.put(Stat.DEF_SP, 130);
-                statsBasePokemon.put(Stat.SPEED, 50);
+                statsBasePokemon.put(Stat.ATK, 85);
+                statsBasePokemon.put(Stat.DEF, 80);
+                statsBasePokemon.put(Stat.ATK_SP, 165);
+                statsBasePokemon.put(Stat.DEF_SP, 100);
+                statsBasePokemon.put(Stat.SPEED, 150);
 
                 ataquesPokemon.add(ataques.get("Psyshock"));
                 ataquesPokemon.add(ataques.get("Astral Barrage"));
                 ataquesPokemon.add(ataques.get("Moonblast"));
                 ataquesPokemon.add(ataques.get("Aura Sphere"));
 
+                Natureza naturezaCalyrexShadow = Natureza.TIMID;
+
+                Map<Stat,Integer> evsCalyrexShadow = Map.of(
+                        Stat.HP, 0,
+                        Stat.ATK, 0,
+                        Stat.DEF, 4,
+                        Stat.ATK_SP, 252,
+                        Stat.DEF_SP, 0,
+                        Stat.SPEED, 252
+                );
+
                 pokemons.put("Calyrex-Shadow", new Pokemon("Calyrex-Shadow", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/calyrex-shadow.png"));
+                        "pokemon/sprites/calyrex_shadow/", evsCalyrexShadow, naturezaCalyrexShadow));
 
 
                 //Criando o Regigigas
@@ -668,8 +855,19 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Body Slam"));
                 ataquesPokemon.add(ataques.get("Knock Off"));
 
+                Natureza naturezaRegigigas = Natureza.ADAMANT;
+
+                Map<Stat,Integer> evsRegigigas = Map.of(
+                        Stat.HP, 252,
+                        Stat.ATK, 252,
+                        Stat.DEF, 0,
+                        Stat.ATK_SP, 0,
+                        Stat.DEF_SP, 4,
+                        Stat.SPEED, 0
+                );
+
                 pokemons.put("Regigigas", new Pokemon("Regigigas", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/regigigas.png"));
+                        "pokemon/sprites/regigigas/", evsRegigigas, naturezaRegigigas));
 
 
                 //Criando a Pheromosa
@@ -692,8 +890,19 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Diamond Storm"));
                 ataquesPokemon.add(ataques.get("Sunsteel Strike"));
 
+                Natureza naturezaPheromosa = Natureza.JOLLY;
+
+                Map<Stat,Integer> evsPheromosa = Map.of(
+                        Stat.HP, 0,
+                        Stat.ATK, 252,
+                        Stat.DEF, 0,
+                        Stat.ATK_SP, 4,
+                        Stat.DEF_SP, 0,
+                        Stat.SPEED, 252
+                );
+
                 pokemons.put("Pheromosa", new Pokemon("Pheromosa", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/pheromosa.png"));
+                        "pokemon/sprites/pheromosa/", evsPheromosa, naturezaPheromosa));
 
 
                 //Criando a Diancie
@@ -716,8 +925,19 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Diamond Storm"));
                 ataquesPokemon.add(ataques.get("Moonblast"));
 
+                Natureza naturezaDiancie = Natureza.SASSY;
+
+                Map<Stat,Integer> evsDiancie = Map.of(
+                        Stat.HP, 252,
+                        Stat.ATK, 0,
+                        Stat.DEF, 4,
+                        Stat.ATK_SP, 0,
+                        Stat.DEF_SP, 252,
+                        Stat.SPEED, 0
+                );
+
                 pokemons.put("Diancie", new Pokemon("Diancie", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/diancie.png"));
+                        "pokemon/sprites/diancie/", evsDiancie, naturezaDiancie));
             }
 
             // Criando os pokemons iniciais
@@ -745,8 +965,19 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Close Combat"));
                 ataquesPokemon.add(ataques.get("Knock Off"));
 
+                Natureza naturezaBlaziken = Natureza.JOLLY;
+
+                Map<Stat,Integer> evsBlaziken = Map.of(
+                        Stat.HP, 0,
+                        Stat.ATK, 252,
+                        Stat.DEF, 4,
+                        Stat.ATK_SP, 0,
+                        Stat.DEF_SP, 0,
+                        Stat.SPEED, 252
+                );
+
                 pokemonsIniciais.put("Blaziken", new Pokemon("Blaziken", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/blaziken.png"));
+                        "pokemon/sprites/blaziken/", evsBlaziken, naturezaBlaziken));
 
 
                 //Criando o Incineroar
@@ -769,8 +1000,19 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Darkest Lariat"));
                 ataquesPokemon.add(ataques.get("U-turn"));
 
+                Natureza naturezaIncineroar = Natureza.ADAMANT;
+
+                Map<Stat,Integer> evsIncineroar = Map.of(
+                        Stat.HP, 160,
+                        Stat.ATK, 0,
+                        Stat.DEF, 0,
+                        Stat.ATK_SP, 252,
+                        Stat.DEF_SP, 4,
+                        Stat.SPEED, 92
+                );
+
                 pokemonsIniciais.put("Incineroar", new Pokemon("Incineroar", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/incineroar.png"));
+                        "pokemon/sprites/incineroar/", evsIncineroar, naturezaIncineroar));
 
 
                 //Criando o Greninja
@@ -793,8 +1035,19 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Water Shuriken"));
                 ataquesPokemon.add(ataques.get("Ice Beam"));
 
+                Natureza naturezaGreninja = Natureza.TIMID;
+
+                Map<Stat,Integer> evsGreninja = Map.of(
+                        Stat.HP, 0,
+                        Stat.ATK, 0,
+                        Stat.DEF, 0,
+                        Stat.ATK_SP, 252,
+                        Stat.DEF_SP, 4,
+                        Stat.SPEED, 252
+                );
+
                 pokemonsIniciais.put("Greninja", new Pokemon("Greninja", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/greninja.png"));
+                        "pokemon/sprites/greninja/", evsGreninja, naturezaGreninja));
 
 
                 //Criando o Swampert
@@ -817,8 +1070,19 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Earthquake"));
                 ataquesPokemon.add(ataques.get("Superpower"));
 
+                Natureza naturezaSwampert = Natureza.CAREFUL;
+
+                Map<Stat,Integer> evsSwampert = Map.of(
+                        Stat.HP, 252,
+                        Stat.ATK, 4,
+                        Stat.DEF, 0,
+                        Stat.ATK_SP, 0,
+                        Stat.DEF_SP, 252,
+                        Stat.SPEED, 0
+                );
+
                 pokemonsIniciais.put("Swampert", new Pokemon("Swampert", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/swampert.png"));
+                        "pokemon/sprites/swampert/", evsSwampert, naturezaSwampert));
 
 
                 //Criando o Sceptile
@@ -840,8 +1104,19 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Splishy Splash"));
                 ataquesPokemon.add(ataques.get("Stone Edge"));
 
+                Natureza naturezaSceptile = Natureza.TIMID;
+
+                Map<Stat,Integer> evsSceptile = Map.of(
+                        Stat.HP, 0,
+                        Stat.ATK, 0,
+                        Stat.DEF, 0,
+                        Stat.ATK_SP, 252,
+                        Stat.DEF_SP, 4,
+                        Stat.SPEED, 252
+                );
+
                 pokemonsIniciais.put("Sceptile", new Pokemon("Sceptile", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/sceptile.png"));
+                        "pokemon/sprites/sceptile/", evsSceptile, naturezaSceptile));
 
 
                 //Criando o Chesnaught
@@ -864,8 +1139,19 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Aqua Tail"));
                 ataquesPokemon.add(ataques.get("Spark"));
 
+                Natureza naturezaChesnaught = Natureza.IMPISH;
+
+                Map<Stat,Integer> evsChesnaught = Map.of(
+                        Stat.HP, 252,
+                        Stat.ATK, 0,
+                        Stat.DEF, 204,
+                        Stat.ATK_SP, 0,
+                        Stat.DEF_SP, 0,
+                        Stat.SPEED, 52
+                );
+
                 pokemonsIniciais.put("Chesnaught", new Pokemon("Chesnaught", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/chesnaught.png"));
+                        "pokemon/sprites/chesnaught/", evsChesnaught, naturezaChesnaught));
             }
 
             // Criando o arquivo .bytej que contém a serialização do banco de dados se ele ainda não tiver sido criado
