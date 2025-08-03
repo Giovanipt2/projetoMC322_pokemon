@@ -59,7 +59,7 @@ public class Pokemon implements Serializable {
     /**
      * Caminho para o sprite do Pokémon
      */
-    private String sprite;
+    private String spritesPath;
 
 
     /**
@@ -72,7 +72,7 @@ public class Pokemon implements Serializable {
      *                  Stats omitidos recebem o valor 0 por padrão.
      * @param ataques   os ataques que o Pokémon pode usar
      */
-    public Pokemon(String nome, List<Tipo> tipos, int nivel, Map<Stat, Integer> statsBase, List<Ataque> ataques, String sprite) {
+    public Pokemon(String nome, List<Tipo> tipos, int nivel, Map<Stat, Integer> statsBase, List<Ataque> ataques, String spritesPath) {
         this.nome = nome;
         this.tipos = new ArrayList<>(tipos);
         this.nivel = nivel;
@@ -94,7 +94,7 @@ public class Pokemon implements Serializable {
         this.efeito = null;
         this.natureza = Natureza.random();
         this.hp = getStat(Stat.HP);
-        this.sprite = sprite;
+        this.spritesPath = spritesPath;
     }
 
     /**
@@ -106,7 +106,7 @@ public class Pokemon implements Serializable {
      * @param nivel o nível do novo Pokémon
      */
     public Pokemon(Pokemon p, int nivel) {
-        this(p.nome, p.tipos, nivel, p.statsBase, p.ataques, p.sprite);
+        this(p.nome, p.tipos, nivel, p.statsBase, p.ataques, p.spritesPath);
     }
 
     /**
@@ -117,7 +117,7 @@ public class Pokemon implements Serializable {
      * @param p o Pokémon a ser copiado
      */
     public Pokemon(Pokemon p) {
-        this(p.nome, p.tipos, p.nivel, p.statsBase, p.ataques, p.sprite);
+        this(p.nome, p.tipos, p.nivel, p.statsBase, p.ataques, p.spritesPath);
     }
 
     /**
@@ -223,8 +223,8 @@ public class Pokemon implements Serializable {
         return new ArrayList<>(ataques);
     }
 
-    public String getSprite() {
-        return sprite;
+    public String getSpritesPath() {
+        return spritesPath;
     }
 
     public boolean estaVivo() {

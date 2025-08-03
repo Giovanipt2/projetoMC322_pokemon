@@ -267,7 +267,7 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Flash Cannon"));
 
                 pokemons.put("Dialga", new Pokemon("Dialga", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/dialga.png"));
+                        "pokemon/sprites/dialga/"));
 
 
                 // Criando o Palkia
@@ -291,7 +291,7 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Earth Power"));
 
                 pokemons.put("Palkia", new Pokemon("Palkia", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/palkia.png"));
+                        "pokemon/sprites/palkia/"));
 
 
                 //Criando a Kartana
@@ -315,7 +315,7 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Knock Off"));
 
                 pokemons.put("Kartana", new Pokemon("Kartana", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/kartana.png"));
+                        "pokemon/sprites/kartana/"));
 
 
                 //Criando a Zacian
@@ -339,7 +339,7 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Play Rough"));
 
                 pokemons.put("Zacian", new Pokemon("Zacian", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/zacian.png"));
+                        "pokemon/sprites/zacian/"));
 
 
                 //Criando o Mewtwo
@@ -362,7 +362,7 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Ice Beam"));
 
                 pokemons.put("Mewtwo", new Pokemon("Mewtwo", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/mewtwo.png"));
+                        "pokemon/sprites/mewtwo/"));
 
 
                 //Criando o Kyogre
@@ -385,7 +385,7 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Water Spout"));
 
                 pokemons.put("Kyogre", new Pokemon("Kyogre", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/kyogre.png"));
+                        "pokemon/sprites/kyogre/"));
 
 
                 //Criando o Groudon
@@ -408,7 +408,7 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Earthquake"));
 
                 pokemons.put("Groudon", new Pokemon("Groudon", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/groudon.png"));
+                        "pokemon/sprites/groudon/"));
 
 
                 //Criando o Blacephalon
@@ -432,7 +432,7 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Psychic"));
 
                 pokemons.put("Blacephalon", new Pokemon("Blacephalon", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/blacephalon.png"));
+                        "pokemon/sprites/blacephalon/"));
 
 
                 //Criando o Darkrai
@@ -455,7 +455,7 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Psychic"));
 
                 pokemons.put("Darkrai", new Pokemon("Darkrai", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/darkrai.png"));
+                        "pokemon/sprites/darkrai/"));
 
 
                 //Criando o Reshiram
@@ -479,7 +479,7 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Aeroblast"));
 
                 pokemons.put("Reshiram", new Pokemon("Reshiram", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/reshiram.png"));
+                        "pokemon/sprites/reshiram/"));
 
 
                 //Criando o Zekrom
@@ -503,7 +503,7 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Drill Peck"));
 
                 pokemons.put("Zekrom", new Pokemon("Zekrom", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/zekrom.png"));
+                        "pokemon/sprites/zekrom/"));
 
 
                 //Criando o Xerneas
@@ -526,7 +526,7 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Thunder"));
 
                 pokemons.put("Xerneas", new Pokemon("Xerneas", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/xerneas.png"));
+                        "pokemon/sprites/xerneas/"));
 
 
                 //Criando o Yveltal
@@ -550,7 +550,7 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Earth Power"));
 
                 pokemons.put("Yveltal", new Pokemon("Yveltal", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/yveltal.png"));
+                        "pokemon/sprites/yveltal/"));
 
 
                 //Criando o Ho-Oh
@@ -574,7 +574,7 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Earthquake"));
 
                 pokemons.put("Ho-OH", new Pokemon("Ho-Oh", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/ho-oh.png"));
+                        "pokemon/sprites/ho_oh/"));
 
 
                 //Criando o Hoopa
@@ -598,7 +598,7 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Psychic Fangs"));
 
                 pokemons.put("Hoopa", new Pokemon("Hoopa", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/hoopa.png"));
+                        "pokemon/sprites/hoopa/"));
 
 
                 //Criando o Calyrex-Ice
@@ -622,7 +622,7 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Close Combat"));
 
                 pokemons.put("Calyrex-Ice", new Pokemon("Calyrex-Ice", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/calyrex-ice.png"));
+                        "pokemon/sprites/calyrex_ice/"));
 
 
                 //Criando o Calyrex-Shadow
@@ -646,7 +646,7 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Aura Sphere"));
 
                 pokemons.put("Calyrex-Shadow", new Pokemon("Calyrex-Shadow", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/calyrex-shadow.png"));
+                        "pokemon/sprites/calyrex_shadow/"));
 
 
                 //Criando o Regigigas
@@ -669,7 +669,7 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Knock Off"));
 
                 pokemons.put("Regigigas", new Pokemon("Regigigas", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/regigigas.png"));
+                        "pokemon/sprites/regigigas/"));
 
 
                 //Criando a Pheromosa
@@ -693,7 +693,7 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Sunsteel Strike"));
 
                 pokemons.put("Pheromosa", new Pokemon("Pheromosa", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/pheromosa.png"));
+                        "pokemon/sprites/pheromosa/"));
 
 
                 //Criando a Diancie
@@ -717,7 +717,7 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Moonblast"));
 
                 pokemons.put("Diancie", new Pokemon("Diancie", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/diancie.png"));
+                        "pokemon/sprites/diancie/"));
             }
 
             // Criando os pokemons iniciais
@@ -746,7 +746,7 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Knock Off"));
 
                 pokemonsIniciais.put("Blaziken", new Pokemon("Blaziken", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/blaziken.png"));
+                        "pokemon/sprites/blaziken/"));
 
 
                 //Criando o Incineroar
@@ -770,7 +770,7 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("U-turn"));
 
                 pokemonsIniciais.put("Incineroar", new Pokemon("Incineroar", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/incineroar.png"));
+                        "pokemon/sprites/incineroar/"));
 
 
                 //Criando o Greninja
@@ -794,7 +794,7 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Ice Beam"));
 
                 pokemonsIniciais.put("Greninja", new Pokemon("Greninja", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/greninja.png"));
+                        "pokemon/sprites/greninja/"));
 
 
                 //Criando o Swampert
@@ -818,7 +818,7 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Superpower"));
 
                 pokemonsIniciais.put("Swampert", new Pokemon("Swampert", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/swampert.png"));
+                        "pokemon/sprites/swampert/"));
 
 
                 //Criando o Sceptile
@@ -841,7 +841,7 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Stone Edge"));
 
                 pokemonsIniciais.put("Sceptile", new Pokemon("Sceptile", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/sceptile.png"));
+                        "pokemon/sprites/sceptile/"));
 
 
                 //Criando o Chesnaught
@@ -865,7 +865,7 @@ public class BancoDados implements Serializable {
                 ataquesPokemon.add(ataques.get("Spark"));
 
                 pokemonsIniciais.put("Chesnaught", new Pokemon("Chesnaught", tiposPokemon, 100, statsBasePokemon, ataquesPokemon,
-                        "pokemon/sprites/chesnaught.png"));
+                        "pokemon/sprites/chesnaught/"));
             }
 
             // Criando o arquivo .bytej que contém a serialização do banco de dados se ele ainda não tiver sido criado
